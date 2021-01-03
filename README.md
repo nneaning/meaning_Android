@@ -14,13 +14,16 @@
     <th align="center">형준</th>
     <tr>
         <td align="center">
-        	<img src="https://user-images.githubusercontent.com/72931738/103460899-7da20700-4d5d-11eb-9ffa-1d64e8aed633.jpg" width=240>
+		<p>사진 미공개</p>
+        	<img src="!https://user-images.githubusercontent.com/72931738/103460899-7da20700-4d5d-11eb-9ffa-1d64e8aed633.jpg" width=240>
         </td>
         <td align="center">
-        	<img src="https://user-images.githubusercontent.com/72931738/103460895-7844bc80-4d5d-11eb-83de-739da40b035c.jpg" width=240>
+		<p>사진 미공개</p>
+        	<img src="!https://user-images.githubusercontent.com/72931738/103460895-7844bc80-4d5d-11eb-83de-739da40b035c.jpg" width=240>
         </td>
         <td align="center">
-        	<img src="https://user-images.githubusercontent.com/72931738/103460896-7aa71680-4d5d-11eb-9266-a175341578f9.jpg" width=240>
+		<p>사진 미공개</p>
+        	<img src="!https://user-images.githubusercontent.com/72931738/103460896-7aa71680-4d5d-11eb-9266-a175341578f9.jpg" width=240>
         </td>
     </tr>
     <tr>
