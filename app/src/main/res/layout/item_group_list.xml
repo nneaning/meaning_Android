@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="Group"
+            type="meaning.morning.GroupData" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp">
+
+            <TextView
+                android:id="@+id/textview_groupName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:lines="1"
+                android:text="@{Group.groupName}"
+                android:textColor="@color/grey2"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/textview_number"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textview_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="14dp"
+                android:background="@drawable/group_list_numberofpeople_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="@{Group.groupNumOfPeople}"
+                android:textSize="13sp"
+                android:textColor="@color/meaning_navy"
+                app:layout_constraintBottom_toBottomOf="@id/textview_groupName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textview_groupName" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey4"
+            android:layout_gravity="bottom" />
+
+    </FrameLayout>
+
+</layout>
