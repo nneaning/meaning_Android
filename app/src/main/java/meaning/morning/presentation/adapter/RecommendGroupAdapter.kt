@@ -1,10 +1,10 @@
-package meaning.morning
+package meaning.morning.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.databinding.ItemGroupListBinding
+import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.ItemGroupRecommendBinding
 
 class RecommendGroupAdapter(private val context: Context) : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {

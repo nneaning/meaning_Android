@@ -1,9 +1,10 @@
-package meaning.morning
+package meaning.morning.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import meaning.morning.data.GroupData
 import meaning.morning.databinding.ItemGroupListBinding
 
 class GroupAdapter (private val context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder>() {
