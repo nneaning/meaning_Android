@@ -1,4 +1,4 @@
-package meaning.morning
+package meaning.morning.data
 
 data class RecommendGroupData(
     val groupName: String,

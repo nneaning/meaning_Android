@@ -1,4 +1,4 @@
-package meaning.morning
+package meaning.morning.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import meaning.morning.*
+import meaning.morning.data.GroupData
+import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.FragmentGroupBinding
-import meaning.morning.databinding.ItemGroupRecommendBinding
+import meaning.morning.presentation.adapter.GroupAdapter
+import meaning.morning.presentation.adapter.RecommendGroupAdapter
 
 
 class GroupFragment : Fragment() {
@@ -77,7 +81,7 @@ class GroupFragment : Fragment() {
         recommendAdapter = RecommendGroupAdapter(view.context)
         binding.rcvGroupRecommend.apply {
             adapter = recommendAdapter
-            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, true)
+            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -116,10 +120,5 @@ class GroupFragment : Fragment() {
         }
         recommendAdapter.data = recommendGroupData
         recommendAdapter.notifyDataSetChanged()
-    }
-
-    companion object {
-        private const val IMAGE_URL =
-            "https://avatars3.githubusercontent.com/u/45380072?s=460&u=b9fc82996ec2cc568a7dfcbf8846944dc16a7ccd&v=4"
     }
 }
