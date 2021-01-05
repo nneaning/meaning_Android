@@ -13,6 +13,7 @@ import meaning.morning.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
+    val homeFragment = HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.mainActivity = this
 
+
+        changeFragment(homeFragment)
         initNavigationBar()
     }
 
@@ -29,8 +32,7 @@ class MainActivity : AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                when(it.itemId){
                    R.id.bottom_bar_home ->{
-                       val fragment = HomeFragment()
-                       changeFragment(fragment)
+                       changeFragment(homeFragment)
                        return@setOnNavigationItemSelectedListener true
                    }
                    R.id.bottom_bar_group -> {
