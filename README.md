@@ -1,8 +1,8 @@
 <h1 align="center"> :point_down:   meaning_Android   :point_down:  </h1> 
+<p align="center"><img src="https://user-images.githubusercontent.com/72931738/103662188-fbab1b80-4fb2-11eb-85b5-6be4f306c3b6.png"> </p>
+<p align="center"><img src="https://user-images.githubusercontent.com/72931738/103662194-fcdc4880-4fb2-11eb-8f4f-2642206e9036.png"> </p>
 
 </br>
-
-<p align="center"><img src="https://user-images.githubusercontent.com/72931738/103460371-ff436600-4d58-11eb-84eb-d9e73300cf87.png" > </p>
 
 </br>
 
@@ -14,16 +14,13 @@
     <th align="center">형준</th>
     <tr>
         <td align="center">
-		<p>사진 미공개</p>
-        	<img src="!https://user-images.githubusercontent.com/72931738/103460899-7da20700-4d5d-11eb-9ffa-1d64e8aed633.jpg" width=240>
+        	<img src="https://user-images.githubusercontent.com/72931738/103460899-7da20700-4d5d-11eb-9ffa-1d64e8aed633.jpg" width=240>
         </td>
         <td align="center">
-		<p>사진 미공개</p>
-        	<img src="!https://user-images.githubusercontent.com/72931738/103460895-7844bc80-4d5d-11eb-83de-739da40b035c.jpg" width=240>
+        	<img src="https://user-images.githubusercontent.com/72931738/103460895-7844bc80-4d5d-11eb-83de-739da40b035c.jpg" width=240>
         </td>
         <td align="center">
-		<p>사진 미공개</p>
-        	<img src="!https://user-images.githubusercontent.com/72931738/103460896-7aa71680-4d5d-11eb-9266-a175341578f9.jpg" width=240>
+        	<img src="https://user-images.githubusercontent.com/72931738/103460896-7aa71680-4d5d-11eb-9266-a175341578f9.jpg" width=240>
         </td>
     </tr>
     <tr>
