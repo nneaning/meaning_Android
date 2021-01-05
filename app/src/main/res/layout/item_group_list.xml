@@ -6,7 +6,7 @@
 
         <variable
             name="Group"
-            type="meaning.morning.GroupData" />
+            type="meaning.morning.data.GroupData" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
