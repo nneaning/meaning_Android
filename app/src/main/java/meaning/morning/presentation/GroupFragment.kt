@@ -1,3 +1,8 @@
+/*
+ * Created By: hyooosong
+ * on 2021.01.05
+ */
+
 package meaning.morning.presentation
 
 import android.os.Bundle
@@ -30,17 +35,17 @@ class GroupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setGroupAdapter(view)
+        setGroupAdapter()
         loadMyGroupData()
-        setRecommendGroupAdapter(view)
+        setRecommendGroupAdapter()
         loadRecommendGroupData()
     }
 
-    private fun setGroupAdapter(view: View) {
-        groupAdapter = GroupAdapter(view.context)
+    private fun setGroupAdapter() {
+        groupAdapter = GroupAdapter()
         binding.rcvOtherGroup.apply {
             adapter = groupAdapter
-            layoutManager = LinearLayoutManager(view.context)
+            layoutManager = LinearLayoutManager(requireContext())
         }
     }
 
@@ -73,15 +78,15 @@ class GroupFragment : Fragment() {
                 )
             )
         }
-        groupAdapter.data = myGroupData
-        groupAdapter.notifyDataSetChanged()
+        groupAdapter.refreshData(myGroupData)
     }
 
-    private fun setRecommendGroupAdapter(view: View) {
-        recommendAdapter = RecommendGroupAdapter(view.context)
+    private fun setRecommendGroupAdapter() {
+        recommendAdapter = RecommendGroupAdapter()
         binding.rcvGroupRecommend.apply {
             adapter = recommendAdapter
-            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -118,7 +123,6 @@ class GroupFragment : Fragment() {
                 )
             )
         }
-        recommendAdapter.data = recommendGroupData
-        recommendAdapter.notifyDataSetChanged()
+        recommendAdapter.refreshData(recommendGroupData)
     }
 }

@@ -1,21 +1,24 @@
+/*
+ * Created By: hyooosong
+ * on 2021.01.05
+ */
+
 package meaning.morning.presentation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.ItemGroupRecommendBinding
 
-class RecommendGroupAdapter(private val context: Context) : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
-    var data = listOf<RecommendGroupData>()
-    private lateinit var binding: ItemGroupRecommendBinding
+class RecommendGroupAdapter : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
+    private val data: MutableList<RecommendGroupData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
-        binding = ItemGroupRecommendBinding.inflate(
-            LayoutInflater.from(context), parent, false
-        )
-        return VHolder()
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ItemGroupRecommendBinding
+            .inflate(layoutInflater, parent, false)
+            .let { VHolder(it) }
     }
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
@@ -24,7 +27,15 @@ class RecommendGroupAdapter(private val context: Context) : RecyclerView.Adapter
 
     override fun getItemCount(): Int = data.size
 
-    inner class VHolder : RecyclerView.ViewHolder(binding.root) {
+    fun refreshData(list: List<RecommendGroupData>) {
+        data.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    inner class VHolder(
+        private val binding: ItemGroupRecommendBinding
+        ) : RecyclerView.ViewHolder(binding.root) {
+
         fun onBind(data: RecommendGroupData) {
             binding.recommendGroup = data
         }
