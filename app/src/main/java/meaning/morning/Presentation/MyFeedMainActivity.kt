@@ -12,26 +12,25 @@ import meaning.morning.presentation.adapter.MyFeedPictureAdapter
 class MyFeedMainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMyFeedMainBinding
-    private lateinit var binding2 : ItemListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        init()
-        setRcv()
+        setBinding()
+        setPictureRcv()
 
     }
 
-    fun init(){
+    private fun setBinding(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_feed_main)
         binding.myFeedMainActivity = this
     }
 
-    fun setRcv(){
+    private fun setPictureRcv(){
         val myFeedPictureAdapter = MyFeedPictureAdapter(this)
         binding.rcvMyfeed.layoutManager = GridLayoutManager(this,3)
         binding.rcvMyfeed.adapter = myFeedPictureAdapter
-        myFeedPictureAdapter.data = listOf(
+        myFeedPictureAdapter.data = mutableListOf(
            MyFeedPictureData(R.drawable.image_16),
             MyFeedPictureData(R.drawable.image_16),
             MyFeedPictureData(R.drawable.image_16),
@@ -50,8 +49,6 @@ class MyFeedMainActivity : AppCompatActivity() {
             MyFeedPictureData(R.drawable.image_16),
             MyFeedPictureData(R.drawable.image_16),
             MyFeedPictureData(R.drawable.image_16)
-
-
         )
         myFeedPictureAdapter.notifyDataSetChanged()
     }

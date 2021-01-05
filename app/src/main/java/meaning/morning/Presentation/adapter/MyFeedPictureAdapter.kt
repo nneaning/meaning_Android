@@ -9,7 +9,7 @@ import meaning.morning.presentation.MyFeedPictureData
 
 class MyFeedPictureAdapter (private val context: Context) : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPictureViewHolder>(){
 
-    var data = listOf<MyFeedPictureData>()
+    var data = mutableListOf<MyFeedPictureData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedPictureViewHolder {
         val binding = ItemListBinding.inflate(LayoutInflater.from(context),parent,false)
@@ -23,7 +23,7 @@ class MyFeedPictureAdapter (private val context: Context) : RecyclerView.Adapter
         holder.onBind(data[position])
     }
 
-    inner class MyFeedPictureViewHolder(val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root){
+    class MyFeedPictureViewHolder(val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root){
         fun onBind(data : MyFeedPictureData){
             binding.pictureList = data
         }
