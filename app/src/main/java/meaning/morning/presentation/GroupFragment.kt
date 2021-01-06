@@ -5,7 +5,9 @@
 
 package meaning.morning.presentation
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +41,11 @@ class GroupFragment : Fragment() {
         loadMyGroupData()
         setRecommendGroupAdapter()
         loadRecommendGroupData()
+
+        binding.imageviewAddGroup.setOnClickListener {
+            val intent = Intent(activity, AddGroupActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setGroupAdapter() {

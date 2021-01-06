@@ -37,6 +37,7 @@ class RecommendGroupAdapter : RecyclerView.Adapter<RecommendGroupAdapter.VHolder
         ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(data: RecommendGroupData) {
+            binding.imageviewGroupRecommend.setImageResource(data.groupImage)
             binding.recommendGroup = data
         }
     }
