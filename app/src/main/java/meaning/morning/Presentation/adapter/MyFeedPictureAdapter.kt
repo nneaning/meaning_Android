@@ -23,6 +23,11 @@ class MyFeedPictureAdapter (private val context: Context) : RecyclerView.Adapter
         holder.onBind(data[position])
     }
 
+    fun submitData(list : List<MyFeedPictureData>){
+        data.addAll(list)
+        notifyDataSetChanged()
+    }
+
     class MyFeedPictureViewHolder(val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root){
         fun onBind(data : MyFeedPictureData){
             binding.pictureList = data
