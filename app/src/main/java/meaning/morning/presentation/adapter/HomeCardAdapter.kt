@@ -18,9 +18,6 @@ class HomeCardAdapter(val context: Context) : RecyclerView.Adapter<HomeCardAdapt
 
         return HomeCardVH(binding)
 
-//        val layoutInflater = LayoutInflater.from(parent.context)
-//        return HomeCardListItemBinding.inflate(layoutInflater,parent,false)
-//                .let { HomeCardVH(it) }
     }
 
     override fun getItemCount(): Int = data.size
