@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/meaning_ivory"
+        android:background="@color/meaning_ivory_F6"
         tools:context=".presentation.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,7 +78,7 @@
                 android:layout_marginTop="22dp"
                 android:fontFamily="@font/spoqahansansneo_bold"
                 android:text="좋은 아침입니다!"
-                android:textColor="@color/meaning_navy"
+                android:textColor="@color/meaning_navy_17"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +90,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/spoqahansansneo_light"
                 android:text="순서대로 기상미션을"
-                android:textColor="@color/meaning_navy"
+                android:textColor="@color/meaning_navy_17"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/textView1"
                 app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -102,21 +102,23 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/spoqahansansneo_light"
                 android:text="수행해볼까요?"
-                android:textColor="@color/meaning_navy"
+                android:textColor="@color/meaning_navy_17"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <meaning.morning.utils.HorizontalCarouselRecyclerView
                 android:id="@+id/rcv_homeMain"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:overScrollMode="never"
+                android:clipToPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView3"
                 tools:listitem="@layout/home_card_list_item" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
