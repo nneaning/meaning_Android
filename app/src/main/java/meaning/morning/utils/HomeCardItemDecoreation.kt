@@ -13,7 +13,6 @@ class HomeCardItemDecoreation (private val context: Context) : RecyclerView.Item
 
         val horizontalGap = toPixel(20)
 
-        outRect.left = horizontalGap / 2
         outRect.right = horizontalGap / 2
     }
 
