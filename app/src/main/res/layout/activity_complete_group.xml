@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.CompleteGroupActivity"
+        android:background="@drawable/meaning_bg_3_img">
+
+        <TextView
+            android:id="@+id/textview_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:text="그룹 생성이 완료되었습니다!"
+            android:textColor="@color/meaning_navy"
+            android:textSize="19dp"
+            app:layout_constraintBottom_toTopOf="@id/textview_returnBtn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_returnBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="355dp"
+            android:background="@drawable/group_button_background"
+            android:paddingVertical="19dp"
+            android:text="그룹으로 들어가기"
+            android:textAlignment="center"
+            android:textColor="@color/meaning_white"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

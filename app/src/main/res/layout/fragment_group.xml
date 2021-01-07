@@ -58,7 +58,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
-                    android:src="@drawable/add_btn" />
+                    android:src="@drawable/add_btn"/>
 
                 <TextView
                     android:id="@+id/textview_my_group"
@@ -69,7 +69,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="26dp"
                     android:text="내 그룹"
-                    android:textColor="@color/grey1"
+                    android:textColor="@color/grey1_33"
                     android:textSize="18sp" />
 
                 <TextView
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="그룹에 가입하고 그룹원들과 함께 미라클 모닝을 맞이해봐요!"
-                        android:textColor="@color/grey3"
+                        android:textColor="@color/grey3_82"
                         android:textSize="13sp"
                         app:layout_constraintLeft_toLeftOf="@id/textview_my_group_null"
                         app:layout_constraintTop_toBottomOf="@id/textview_my_group_null" />
@@ -177,7 +177,7 @@
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="16dp"
                     android:text="다른 그룹 구경하기"
-                    android:textColor="@color/grey1"
+                    android:textColor="@color/grey1_33"
                     android:textSize="17sp" />
 
                 <androidx.recyclerview.widget.RecyclerView

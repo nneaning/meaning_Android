@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
-        <activity android:name=".presentation.AddGroupActivity"></activity>
+        <activity android:name=".presentation.CompleteGroupActivity"></activity>
+        <activity android:name=".presentation.AddGroupActivity" />
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
