@@ -69,7 +69,7 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     fun checkBlankEvent() {
-        if (checkEditTextBlank() && !validNum()) {
+        if (checkEditTextBlank() && validNum()) {
             val intent = Intent(this, CompleteGroupActivity::class.java)
             startActivity(intent)
             return

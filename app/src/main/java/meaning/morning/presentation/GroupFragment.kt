@@ -45,12 +45,11 @@ class GroupFragment : Fragment() {
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
             startActivity(intent)
-
         }
     }
 
     private fun setGroupAdapter() {
-        groupAdapter = GroupAdapter()
+        groupAdapter = GroupAdapter(requireContext())
         binding.rcvOtherGroup.apply {
             adapter = groupAdapter
             layoutManager = LinearLayoutManager(requireContext())
