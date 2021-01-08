@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainActivity"
-            type="meaning.morning.MainActivity" />
+            type="meaning.morning.presentation.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:background="@color/meaning_ivory_F6"
+        tools:context=".presentation.MainActivity">
 
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,6 +29,7 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/cd_layout"
+            android:background="@color/meaning_ivory_F6"
             android:layout_width="0dp"
             android:layout_height="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,13 +37,12 @@
             app:layout_constraintStart_toStartOf="parent">
 
 
-
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bottom_app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:backgroundTint="#E1EBEE"
+                android:backgroundTint="@color/main_bottom_bar"
                 app:contentInsetEnd="0dp"
                 app:contentInsetLeft="0dp"
                 app:contentInsetRight="0dp"
@@ -57,6 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="0dp"
+                    app:itemTextColor="@color/bottom_icon_color"
+                    app:itemIconTint="@color/bottom_icon_color"
                     android:background="@drawable/background_transparent"
                     app:menu="@menu/main_bottom_menu" />
 
@@ -66,7 +69,7 @@
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/main_color"
+                android:backgroundTint="@color/meaning_navy_17"
                 android:src="@drawable/nav_item_camera_icn"
                 android:tint="@color/white"
                 app:layout_anchor="@id/bottom_app_bar" />
