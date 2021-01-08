@@ -75,7 +75,7 @@ class GroupFragment : Fragment() {
             add(
                 GroupData(
                     "진수 공주 그룹",
-                    "1/5"
+                    "5/5"
                 )
             )
             add(
@@ -89,7 +89,7 @@ class GroupFragment : Fragment() {
     }
 
     private fun setRecommendGroupAdapter() {
-        recommendAdapter = RecommendGroupAdapter()
+        recommendAdapter = RecommendGroupAdapter(requireContext())
         binding.rcvGroupRecommend.apply {
             adapter = recommendAdapter
             layoutManager =

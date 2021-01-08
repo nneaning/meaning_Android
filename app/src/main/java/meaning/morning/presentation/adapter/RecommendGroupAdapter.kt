@@ -5,14 +5,17 @@
 
 package meaning.morning.presentation.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import meaning.morning.BindingDialog
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.ItemGroupRecommendBinding
 
-class RecommendGroupAdapter : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
+class RecommendGroupAdapter(context: Context) : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
     private val data: MutableList<RecommendGroupData> = mutableListOf()
+    private val dialog = BindingDialog(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,6 +26,10 @@ class RecommendGroupAdapter : RecyclerView.Adapter<RecommendGroupAdapter.VHolder
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
         holder.onBind(data[position])
+
+        holder.sign.setOnClickListener {
+            dialog.showDialog()
+        }
     }
 
     override fun getItemCount(): Int = data.size
@@ -35,7 +42,7 @@ class RecommendGroupAdapter : RecyclerView.Adapter<RecommendGroupAdapter.VHolder
     inner class VHolder(
         private val binding: ItemGroupRecommendBinding
         ) : RecyclerView.ViewHolder(binding.root) {
-
+        val sign = binding.textviewSignGroup
         fun onBind(data: RecommendGroupData) {
             binding.imageviewGroupRecommend.setImageResource(data.groupImage)
             binding.recommendGroup = data
