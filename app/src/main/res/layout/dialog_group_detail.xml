@@ -14,9 +14,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="328dp"
+        android:layout_height="325dp">
 
         <TextView
             android:id="@+id/textview_detail_name"
