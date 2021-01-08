@@ -1,2 +1,2 @@
-package meaning.morning
+package meaning.morning.presentation.data
 
