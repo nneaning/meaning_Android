@@ -2,4 +2,5 @@
     <string name="app_name">Andromeaning</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="blankText">내용을 입력해주세요</string>
 </resources>

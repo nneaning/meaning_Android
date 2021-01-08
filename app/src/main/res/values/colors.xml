@@ -11,12 +11,12 @@
     <color name="main_bottom_bar">#E1EBEE</color>
 
     <color name="meaning_black">#131313</color>
-    <color name="grey1">#333333</color>
-    <color name="grey2">#4F4F4F</color>
-    <color name="grey3">#828282</color>
-    <color name="grey4">#BDBDBD</color>
-    <color name="grey5">#E0E0E0</color>
-    <color name="grey6">#F2F2F2</color>
+    <color name="grey1_33">#333333</color>
+    <color name="grey2_4F">#4F4F4F</color>
+    <color name="grey3_82">#828282</color>
+    <color name="grey4_BD">#BDBDBD</color>
+    <color name="grey5_E0">#E0E0E0</color>
+    <color name="grey6_F2">#F2F2F2</color>
     <color name="meaning_white">#FFFFFF</color>
     <color name="main">#68D9E8</color>
     <color name="sub">#64B5F6</color>
@@ -24,5 +24,6 @@
     <color name="meaning_navy">#17234D</color>
     <color name="meaning_ivory">#F6FAFB</color>
     <color name="meaning_lightblue">#DEE7E9</color>
+    <color name="red">#EB5757</color>
 
 </resources>
