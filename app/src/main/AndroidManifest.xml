@@ -9,14 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
-        <activity android:name=".presentation.CardReadingActivity"></activity>
-        <activity android:name=".presentation.CardWriteDiaryActivity" />
+        <activity android:name=".presentation.CardReadingActivity"/>
+        <activity android:name=".presentation.CardWriteDiaryActivity"/>
         <activity android:name=".presentation.CardPromiseActivity" />
         <activity android:name=".presentation.CardTimeStampActivity"/>
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
