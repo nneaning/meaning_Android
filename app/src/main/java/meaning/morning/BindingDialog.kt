@@ -6,6 +6,7 @@ package meaning.morning
 
 import android.app.Dialog
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -18,72 +19,79 @@ import meaning.morning.databinding.FragmentGroupBinding
 class BindingDialog(private val context: Context) {
     private val binding: FragmentGroupBinding = DataBindingUtil
         .inflate(LayoutInflater.from(context), R.layout.fragment_group, null, false)
-    private var dialog = Dialog(context)
-    private var childDialog = Dialog(context)
-    var overLimit: Boolean = false
 
-    fun showDialog() {
-        val dialogBinding: DialogGroupDetailBinding = DataBindingUtil
-            .inflate(LayoutInflater.from(context), R.layout.dialog_group_detail, null, false)
+    private val dialogBinding: DialogGroupDetailBinding = DataBindingUtil
+        .inflate(LayoutInflater.from(context), R.layout.dialog_group_detail, null, false)
+
+    private val recyclerDialogBinding: DialogGroupRecyclerBinding = DataBindingUtil
+        .inflate(LayoutInflater.from(context), R.layout.dialog_group_recycler, null, false)
+
+    private var dialog = Dialog(context)
+    private var approveDialog = Dialog(context)
+
+    fun showDetailDialog() {
         dialog.setCancelable(false)
         dialog.setContentView(dialogBinding.root)
 
-        setGroupData(dialogBinding)
+        setGroupDetailData(dialogBinding)
         closeDialog(dialogBinding.imageviewClose)
-        showApproveDialog(dialogBinding.textviewJoinBtn)
+
+        changeDialog(dialogBinding.textviewJoinBtn)
 
         dialog.show()
     }
 
-    private fun setGroupData(binding: DialogGroupDetailBinding) {
+    private fun setGroupDetailData(binding: DialogGroupDetailBinding) {
         binding.dialogData = GroupDetailData(
             "송이 좋아하는 그룹",
             "취준생끼리취준생끼리취준생끼리 \n취준생끼리취준생끼리취준생끼리 \n취준생끼리취준생끼리취준생끼리",
-            "5",
+            "4",
             "5"
         )
-        // 서버 값 (Num, Limit) 비교 후 overlimit 처리 로직 필요
     }
-
 
     private fun closeDialog(closeBtn: View) {
         closeBtn.setOnClickListener {
             dialog.dismiss()
-            childDialog.dismiss()
+            approveDialog.dismiss()
         }
     }
 
-    private fun checkMyGroup(): Boolean = binding.layoutMyGroup.visibility == View.VISIBLE
+    private fun showApproveDialog() {
+        approveDialog.setCancelable(false)
 
-    private fun showChildDialog() {
-        val recyclerDialogBinding: DialogGroupRecyclerBinding = DataBindingUtil
-            .inflate(LayoutInflater.from(context), R.layout.dialog_group_recycler, null, false)
-        childDialog.setCancelable(false)
-
-        childDialog.setContentView(recyclerDialogBinding.root)
-        setTextDialog(recyclerDialogBinding)
+        approveDialog.setContentView(recyclerDialogBinding.root)
+        setLabelText(recyclerDialogBinding)
         closeDialog(recyclerDialogBinding.imageviewClose)
         closeDialog(recyclerDialogBinding.textviewOkBtn)
-        childDialog.show()
+        approveDialog.show()
     }
 
-    private fun setTextDialog(binding: DialogGroupRecyclerBinding) {
-        var dialogLabel: String = if (!overLimit) {
-            if (checkMyGroup()) {
-                "이미 함께 하고 있는 그룹이 있어요!"
-            } else
-                "그룹 참가가 완료되었습니다."
-        } else {
-            "그룹 참가 가능 인원을 초과했어요."
-        }
+    private fun hasMyGroup(): Boolean = binding.layoutMyGroup.visibility == View.VISIBLE
 
+    private fun isOverLimit(): Boolean =
+        dialogBinding.textviewPeopleNum.text.toString() == dialogBinding.textviewPeopleLimit.text.toString()
+
+    private fun setLabelText(binding: DialogGroupRecyclerBinding) {
+        lateinit var dialogLabel: String
+        if (hasMyGroup()) {
+            dialogLabel = "이미 함께 하고 있는 그룹이 있어요!"
+            binding.textviewDialogLabel.text = dialogLabel
+            return
+        }
+        if (isOverLimit()) {
+            dialogLabel = "그룹 참가 기능 인원을 초과했어요."
+            binding.textviewDialogLabel.text = dialogLabel
+            return
+        }
+        dialogLabel = "그룹 참가가 완료되었습니다."
         binding.textviewDialogLabel.text = dialogLabel
     }
 
-    private fun showApproveDialog(joinBtn: TextView) {
+    private fun changeDialog(joinBtn: TextView) {
         joinBtn.setOnClickListener {
             dialog.dismiss()
-            showChildDialog()
+            showApproveDialog()
         }
     }
 }

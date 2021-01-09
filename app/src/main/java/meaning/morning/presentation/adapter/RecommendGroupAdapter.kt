@@ -28,7 +28,7 @@ class RecommendGroupAdapter(context: Context) : RecyclerView.Adapter<RecommendGr
         holder.onBind(data[position])
 
         holder.sign.setOnClickListener {
-            dialog.showDialog()
+            dialog.showDetailDialog()
         }
     }
 

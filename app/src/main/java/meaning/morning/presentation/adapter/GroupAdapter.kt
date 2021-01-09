@@ -28,7 +28,7 @@ class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder
     override fun onBindViewHolder(holder: VHolder, position: Int) {
         holder.onBind(data[position])
         holder.groupName.setOnClickListener {
-            dialog.showDialog()
+            dialog.showDetailDialog()
         }
     }
 
