@@ -27,30 +27,31 @@ class MyFeedMainActivity : AppCompatActivity() {
     }
 
     private fun setPictureRcv(){
+        var myFeedPictureData = mutableListOf<MyFeedPictureData>()
         val myFeedPictureAdapter = MyFeedPictureAdapter(this)
-        binding.rcvMyfeed.layoutManager = GridLayoutManager(this,3)
-        binding.rcvMyfeed.adapter = myFeedPictureAdapter
-        myFeedPictureAdapter.data = mutableListOf(
-           MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16),
-            MyFeedPictureData(R.drawable.image_16)
-        )
-        myFeedPictureAdapter.notifyDataSetChanged()
+        binding.rcvMyfeed.apply {
+            layoutManager = GridLayoutManager(this@MyFeedMainActivity,3)
+            adapter = myFeedPictureAdapter
+        }
+
+        myFeedPictureData.apply {
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+            add(MyFeedPictureData(R.drawable.image_16))
+        }
+        myFeedPictureAdapter.submitData(myFeedPictureData)
     }
 
 }
