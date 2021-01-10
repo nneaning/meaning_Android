@@ -1,3 +1,7 @@
+/*
+ * Created By: hyooosong
+ * on 2021.01.10
+ */
 package meaning.morning.presentation.adapter
 
 import android.graphics.Color
