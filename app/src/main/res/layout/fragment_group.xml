@@ -58,7 +58,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
-                    android:src="@drawable/add_btn"/>
+                    android:src="@drawable/add_btn" />
 
                 <TextView
                     android:id="@+id/textview_my_group"
@@ -76,12 +76,14 @@
                     android:id="@+id/textview_add_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="1dp"
                     android:layout_toLeftOf="@id/imageview_add_group"
                     android:text="그룹 생성"
                     android:textColor="@color/meaning_navy"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:includeFontPadding="false"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_my_group_null"

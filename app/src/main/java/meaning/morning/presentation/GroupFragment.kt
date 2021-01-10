@@ -45,12 +45,11 @@ class GroupFragment : Fragment() {
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
             startActivity(intent)
-
         }
     }
 
     private fun setGroupAdapter() {
-        groupAdapter = GroupAdapter()
+        groupAdapter = GroupAdapter(requireContext())
         binding.rcvOtherGroup.apply {
             adapter = groupAdapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -76,7 +75,7 @@ class GroupFragment : Fragment() {
             add(
                 GroupData(
                     "진수 공주 그룹",
-                    "1/5"
+                    "5/5"
                 )
             )
             add(
@@ -90,7 +89,7 @@ class GroupFragment : Fragment() {
     }
 
     private fun setRecommendGroupAdapter() {
-        recommendAdapter = RecommendGroupAdapter()
+        recommendAdapter = RecommendGroupAdapter(requireContext())
         binding.rcvGroupRecommend.apply {
             adapter = recommendAdapter
             layoutManager =
