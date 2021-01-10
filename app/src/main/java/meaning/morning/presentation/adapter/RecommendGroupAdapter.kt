@@ -39,7 +39,7 @@ class RecommendGroupAdapter(context: Context) : RecyclerView.Adapter<RecommendGr
         notifyDataSetChanged()
     }
 
-    inner class VHolder(
+    class VHolder(
         private val binding: ItemGroupRecommendBinding
         ) : RecyclerView.ViewHolder(binding.root) {
         val sign = binding.textviewSignGroup

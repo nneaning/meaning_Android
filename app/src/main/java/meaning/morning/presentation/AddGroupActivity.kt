@@ -21,9 +21,9 @@ import meaning.morning.databinding.ActivityAddGroupBinding
 
 class AddGroupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddGroupBinding
-    val editTextNum = ObservableField<String>()
-    val editTextName = ObservableField<String>()
-    val editTextContent = ObservableField<String>()
+    val groupMemberNum = ObservableField<String>()
+    val groupName = ObservableField<String>()
+    val groupContent = ObservableField<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     private fun changeLabelColor(limitLabel: TextView) {
-        if (!(editTextNum.get().isNullOrBlank()) && !checkRangeNum()) {
+        if (!(groupMemberNum.get().isNullOrBlank()) && !checkRangeNum()) {
             limitLabel.setTextColor(
                 Color.parseColor("#EB5757")
             )
@@ -59,13 +59,13 @@ class AddGroupActivity : AppCompatActivity() {
         )
     }
 
-    private fun checkRangeNum(): Boolean = editTextNum.get()?.toInt() in 2..100
+    private fun checkRangeNum(): Boolean = groupMemberNum.get()?.toInt() in 2..100
 
-    private fun validNum(): Boolean = checkRangeNum() && !(editTextNum.get().isNullOrBlank())
+    private fun validNum(): Boolean = checkRangeNum() && !(groupMemberNum.get().isNullOrBlank())
 
     private fun checkEditTextBlank(): Boolean {
-        return (!(editTextName.get().isNullOrBlank()) &&
-                !(editTextContent.get().isNullOrBlank()))
+        return (!(groupName.get().isNullOrBlank()) &&
+                !(groupContent.get().isNullOrBlank()))
     }
 
     fun checkBlankEvent() {

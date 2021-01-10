@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/header_setting_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageview_backBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/back_btn" />
+
+            <TextView
+                android:id="@+id/textview_add_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageview_backBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="9dp"
+                android:includeFontPadding="true"
+                android:text="그룹 설정"
+                android:textColor="@color/grey1_33"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_setting_group" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_setting_group">
+
+                <TextView
+                    android:id="@+id/textview_group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="서울 대학생 아침인증 그룹"
+                    android:textColor="@color/grey1_33"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/textview_create_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textview_group_name"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="17dp"
+                    android:text="그룹 생성일: "
+                    android:textColor="@color/grey3_82"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textview_create_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/textview_create_label"
+                    android:layout_toRightOf="@id/textview_create_label"
+                    android:includeFontPadding="true"
+                    android:text="2020.12.26"
+                    android:textColor="@color/grey3_82"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textview_member_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textview_create_label"
+                    android:layout_alignLeft="@id/textview_group_name"
+                    android:layout_marginTop="9dp"
+                    android:text="그룹 멤버 수: "
+                    android:textColor="@color/grey3_82"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textview_member_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/textview_member_label"
+                    android:layout_toRightOf="@id/textview_member_label"
+                    android:includeFontPadding="true"
+                    android:text="5명"
+                    android:textColor="@color/grey3_82"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textview_member"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textview_member_label"
+                    android:layout_alignLeft="@id/textview_group_name"
+                    android:layout_marginTop="49dp"
+                    android:text="멤버"
+                    android:textColor="@color/grey2_4F"
+                    android:textSize="17sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_group_member"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/textview_member"
+                    android:layout_marginTop="12dp"
+                    tools:listitem="@layout/item_group_member" />
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

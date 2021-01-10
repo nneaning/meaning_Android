@@ -39,7 +39,7 @@ class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder
         notifyDataSetChanged()
     }
 
-    inner class VHolder(private val binding: ItemGroupListBinding) :
+    class VHolder(private val binding: ItemGroupListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val groupName = binding.textviewGroupName
         fun onBind(data: GroupData) {
