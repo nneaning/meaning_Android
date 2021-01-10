@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="groupMember"
+            type="meaning.morning.data.GroupMemberData" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
             android:layout_marginTop="14dp"
-            android:text="김재민"
+            android:text="@{groupMember.memberName}"
             android:textColor="@color/grey1_33"
             android:textSize="13dp"
             app:layout_constraintLeft_toRightOf="@id/textview_lastname"
@@ -44,7 +51,7 @@
             android:paddingHorizontal="7dp"
             android:paddingTop="2dp"
             android:paddingBottom="4dp"
-            android:text="매일 오전 5시 기상"
+            android:text="@{groupMember.wakeTime}"
             android:textColor="@color/sub"
             android:textSize="10sp"
             app:layout_constraintLeft_toRightOf="@id/textview_lastname"
@@ -56,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_marginRight="33dp"
-            android:text="30일째 진행중"
+            android:text="@{groupMember.ongoingDate}"
             android:textColor="@color/grey2_4F"
             android:textSize="13sp"
             app:layout_constraintRight_toRightOf="parent"
