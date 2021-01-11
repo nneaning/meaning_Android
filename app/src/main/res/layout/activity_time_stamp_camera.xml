@@ -3,9 +3,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/camera_black_13">
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_camera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
