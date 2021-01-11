@@ -1,5 +1,7 @@
 package meaning.morning.presentation
 
+
+
 import android.content.ClipData
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,7 +21,6 @@ import meaning.morning.utils.HomeCardItemDecoreation
 
 
 class HomeFragment : Fragment() {
-
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -66,5 +67,4 @@ class HomeFragment : Fragment() {
        }
         homeCardAdapter.submitData(homeCardData)
     }
-
 }
