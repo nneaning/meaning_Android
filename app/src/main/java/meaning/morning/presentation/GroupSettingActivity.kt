@@ -15,7 +15,7 @@ import meaning.morning.presentation.adapter.GroupSettingAdapter
 
 class GroupSettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGroupSettingBinding
-    private lateinit var settingAdapter: GroupSettingAdapter
+    private lateinit var groupSettingAdapter: GroupSettingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +25,9 @@ class GroupSettingActivity : AppCompatActivity() {
     }
 
     private fun setGroupSettingAdapter() {
-        settingAdapter = GroupSettingAdapter()
+        groupSettingAdapter = GroupSettingAdapter()
         binding.rcvGroupMember.apply {
-            adapter = settingAdapter
+            adapter = groupSettingAdapter
             layoutManager = LinearLayoutManager(context)
         }
     }
@@ -93,6 +93,6 @@ class GroupSettingActivity : AppCompatActivity() {
                 )
             )
         }
-        settingAdapter.refreshData(memberData)
+        groupSettingAdapter.refreshData(memberData)
     }
 }
