@@ -6,14 +6,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.CompleteGroupActivity"
-        android:background="@drawable/meaning_bg_3_img">
+        android:background="@drawable/meaning_bg_3_img"
+        tools:context=".presentation.CompleteGroupActivity">
 
         <TextView
             android:id="@+id/textview_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="48dp"
+            android:fontFamily="@font/spoqahansansneo_medium"
             android:text="그룹 생성이 완료되었습니다!"
             android:textColor="@color/meaning_navy"
             android:textSize="19dp"
@@ -28,6 +29,7 @@
             android:layout_marginHorizontal="35dp"
             android:layout_marginTop="355dp"
             android:background="@drawable/group_button_background"
+            android:fontFamily="@font/spoqahansansneo_medium"
             android:paddingVertical="19dp"
             android:text="그룹으로 들어가기"
             android:textAlignment="center"

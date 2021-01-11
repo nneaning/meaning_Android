@@ -68,6 +68,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="26dp"
+                    android:fontFamily="@font/spoqahansansneo_medium"
                     android:text="내 그룹"
                     android:textColor="@color/grey1_33"
                     android:textSize="18sp" />
@@ -80,10 +81,11 @@
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="1dp"
                     android:layout_toLeftOf="@id/imageview_add_group"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:includeFontPadding="false"
                     android:text="그룹 생성"
                     android:textColor="@color/meaning_navy"
-                    android:textSize="14sp"
-                    android:includeFontPadding="false"/>
+                    android:textSize="14sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_my_group_null"
@@ -101,6 +103,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="13dp"
                         android:layout_marginBottom="38dp"
+                        android:fontFamily="@font/spoqahansansneo_medium"
                         android:text="가입하신 그룹이 없네요!"
                         android:textColor="@color/meaning_navy"
                         android:textSize="14sp"
@@ -112,6 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/spoqahansansneo_regular"
                         android:text="그룹에 가입하고 그룹원들과 함께 미라클 모닝을 맞이해봐요!"
                         android:textColor="@color/grey3_82"
                         android:textSize="13sp"
@@ -135,6 +139,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="17dp"
+                        android:fontFamily="@font/spoqahansansneo_regular"
                         android:lines="1"
                         android:text="효송이를 좋아하는 그룹"
                         android:textColor="@color/meaning_navy"
@@ -149,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="29dp"
                         android:background="@drawable/group_numberofpeople_background"
+                        android:fontFamily="@font/spoqahansansneo_medium"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:text="10/10"
@@ -178,6 +184,7 @@
                     android:layout_alignLeft="@id/textview_my_group"
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/spoqahansansneo_medium"
                     android:text="다른 그룹 구경하기"
                     android:textColor="@color/grey1_33"
                     android:textSize="17sp" />
