@@ -2,11 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="BlankgroupActivity"
+            type="meaning.morning.presentation.GroupBlankActivity" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GroupBlankActivity">
+        tools:context=".presentation.GroupBlankActivity">
 
         <RelativeLayout
             android:id="@+id/layout_blank_group"
@@ -41,7 +46,8 @@
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/frame_38" />
+                android:src="@drawable/frame_38"
+                android:onClick="@{()->BlankgroupActivity.goToGroupSetting()}"/>
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:fontFamily="@font/spoqahansansneo_medium"
-            android:text="아직 게시글이이 없네요"
+            android:text="아직 게시글이 없네요"
             android:textColor="@color/meaning_navy"
             android:textSize="17sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -120,6 +126,7 @@
             android:text="홈으로 돌아가기"
             android:textColor="@color/meaning_white"
             android:textSize="15dp"
+            android:onClick="@{()->BlankgroupActivity.goToHome()}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_indicate_label" />
 

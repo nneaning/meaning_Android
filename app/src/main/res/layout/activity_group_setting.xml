@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/meaning_ivory">
 
         <RelativeLayout
             android:id="@+id/header_setting_group"
@@ -127,6 +128,7 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/textview_member"
                     android:layout_marginTop="12dp"
+                    android:background="@color/meaning_white"
                     tools:listitem="@layout/item_group_member" />
 
             </RelativeLayout>
