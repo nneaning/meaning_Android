@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMyFeedMainBinding
 import meaning.morning.presentation.data.MyFeedPictureData

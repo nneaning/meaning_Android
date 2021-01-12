@@ -3,14 +3,14 @@ package meaning.morning.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.R
 import meaning.morning.databinding.ActivityGroupFeedBinding
-import meaning.morning.presentation.data.MyFeedPictureData
 import meaning.morning.utils.BindFeedPictureEvent
 
-class GroupFeedActivity : AppCompatActivity() , BindFeedPictureEvent {
+class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
 
-    private lateinit var binding : ActivityGroupFeedBinding
+    private lateinit var binding: ActivityGroupFeedBinding
 
     private var pictureRecyclerviewFragment = PictureRecyclerviewFragment()
 
@@ -26,18 +26,18 @@ class GroupFeedActivity : AppCompatActivity() , BindFeedPictureEvent {
         setTransaction()
     }
 
-    private fun setBinding(){
+    private fun setBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_group_feed)
         binding.groupFeedActivity = this
     }
 
-    private fun setTransaction(){
+    private fun setTransaction() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frameLayout_groupFeed, pictureRecyclerviewFragment)
         transaction.commit()
     }
 
-    private fun setPictureRcv(){
+    private fun setPictureRcv() {
         var groupFeedPictureData = mutableListOf<MyFeedPictureData>()
 
         groupFeedPictureData.apply {
@@ -51,7 +51,7 @@ class GroupFeedActivity : AppCompatActivity() , BindFeedPictureEvent {
 
     }
 
-    fun backButton(){
+    fun backButton() {
         finish()
     }
 
