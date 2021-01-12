@@ -1,3 +1,7 @@
+/*
+ * Created by <LEE-HYUNGJUN>
+ * DESC:
+ */
 package meaning.morning.presentation
 
 import androidx.appcompat.app.AppCompatActivity
