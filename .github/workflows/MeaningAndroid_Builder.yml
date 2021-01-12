@@ -52,7 +52,7 @@ jobs:
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
           MSG_MINIMAL: true
           SLACK_MESSAGE: 'apk가 생성되었습니다.'
@@ -70,7 +70,7 @@ jobs:
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
           MSG_MINIMAL: true
           SLACK_MESSAGE: '에러를 확인해주세요'
