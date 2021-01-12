@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()

@@ -24,6 +24,7 @@ import meaning.morning.presentation.home.card.CardPromiseActivity
 import meaning.morning.presentation.home.card.CardReadingActivity
 import meaning.morning.presentation.home.card.CardTimeStampActivity
 import meaning.morning.presentation.home.card.CardWriteDiaryActivity
+import meaning.morning.presentation.home.feed.MyFeedMainActivity
 import meaning.morning.utils.HomeCardItemDecoreation
 import java.util.*
 
@@ -51,6 +52,7 @@ class HomeFragment : Fragment() {
         setCardListRcv()
         mediumAnimationDuration = resources.getInteger(android.R.integer.config_mediumAnimTime)
         calendarOnClick(binding.tvDate)
+        clickMyFeedImage()
     }
 
     private fun initView() {
@@ -137,6 +139,13 @@ class HomeFragment : Fragment() {
                 .alpha(1f)
                 .setDuration(mediumAnimationDuration.toLong())
                 .setListener(null)
+        }
+    }
+
+    private fun clickMyFeedImage(){
+        binding.ivMyPage.setOnClickListener {
+            val intent = Intent(requireContext(),MyFeedMainActivity::class.java)
+            startActivity(intent)
         }
     }
 

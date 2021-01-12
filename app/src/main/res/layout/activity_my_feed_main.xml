@@ -72,6 +72,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ct_topbar"
+                        android:background="@color/meaning_white_FF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
