@@ -16,6 +16,7 @@ class CompleteGroupActivity : AppCompatActivity() {
     }
 
     fun goToGroup() {
+        finish()
         val intent = Intent(this, GroupBlankActivity::class.java)
         startActivity(intent)
     }

@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import meaning.morning.R
 import meaning.morning.databinding.ActivityGroupBlankBinding
 
+
 class GroupBlankActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +21,15 @@ class GroupBlankActivity : AppCompatActivity() {
     fun goToHome() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     fun goToGroupSetting() {
         val intent = Intent(this, GroupSettingActivity::class.java)
         startActivity(intent)
+    }
+
+    fun backToGroupList() {
+        finish()
     }
 }

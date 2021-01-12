@@ -6,14 +6,13 @@ package meaning.morning.presentation
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
 import meaning.morning.R
@@ -72,6 +71,7 @@ class AddGroupActivity : AppCompatActivity() {
         if (checkEditTextBlank() && validNum()) {
             val intent = Intent(this, CompleteGroupActivity::class.java)
             startActivity(intent)
+            finish()
             return
         }
         if (checkEditTextBlank() && !validNum()) {
