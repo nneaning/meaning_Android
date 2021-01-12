@@ -19,12 +19,11 @@ import meaning.morning.databinding.FragmentHomeBinding
 import meaning.morning.presentation.adapter.CalendarAdapter
 import java.util.*
 
-
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var calendaradapter: CalendarAdapter
-    var isCardView: Boolean = false
-    private var shortAnimationDuration: Int = 0
+    var isCardView: Boolean = true
+    private var mediumAnimationDuration: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +36,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initView()
         showCurrentMonth(Calendar.getInstance())
-        shortAnimationDuration = resources.getInteger(android.R.integer.config_longAnimTime)
+        mediumAnimationDuration = resources.getInteger(android.R.integer.config_mediumAnimTime)
 
         binding.tvDate.setOnClickListener {
             toggleHomeView(binding.tvDate)
@@ -52,6 +50,17 @@ class HomeFragment : Fragment() {
         binding.rcvCalendarDate.apply {
             adapter = calendaradapter
         }
+        binding.layoutHomeCardView.apply {
+            animate()
+                .alpha(0f)
+                .setDuration(mediumAnimationDuration.toLong())
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.layoutHomeCardView.visibility = View.GONE
+                    }
+                })
+        }
+
     }
 
     private fun showCurrentMonth(calendar: Calendar) {
@@ -61,27 +70,23 @@ class HomeFragment : Fragment() {
 
     private fun toggleHomeView(dateText: TextView) {
         if (isCardView) {
-            dateText.setBackgroundResource(R.drawable.main_date_button)
-            dateText.setTextColor(Color.parseColor("#17234D"))
-            cardViewVisibility()
+            dateText.setBackgroundResource(R.drawable.main_calendar_button)
+            dateText.setTextColor(Color.parseColor("#F6FAFB"))
+            calendarViewVisibility()
             isCardView = false
             return
         }
-        dateText.setBackgroundResource(R.drawable.main_calendar_button)
-        dateText.setTextColor(Color.parseColor("#F6FAFB"))
-        calendarViewVisibility()
+        dateText.setBackgroundResource(R.drawable.main_date_button)
+        dateText.setTextColor(Color.parseColor("#17234D"))
+        cardViewVisibility()
         isCardView = true
     }
 
     private fun cardViewVisibility() {
-        binding.layoutHomeCardView.visibility = View.VISIBLE
-        binding.layoutHomeCalendarView.visibility = View.INVISIBLE
         crossfade(binding.layoutHomeCardView, binding.layoutHomeCalendarView)
     }
 
     private fun calendarViewVisibility() {
-        binding.layoutHomeCardView.visibility = View.INVISIBLE
-        binding.layoutHomeCalendarView.visibility = View.VISIBLE
         crossfade(binding.layoutHomeCalendarView, binding.layoutHomeCardView)
     }
 
@@ -92,16 +97,17 @@ class HomeFragment : Fragment() {
 
             animate()
                 .alpha(1f)
-                .setDuration(shortAnimationDuration.toLong())
+                .setDuration(mediumAnimationDuration.toLong())
                 .setListener(null)
         }
+
         invisibleView.animate()
             .alpha(0f)
-            .setDuration(shortAnimationDuration.toLong())
+            .setDuration(mediumAnimationDuration.toLong())
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    invisibleView.visibility=View.INVISIBLE
+                    invisibleView.visibility = View.GONE
                 }
             })
-        }
+    }
 }

@@ -139,25 +139,16 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="@id/layout_home_calendarView">
 
-                <ImageView
-                    android:id="@+id/imageview_moon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/mooon"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textview_current_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginRight="149dp"
                     android:text="1월"
                     android:textColor="@color/meaning_ivory_F6"
-                    android:textSize="8sp"
+                    android:textSize="14sp"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,15 +156,14 @@
                     android:id="@+id/rcv_calendar_date"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginHorizontal="48dp"
-                    android:layout_marginTop="21dp"
-                    android:layout_marginBottom="45dp"
+                    android:layout_marginHorizontal="38dp"
+                    android:layout_marginTop="24dp"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageview_moon"
+                    app:layout_constraintTop_toBottomOf="@id/textview_current_month"
                     app:spanCount="7"
                     tools:listitem="@layout/item_calendar_date" />
 
@@ -241,6 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView3"
