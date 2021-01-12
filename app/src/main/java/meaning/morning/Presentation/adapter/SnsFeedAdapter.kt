@@ -4,11 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.databinding.FeedItemListBinding
 import meaning.morning.databinding.SnsItemListBinding
 import meaning.morning.presentation.data.SnsFeedData
 
-class SnsFeedAdapter : RecyclerView.Adapter<SnsFeedAdapter.SnsFeedVH>(){
+class SnsFeedAdapter : RecyclerView.Adapter<SnsFeedAdapter.SnsFeedVH>() {
 
     var data = mutableListOf<SnsFeedData>()
 
@@ -21,20 +20,17 @@ class SnsFeedAdapter : RecyclerView.Adapter<SnsFeedAdapter.SnsFeedVH>(){
 
     override fun onBindViewHolder(holder: SnsFeedVH, position: Int) {
         holder.onBind(data[position])
-        Log.d("log",data[position].toString())
-
     }
 
-    fun submitData(list : List<SnsFeedData>){
+    fun submitData(list: List<SnsFeedData>) {
         data.addAll(list)
         notifyDataSetChanged()
     }
 
 
-    class SnsFeedVH(val binding: SnsItemListBinding) : RecyclerView.ViewHolder(binding.root){
-        fun onBind(data : SnsFeedData){
+    class SnsFeedVH(val binding: SnsItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(data: SnsFeedData) {
             binding.snsItemList = data
-            Log.d("binding",binding.snsItemList.toString())
         }
     }
 }

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMyFeedSnsBinding
-import meaning.morning.presentation.data.MyFeedPictureData
 import meaning.morning.presentation.data.SnsFeedData
 import meaning.morning.utils.BindFeedPictureEvent
 

@@ -3,8 +3,9 @@ package meaning.morning.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.databinding.FeedItemListBinding
-import meaning.morning.presentation.data.MyFeedPictureData
+
 
 class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPictureViewHolder>() {
 
@@ -17,7 +18,6 @@ class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPic
     }
 
     override fun getItemCount(): Int {
-        println(data.size)
         return data.size
     }
 
@@ -35,6 +35,5 @@ class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPic
         fun onBind(data: MyFeedPictureData) {
             binding.feedItemList = data
         }
-
     }
 }

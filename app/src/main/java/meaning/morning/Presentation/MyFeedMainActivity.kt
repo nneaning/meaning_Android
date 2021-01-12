@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMyFeedMainBinding
-import meaning.morning.presentation.data.MyFeedPictureData
 import meaning.morning.utils.BindFeedPictureEvent
 
 class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {

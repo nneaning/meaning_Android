@@ -11,7 +11,6 @@ import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.R
 import meaning.morning.databinding.FragmentPictureRecyclerviewBinding
 import meaning.morning.presentation.adapter.MyFeedPictureAdapter
-import meaning.morning.presentation.data.MyFeedPictureData
 import meaning.morning.utils.BindFeedPictureEvent
 
 
