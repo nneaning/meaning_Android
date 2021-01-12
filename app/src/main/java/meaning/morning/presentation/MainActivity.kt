@@ -11,6 +11,7 @@ import meaning.morning.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityMainBinding
 
     private val homeFragment = HomeFragment()

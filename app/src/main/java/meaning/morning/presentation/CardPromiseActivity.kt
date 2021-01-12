@@ -10,10 +10,13 @@ import meaning.morning.R
 import meaning.morning.databinding.ActivityCardPromiseBinding
 
 class CardPromiseActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCardPromiseBinding
+
+    private lateinit var binding : ActivityCardPromiseBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_card_promise)
         binding.mission2 = this
