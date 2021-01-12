@@ -88,6 +88,12 @@ class GroupFragment : Fragment() {
                     "4/5"
                 )
             )
+            add(
+                GroupData(
+                    "형준 공주 그룹",
+                    "4/5"
+                )
+            )
         }
         groupAdapter.refreshData(myGroupData)
     }

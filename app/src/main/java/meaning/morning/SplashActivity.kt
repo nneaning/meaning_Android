@@ -6,7 +6,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.databinding.ActivitySplashBinding
-import meaning.morning.presentation.MainActivity
+import meaning.morning.presentation.home.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -22,7 +22,7 @@
         <activity android:name=".presentation.group.feed.GroupSettingActivity" />
         <activity android:name=".presentation.group.CompleteGroupActivity" />
         <activity android:name=".presentation.group.AddGroupActivity" />
-        <activity android:name=".presentation.home.MainActivity">
+        <activity android:name=".presentation.home.MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
