@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mission2"
             type="meaning.morning.presentation.CardPromiseActivity" />
@@ -117,6 +116,7 @@
             android:layout_marginBottom="99dp"
             android:background="@drawable/card_detail_button"
             android:fontFamily="@font/spoqahansansneo_medium"
+
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:text="다 읽었어요"

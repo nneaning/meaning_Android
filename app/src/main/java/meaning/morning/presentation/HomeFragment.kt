@@ -106,5 +106,4 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(), CardReadingActivity::class.java)
         startActivity(intent)
     }
-
 }

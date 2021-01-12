@@ -134,12 +134,14 @@
             android:layout_marginBottom="99dp"
             android:background="@drawable/card_detail_button"
             android:fontFamily="@font/spoqahansansneo_medium"
+
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:text="등록하기"
             android:textAlignment="center"
             android:textColor="@color/meaning_white_FF"
             android:textSize="15sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

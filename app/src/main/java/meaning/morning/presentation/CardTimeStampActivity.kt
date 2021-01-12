@@ -35,7 +35,7 @@ class CardTimeStampActivity : AppCompatActivity() {
            }
         }
     }
-
+  
     private fun checkNull() : Boolean{
         return recognitionWakeup.get().isNullOrEmpty()
     }

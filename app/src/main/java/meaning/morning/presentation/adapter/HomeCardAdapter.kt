@@ -61,4 +61,3 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
     }
 
 }
-
