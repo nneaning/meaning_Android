@@ -20,6 +20,8 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
 
     private val data: MutableList<HomeCardData> = mutableListOf()
 
+    private lateinit var itemClickListener: ItemClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCardVH {
 
         val binding = HomeCardListItemBinding
@@ -53,8 +55,6 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
     interface ItemClickListener{
         fun onClick(view : View, position: Int)
     }
-
-    private lateinit var itemClickListener: ItemClickListener
 
     fun setItemClickListener(itemClickListener: ItemClickListener){
         this.itemClickListener = itemClickListener
