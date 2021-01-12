@@ -10,6 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
+        <activity android:name=".presentation.CardReadingActivity"></activity>
+        <activity android:name=".presentation.CardWriteDiaryActivity" />
+        <activity android:name=".presentation.CardPromiseActivity" />
+        <activity android:name=".presentation.CardTimeStampActivity"/>
         <activity android:name=".presentation.GroupBlankActivity"></activity>
         <activity android:name=".presentation.GroupSettingActivity" />
         <activity android:name=".presentation.CompleteGroupActivity" />

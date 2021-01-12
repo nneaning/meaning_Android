@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainActivity"
             type="meaning.morning.presentation.MainActivity" />
@@ -35,7 +36,6 @@
             app:layout_constraintStart_toStartOf="parent">
 
 
-
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bottom_app_bar"
                 android:layout_width="match_parent"
@@ -57,6 +57,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="0dp"
+                    app:itemTextColor="@color/bottom_icon_color"
+                    app:itemIconTint="@color/bottom_icon_color"
                     android:background="@drawable/background_transparent"
                     app:menu="@menu/main_bottom_menu" />
 
