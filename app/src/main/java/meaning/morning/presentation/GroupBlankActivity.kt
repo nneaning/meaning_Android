@@ -19,17 +19,20 @@ class GroupBlankActivity : AppCompatActivity() {
 
     }
     fun goToHome() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        changeIntent(MainActivity())
         finish()
     }
 
     fun goToGroupSetting() {
-        val intent = Intent(this, GroupSettingActivity::class.java)
-        startActivity(intent)
+        changeIntent(GroupSettingActivity())
     }
 
     fun backToGroupList() {
         finish()
+    }
+
+    private fun changeIntent(activity: AppCompatActivity) {
+        val intent = Intent(this, activity::class.java)
+        startActivity(intent)
     }
 }
