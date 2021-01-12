@@ -18,7 +18,7 @@
         <activity android:name=".presentation.CardWriteDiaryActivity" />
         <activity android:name=".presentation.CardPromiseActivity" />
         <activity android:name=".presentation.CardTimeStampActivity"/>
-        <activity android:name=".presentation.camera.TimeStampCameraActivity">
+        <activity android:name=".presentation.camera.TimeStampCameraActivity" android:theme="@style/Theme.Andromeaning.camera">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

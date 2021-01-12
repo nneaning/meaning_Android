@@ -3,6 +3,9 @@ package meaning.morning.presentation.camera
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +26,7 @@ class TimeStampCameraActivity : AppCompatActivity() {
             .setContentView(this, R.layout.activity_time_stamp_camera)
         binding.lifecycleOwner = this
         initTimeStampCamera()
+        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
     }
 
     private fun initTimeStampCamera() {
@@ -75,7 +79,6 @@ class TimeStampCameraActivity : AppCompatActivity() {
 
     private fun loadCameraView() {
         changeFragment(CameraFragment())
-        observeCancelButton()
     }
 
     private fun changeFragment(initFragment: Fragment) {
@@ -101,13 +104,13 @@ class TimeStampCameraActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeCancelButton() {
-        cameraViewModel.isCameraCancel.observe(this){
-            if (it) {
-                onBackPressed()
-                cameraViewModel.enableCameraCancelEvent()
-            }
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_camera)
+        if (currentFragment is CameraResultFragment) {
+            cameraViewModel.isEnableTimer = true
+            cameraViewModel.runCurrentTimer()
         }
+        super.onBackPressed()
     }
 
     companion object {

@@ -23,20 +23,10 @@ class CameraViewModel : ViewModel() {
     val currentDate: LiveData<String>
         get() = _currentDate
 
-    private val _isCameraCancel = MutableLiveData<Boolean>(false)
-    val isCameraCancel: LiveData<Boolean>
-        get() = _isCameraCancel
+    var isEnableTimer = false
 
-    fun clickCameraEvent() {
-        _isCameraCancel.value = true
-    }
-
-    fun enableCameraCancelEvent() {
-        _isCameraCancel.value = false
-    }
-
-    fun runCurrentTimeThread() = viewModelScope.launch() {
-        while (true) {
+    fun runCurrentTimer() = viewModelScope.launch() {
+        while (isEnableTimer) {
             _currentTime.value = SimpleDateFormat(TIME_FORMAT, Locale.KOREA)
                 .format(System.currentTimeMillis())
             _currentDate.value = SimpleDateFormat(DATE_FORMAT, Locale.KOREA)
