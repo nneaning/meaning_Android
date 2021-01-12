@@ -45,19 +45,19 @@ jobs:
         with:
           path: app/build/outputs
 
-      # - name: Rename Debug apk name
-      #   if: ${{ success() }}
-      #   run: |
-      #     mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
+      - name: Rename Debug apk name
+        if: ${{ success() }}
+        run: |
+          mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
 
-      # # - name: On success, Notify in Slack
-      #   if: ${{ success() }}
-      #   uses: rtCamp/action-slack-notify@v2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #     SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-      #     MSG_MINIMAL: true
-      #     SLACK_MESSAGE: 'apk가 생성되었습니다.'
+      - name: On success, Notify in Slack
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+          MSG_MINIMAL: true
+          SLACK_MESSAGE: 'apk가 생성되었습니다.'
 
       - name: Upload APK at Slack
         if: ${{ success() }}
@@ -68,14 +68,14 @@ jobs:
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
 
-      # - name: On Failed, Notify in Slack
-      #   if: ${{ failure() }}
-      #   uses: rtCamp/action-slack-notify@v2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #     SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
-      #     MSG_MINIMAL: true
-      #     SLACK_MESSAGE: '에러를 확인해주세요'
+      - name: On Failed, Notify in Slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
+          MSG_MINIMAL: true
+          SLACK_MESSAGE: '에러를 확인해주세요'
 
           
       
