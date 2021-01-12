@@ -10,7 +10,7 @@
 
         <variable
             name="groupFragment"
-            type="meaning.morning.presentation.GroupFragment" />
+            type="meaning.morning.presentation.group.GroupFragment" />
     </data>
 
     <FrameLayout

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="snsItemList"
+            type="meaning.morning.data.SnsFeedData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/meaning_white_FF"
+        android:paddingBottom="30dp">
+
+        <ImageView
+            android:id="@+id/iv_myFeedSns_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:src="@{snsItemList.iv_profile}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_myFeedSns_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:includeFontPadding="false"
+            android:text="@{snsItemList.tv_name}"
+            android:textColor="@color/meaning_black_13"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/iv_myFeedSns_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_myFeedSns_profile" />
+
+        <TextView
+            android:id="@+id/tv_myFeedSns_beforetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@{snsItemList.tv_time}"
+            android:textColor="@color/grey3_82"
+            app:layout_constraintStart_toStartOf="@id/tv_myFeedSns_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_myFeedSns_name" />
+
+        <TextView
+            android:id="@+id/tv_myFeedSns_whattime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/myfeed_whattime_box"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="9dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="4dp"
+            android:text="@{snsItemList.tv_whattime}"
+            android:textColor="@color/sub_64"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_snsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:lineSpacingExtra="10dp"
+            android:text="@{snsItemList.tv_text}"
+            android:textColor="@color/meaning_black_13"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_myFeedSns_profile" />
+
+        <ImageView
+            android:id="@+id/iv_myFeedSns_Picture"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@{snsItemList.iv_picture}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_snsText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

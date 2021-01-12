@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="meaning.morning">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,28 +15,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
+        <activity android:name=".presentation.home.card.CardReadingActivity"/>
+        <activity android:name=".presentation.home.card.CardWriteDiaryActivity" />
+        <activity android:name=".presentation.home.card.CardPromiseActivity" />
+        <activity android:name=".presentation.home.card.CardTimeStampActivity"/>
+        <activity android:name=".presentation.group.feed.GroupSettingActivity" />
+        <activity android:name=".presentation.group.CompleteGroupActivity" />
+        <activity android:name=".presentation.group.AddGroupActivity" />
+        <activity android:name=".presentation.home.MainActivity">
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".presentation.CardReadingActivity" />
-        <activity android:name=".presentation.CardWriteDiaryActivity" />
-        <activity android:name=".presentation.CardPromiseActivity" />
-        <activity android:name=".presentation.CardTimeStampActivity" />
-        <activity android:name=".presentation.GroupBlankActivity" />
-        <activity android:name=".presentation.GroupSettingActivity" />
-        <activity android:name=".presentation.CompleteGroupActivity" />
-        <activity android:name=".presentation.AddGroupActivity" />
-        <activity android:name=".presentation.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".presentation.group.feed.GroupFeedSnsActivity"/>
+        <activity android:name=".presentation.home.feed.MyFeedSnsActivity"/>
+        <activity android:name=".presentation.camera.TimeStampCameraActivity"/>
+        <activity android:name=".presentation.group.feed.GroupFeedActivity"/>
+        <activity android:name=".presentation.home.feed.MyFeedMainActivity"/>
     </application>
 
 </manifest>

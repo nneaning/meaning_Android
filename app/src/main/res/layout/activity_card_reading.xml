@@ -1,133 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/meaning_lightblue_DE"
-    tools:context=".presentation.CardReadingActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mission4"
+            type="meaning.morning.presentation.home.card.CardReadingActivity" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ct_topbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/meaning_lightblue_DE"
+        tools:context=".presentation.home.card.CardReadingActivity">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_topbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/back_btn"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="5dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{()->mission4.backToHome()}"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/spoqahansansneo_medium"
+                android:text="짧은 독서"
+                android:layout_marginTop="11dp"
+                android:textColor="@color/grey1_33"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:fontFamily="@font/notosanskr_medium"
-            android:text="짧은 독서"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/grey1_33"
-            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/ct_topbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:textColor="@color/grey2_4F"
+            android:textSize="17sp"
+            android:layout_marginTop="32dp"
+            android:text="책을 읽고 한줄평을 남겨봐요" />
 
+        <EditText
+            android:id="@+id/et_bookName"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/textView1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/et_bookContents"
+            android:layout_marginTop="76dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingTop="9dp"
+            android:paddingStart="15dp"
+            android:paddingBottom="11dp"
+            android:maxLength="20"
+            android:text="@={mission4.bookTitle}"
+            android:hint="책 제목을 입력하세요"
+            android:background="@drawable/card_promise_text" />
+
+        <EditText
+            android:id="@+id/et_bookContents"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="207dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/card_promise_text"
+            app:layout_constraintBottom_toTopOf="@id/btn_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_bookName"
+            android:paddingTop="14dp"
+            android:paddingStart="15dp"
+            android:gravity="top"
+            android:maxLength="30"
+            android:textSize="16sp"
+            android:text="@={mission4.bookContents}"
+            android:hint="한 줄평을 작성해주세요" />
+
+        <TextView
+            android:id="@+id/tv_inputNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="309dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_maxNum"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
+
+        <TextView
+            android:id="@+id/tv_maxNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="16dp"
+            android:text="/ 30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_inputNum"
+            app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
+
+        <TextView
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="99dp"
+            android:background="@drawable/card_detail_button"
+            android:fontFamily="@font/spoqahansansneo_medium"
+
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="등록하기"
+            android:textAlignment="center"
+            android:textColor="@color/meaning_white_FF"
+            android:textSize="15sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:includeFontPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/ct_topbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="@font/notosanskr_regular"
-        android:textColor="@color/grey2_4F"
-        android:textSize="20sp"
-        android:layout_marginTop="32dp"
-        android:text="책을 읽고 한줄평을 남겨봐요"/>
-
-    <EditText
-        android:id="@+id/et_bookName"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/textView1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/et_bookContents"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingTop="9dp"
-        android:paddingStart="15dp"
-        android:paddingBottom="11dp"
-        android:hint="책 제목을 입력하세요"
-        android:background="@drawable/card_promise_text"/>
-
-    <EditText
-        android:id="@+id/et_bookContents"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="207dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/card_promise_text"
-        app:layout_constraintBottom_toTopOf="@id/btn_register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_bookName"
-        android:paddingTop="14dp"
-        android:paddingStart="15dp"
-        android:gravity="top"
-        android:maxLength="30"
-        android:hint="한 줄평을 작성해주세요"/>
-
-    <TextView
-        android:id="@+id/tv_inputNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="309dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintEnd_toStartOf="@id/tv_maxNum"
-        android:text="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
-
-    <TextView
-        android:id="@+id/tv_maxNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="16dp"
-        android:text="/ 30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_inputNum"
-        app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
-
-    <TextView
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="99dp"
-        android:background="@drawable/card_detail_button"
-        android:fontFamily="@font/spoqahansansneo_regular"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:text="등록하기"
-        android:textAlignment="center"
-        android:textColor="@color/meaning_white_FF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

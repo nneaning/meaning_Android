@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="myFeedmainActivity"
+            type="meaning.morning.presentation.home.feed.MyFeedMainActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        tools:context=".presentation.home.feed.MyFeedMainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/back_btn"
+                android:onClick="@{()->myFeedmainActivity.backButton()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_myfeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/spoqahansansneo_medium"
+                android:includeFontPadding="false"
+                android:text="마이 피드"
+                android:textColor="@color/grey1_33"
+                android:background="@color/meaning_white_FF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/cd_top_myfeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ct_top">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                    app:titleEnabled="false">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ct_topbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:id="@+id/iv_myfeed_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:src="@drawable/myfeed_profile"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_myfeed_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/spoqahansansneo_medium"
+                            android:text="이기상"
+                            android:textColor="@color/grey1_33"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_myfeed_profile" />
+
+                        <TextView
+                            android:id="@+id/btn_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingStart="9dp"
+                            android:paddingEnd="9dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginTop="9dp"
+                            android:background="@drawable/myfeed_whattime_box"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="매일 오전 5시 기상"
+                            android:textColor="@color/sub_64"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_myfeed_name" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="34dp"
+                            android:background="@color/meaning_lightblue_DE"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="8dp"
+                            android:fontFamily="@font/spoqahansansneo_medium"
+                            android:includeFontPadding="false"
+                            android:text="오늘은 365일 중에 30번째 의미있는 아침입니다."
+                            android:textAlignment="center"
+                            android:textColor="@color/meaning_navy_17"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/btn_date" />
+
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cd_top_myfeed">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout_MyFeedMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/rcv_myfeed"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        tools:listitem="@layout/item_list" />-->
+
+                </RelativeLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
