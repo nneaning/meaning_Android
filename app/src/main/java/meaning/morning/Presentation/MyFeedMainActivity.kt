@@ -69,6 +69,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
         pictureRecyclerviewFragment.setAdapter(myFeedPictureData.toList())
     }
 
+
     fun backButton(){
         finish()
     }
