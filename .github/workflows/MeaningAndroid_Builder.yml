@@ -49,8 +49,9 @@ jobs:
         if: ${{ success() }}
         run: |
           mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
+          echo `apk=미닝-Debug.apk` >> $GITHUB_ENV
 
-      - name: On success, Notify in Slack
+      # - name: On success, Notify in Slack
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -63,13 +64,13 @@ jobs:
         if: ${{ success() }}
         run: |
           curl -X POST \
-          -F file=@app/build/outputs/apk/debug/app-debug.apk \
+          -F file=@$apk \
           -F channels=${{secrets.SLACK_CHANNEL_ID}} \
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
 
       - name: On Failed, Notify in Slack
-        if: ${{ failure() }}
+        if: ${{ !success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
