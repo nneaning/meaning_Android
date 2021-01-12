@@ -129,6 +129,7 @@
                     android:layout_below="@id/textview_member"
                     android:layout_marginTop="12dp"
                     android:background="@color/meaning_white_FF"
+                    android:overScrollMode="never"
                     tools:listitem="@layout/item_group_member" />
 
             </RelativeLayout>

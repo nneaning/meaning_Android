@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="14dp"
                 android:src="@drawable/mypage_ic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,23 +54,148 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:background="@drawable/main_date_button"
+            android:fontFamily="@font/spoqahansansneo_regular"
             android:includeFontPadding="false"
-            android:padding="10dp"
-            android:text="2021년 1월 1일"
+            android:paddingVertical="9dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="7dp"
+            android:text="2021년 1월 1일 >"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ct_topbar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_home_calendarView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_date"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_date">
 
+            <TextView
+                android:id="@+id/textview_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="오늘은"
+                android:textColor="@color/meaning_navy_17"
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textview_date_label_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:text="기상"
+                android:textColor="@color/meaning_navy_17"
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="@+id/textview_today"
+                app:layout_constraintTop_toBottomOf="@+id/textview_today" />
+
+            <TextView
+                android:id="@+id/textview_date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="님의 "
+                android:textColor="@color/meaning_navy_17"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="@id/textview_date_label_name"
+                app:layout_constraintLeft_toRightOf="@+id/textview_date_label_name"
+                app:layout_constraintTop_toTopOf="@id/textview_date_label_name" />
+
+            <TextView
+                android:id="@+id/textview_date_label_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:text="30번째"
+                android:textColor="@color/meaning_navy_17"
+                android:textSize="21sp"
+                app:layout_constraintLeft_toRightOf="@id/textview_date_label"
+                app:layout_constraintTop_toTopOf="@id/textview_date_label_name" />
+
+            <TextView
+                android:id="@+id/textview_morning_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="의미있는 아침입니다."
+                android:textColor="@color/meaning_navy_17"
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="@+id/textview_date_label_name"
+                app:layout_constraintTop_toBottomOf="@+id/textview_date_label" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/calander_box"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/layout_home_calendarView">
+
+
+                <TextView
+                    android:id="@+id/textview_current_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="149dp"
+                    android:text="1월"
+                    android:textColor="@color/meaning_ivory_F6"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_calendar_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="38dp"
+                    android:layout_marginTop="24dp"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_current_month"
+                    app:spanCount="7"
+                    tools:listitem="@layout/item_calendar_date" />
+
+                <ImageView
+                    android:id="@+id/imageview_won"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="327dp"
+                    android:src="@drawable/ellipse_184"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/layout_calendar" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_home_cardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_date">
 
             <TextView
                 android:id="@+id/textView1"
@@ -81,7 +206,7 @@
                 android:fontFamily="@font/spoqahansansneo_medium"
                 android:text="좋은 아침입니다!"
                 android:textColor="@color/meaning_navy_17"
-                android:textSize="20sp"
+                android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,11 +214,11 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/spoqahansansneo_light"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="순서대로 기상미션을"
                 android:textColor="@color/meaning_navy_17"
-                android:textSize="20sp"
+                android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="@+id/textView1"
                 app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
@@ -101,22 +226,21 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/spoqahansansneo_light"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="수행해볼까요?"
                 android:textColor="@color/meaning_navy_17"
-                android:textSize="20sp"
+                android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <meaning.morning.utils.HorizontalCarouselRecyclerView
-                android:id="@+id/rcv_homeMain"
-                android:layout_width="wrap_content"
+                android:id="@+id/layout_cardview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:orientation="horizontal"
                 android:overScrollMode="never"
-                android:clipToPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView3"
                 tools:listitem="@layout/home_card_list_item" />
