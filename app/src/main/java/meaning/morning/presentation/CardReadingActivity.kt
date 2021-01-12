@@ -38,7 +38,7 @@ class CardReadingActivity : AppCompatActivity() {
     }
 
     private fun checkNull() : Boolean{
-        return (bookTitle.get().isNullOrBlank()) && !(bookContents.get().isNullOrBlank())
+        return (bookTitle.get().isNullOrBlank() && (bookContents.get().isNullOrBlank()))
     }
 
     private fun countTextNumReading(etBookContents: EditText) {
@@ -46,13 +46,14 @@ class CardReadingActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
             }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val length = etBookContents.length()
-                val convert = length.toString()
-                binding.tvInputNum.setText(convert)
+            override fun beforeTextChanged(p0: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                val length = etBookContents.length()
+                val convert = length.toString()
+                binding.tvInputNum.setText(convert)
             }
         })
     }

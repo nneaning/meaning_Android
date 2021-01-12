@@ -48,13 +48,13 @@ class CardWriteDiaryActivity : AppCompatActivity() {
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val length = etDiary.length()
-                val convert = length.toString()
-                binding.tvInputNum.setText(convert)
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+                val length = etDiary.length()
+                val convert = length.toString()
+                binding.tvInputNum.setText(convert)
             }
         })
     }

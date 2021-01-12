@@ -2,6 +2,7 @@ package meaning.morning.presentation
 
 
 import android.content.ClipData
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ import meaning.morning.utils.HomeCardItemDecoreation
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setCardListRcv()
 
     }
@@ -45,6 +48,7 @@ class HomeFragment : Fragment() {
                 binding.rcvHomeMain.smoothScrollToPosition(position)
             }
         }
+
 
         binding.rcvHomeMain.apply {
             initialize(homeCardAdapter)
@@ -67,5 +71,40 @@ class HomeFragment : Fragment() {
 
         }
         homeCardAdapter.submitData(homeCardData)
+
+        homeCardAdapter.setItemClickListener(object : HomeCardAdapter.ItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                if (position == 0) {
+                    sendMission1()
+                } else if (position == 1) {
+                    sendMission2()
+                } else if (position == 2) {
+                    sendMission3()
+                } else if (position == 3) {
+                    sendMission4()
+                }
+            }
+        })
     }
+
+    private fun sendMission1() {
+        val intent = Intent(requireContext(), CardTimeStampActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun sendMission2() {
+        val intent = Intent(requireContext(), CardPromiseActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun sendMission3() {
+        val intent = Intent(requireContext(), CardWriteDiaryActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun sendMission4() {
+        val intent = Intent(requireContext(), CardReadingActivity::class.java)
+        startActivity(intent)
+    }
+
 }

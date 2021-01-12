@@ -2,6 +2,7 @@ package meaning.morning.presentation.adapter
 
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,7 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
         holder.onBind(data[position])
         holder.itemView.setOnClickListener {
             itemClick(position, data[position])
+            itemClickListener.onClick(it, position)
         }
     }
 
@@ -48,6 +50,15 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
 
     }
 
+    interface ItemClickListener{
+        fun onClick(view : View, position: Int)
+    }
+
+    private lateinit var itemClickListener: ItemClickListener
+
+    fun setItemClickListener(itemClickListener: ItemClickListener){
+        this.itemClickListener = itemClickListener
+    }
 
 }
 
