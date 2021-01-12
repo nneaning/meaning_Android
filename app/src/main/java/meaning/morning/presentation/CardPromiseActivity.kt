@@ -10,23 +10,23 @@ import meaning.morning.R
 import meaning.morning.databinding.ActivityCardPromiseBinding
 
 class CardPromiseActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityCardPromiseBinding
+    private lateinit var binding: ActivityCardPromiseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_card_promise)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_card_promise)
         binding.mission2 = this
 
     }
 
-    private fun pressBtnRead(textView: TextView){
+    private fun pressBtnRead(textView: TextView) {
         textView.setOnClickListener {
-
+            //버튼 클릭시
         }
     }
 
-    fun backToHome(){
+    fun backToHome() {
         finish()
     }
 }

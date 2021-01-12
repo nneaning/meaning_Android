@@ -14,31 +14,34 @@ import meaning.morning.databinding.ActivityCardReadingBinding
 
 class CardReadingActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityCardReadingBinding
+    private lateinit var binding: ActivityCardReadingBinding
     val bookTitle = ObservableField<String>()
     val bookContents = ObservableField<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_card_reading)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_card_reading)
         binding.mission4 = this
 
         pressBtnReading(binding.btnRegister)
         countTextNumReading(binding.etBookContents)
     }
 
-    private fun pressBtnReading(textView: TextView){
+    private fun pressBtnReading(textView: TextView) {
         textView.setOnClickListener {
-            if(!(bookTitle.get().isNullOrBlank()) && !(bookContents.get().isNullOrBlank())){
+            if (!checkNull()) {
 
-            }
-            else{
-                Toast.makeText(this,"내용을 입력해주세요",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun countTextNumReading(etBookContents: EditText){
+    private fun checkNull() : Boolean{
+        return (bookTitle.get().isNullOrBlank()) && !(bookContents.get().isNullOrBlank())
+    }
+
+    private fun countTextNumReading(etBookContents: EditText) {
         etBookContents.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -54,7 +57,7 @@ class CardReadingActivity : AppCompatActivity() {
         })
     }
 
-    fun backToHome(){
+    fun backToHome() {
         finish()
     }
 

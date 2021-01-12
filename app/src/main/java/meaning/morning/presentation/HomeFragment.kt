@@ -1,7 +1,6 @@
 package meaning.morning.presentation
 
 
-
 import android.content.ClipData
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,8 +22,10 @@ import meaning.morning.utils.HomeCardItemDecoreation
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         return binding.root
     }
@@ -40,7 +41,7 @@ class HomeFragment : Fragment() {
         val homeCardData = mutableListOf<HomeCardData>()
 
         val homeCardAdapter by lazy {
-            HomeCardAdapter{ position: Int, cardItem: HomeCardData ->
+            HomeCardAdapter { position: Int, cardItem: HomeCardData ->
                 binding.rcvHomeMain.smoothScrollToPosition(position)
             }
         }
@@ -50,21 +51,21 @@ class HomeFragment : Fragment() {
             addItemDecoration(HomeCardItemDecoreation(requireContext()))
         }
 
-       homeCardData.apply {
-           add(
-                   HomeCardData(R.drawable.missioncard_1)
-           )
-           add(
-                   HomeCardData(R.drawable.missioncard_2)
-           )
-           add(
-                   HomeCardData(R.drawable.missioncard_3)
-           )
-           add(
-                   HomeCardData(R.drawable.missioncard_4)
-           )
+        homeCardData.apply {
+            add(
+                HomeCardData(R.drawable.missioncard_1)
+            )
+            add(
+                HomeCardData(R.drawable.missioncard_2)
+            )
+            add(
+                HomeCardData(R.drawable.missioncard_3)
+            )
+            add(
+                HomeCardData(R.drawable.missioncard_4)
+            )
 
-       }
+        }
         homeCardAdapter.submitData(homeCardData)
     }
 }

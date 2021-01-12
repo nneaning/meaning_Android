@@ -27,19 +27,22 @@ class CardWriteDiaryActivity : AppCompatActivity() {
 
     }
 
-    private fun pressBtnDiaryUpload(textView: TextView){
+    private fun pressBtnDiaryUpload(textView: TextView) {
         textView.setOnClickListener {
-            if(writeDairy.get().isNullOrEmpty()){
-                Toast.makeText(this,"내용을 입력해주세요",Toast.LENGTH_LONG).show()
-            }
-            else{
+            if (checkNull()) {
+                Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_LONG).show()
+            } else {
 
             }
         }
     }
 
-    private fun countTextNumDiary(etDiary: EditText){
-        etDiary.addTextChangedListener(object : TextWatcher{
+    private fun checkNull(): Boolean {
+        return writeDairy.get().isNullOrEmpty()
+    }
+
+    private fun countTextNumDiary(etDiary: EditText) {
+        etDiary.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
 
             }
@@ -56,7 +59,7 @@ class CardWriteDiaryActivity : AppCompatActivity() {
         })
     }
 
-    fun backToHome(){
+    fun backToHome() {
         finish()
     }
 
