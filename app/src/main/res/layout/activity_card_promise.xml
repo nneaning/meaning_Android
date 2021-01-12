@@ -19,28 +19,28 @@
             android:id="@+id/ct_topbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:onClick="@{()->mission2.backToHome()}"
                 android:src="@drawable/back_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{()->mission2.backToHome()}"
-                android:layout_marginStart="5dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/notosanskr_medium"
                 android:text="하루 다짐"
-                android:layout_marginTop="4dp"
                 android:textColor="@color/grey1_33"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,29 +52,29 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
             android:includeFontPadding="false"
-            app:layout_constraintTop_toBottomOf="@id/ct_topbar"
+            android:text="하루의 시작부터 글귀를 읽으며"
+            android:textColor="@color/grey2_4F"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/grey2_4F"
-            android:textSize="18sp"
-            android:layout_marginTop="31dp"
-            android:text="하루의 시작부터 글귀를 읽으며" />
+            app:layout_constraintTop_toBottomOf="@id/ct_topbar" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:textSize="18sp"
-            android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/grey2_4F"
-            app:layout_constraintTop_toBottomOf="@id/textView1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="15dp"
-            android:text="성장과 발전의 의지를 다져요" />
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:includeFontPadding="false"
+            android:text="성장과 발전의 의지를 다져요"
+            android:textColor="@color/grey2_4F"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView1" />
 
         <TextView
             android:id="@+id/tv_famous_saying"
@@ -84,11 +84,11 @@
             android:layout_marginTop="47dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/card_promise_text"
+            android:fontFamily="@font/nanumbarunpenr"
+            android:hint="평범한 사람들은 가능한 것만 믿는다.\n특별한 사람들은 불가능한 것을 그려본다.\n그리고 그것을 가능한 것으로 보기 시작한다"
             android:lineSpacingExtra="10dp"
             android:paddingTop="25dp"
             android:paddingBottom="25dp"
-            android:fontFamily="@font/nanumbarunpenr"
-            android:hint="평범한 사람들은 가능한 것만 믿는다.\n특별한 사람들은 불가능한 것을 그려본다.\n그리고 그것을 가능한 것으로 보기 시작한다"
             android:textAlignment="center"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,13 +98,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="32dp"
-            android:textSize="15sp"
-            android:fontFamily="@font/notosanskr_regular"
+            android:fontFamily="@font/spoqahansansneo_regular"
             android:text="3번 반복해서 읽어주세요"
             android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_famous_saying" />
 
         <TextView
@@ -115,13 +115,14 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="99dp"
             android:background="@drawable/card_detail_button"
-            android:fontFamily="@font/spoqahansansneo_regular"
+            android:fontFamily="@font/spoqahansansneo_medium"
+
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:text="다 읽었어요"
             android:textAlignment="center"
             android:textColor="@color/meaning_white_FF"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

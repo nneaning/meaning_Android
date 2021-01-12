@@ -27,13 +27,17 @@ class CardTimeStampActivity : AppCompatActivity() {
 
     private fun pressBtnPictureUpload(textView: TextView){
         textView.setOnClickListener {
-           if(recognitionWakeup.get().isNullOrEmpty()){
+           if(checkNull()){
                Toast.makeText(this,"내용을 입력하세요",Toast.LENGTH_LONG).show()
            }
             else{
 
            }
         }
+    }
+  
+    private fun checkNull() : Boolean{
+        return recognitionWakeup.get().isNullOrEmpty()
     }
 
     fun backToHome(){

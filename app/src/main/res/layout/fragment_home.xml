@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
-                android:fontFamily="@font/spoqahansansneo_bold"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:text="좋은 아침입니다!"
                 android:textColor="@color/meaning_navy_17"
                 android:textSize="20sp"

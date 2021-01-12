@@ -36,11 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/notosanskr_medium"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:text="짧은 독서"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="11dp"
                 android:textColor="@color/grey1_33"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,9 +56,9 @@
             app:layout_constraintTop_toBottomOf="@id/ct_topbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/notosanskr_regular"
+            android:fontFamily="@font/spoqahansansneo_regular"
             android:textColor="@color/grey2_4F"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:layout_marginTop="32dp"
             android:text="책을 읽고 한줄평을 남겨봐요" />
 
@@ -133,13 +133,15 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="99dp"
             android:background="@drawable/card_detail_button"
-            android:fontFamily="@font/spoqahansansneo_regular"
+            android:fontFamily="@font/spoqahansansneo_medium"
+
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:text="등록하기"
             android:textAlignment="center"
             android:textColor="@color/meaning_white_FF"
-            android:textSize="16sp"
+            android:textSize="15sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

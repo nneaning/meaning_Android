@@ -27,32 +27,35 @@ class CardWriteDiaryActivity : AppCompatActivity() {
 
     }
 
-    private fun pressBtnDiaryUpload(textView: TextView){
+    private fun pressBtnDiaryUpload(textView: TextView) {
         textView.setOnClickListener {
-            if(writeDairy.get().isNullOrEmpty()){
-                Toast.makeText(this,"내용을 입력해주세요",Toast.LENGTH_LONG).show()
-            }
-            else{
+            if (checkNull()) {
+                Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_LONG).show()
+            } else {
 
             }
         }
     }
 
-    private fun countTextNumDiary(etDiary: EditText){
-        etDiary.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(p0: Editable?) {
+    private fun checkNull(): Boolean {
+        return writeDairy.get().isNullOrEmpty()
+    }
 
+    private fun countTextNumDiary(etDiary: EditText) {
+        etDiary.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(p0: Editable?) {
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val length = etDiary.length()
                 val convert = length.toString()
                 binding.tvInputNum.setText(convert)
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
         })
     }
 

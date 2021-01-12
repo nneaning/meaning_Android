@@ -11,7 +11,8 @@ import meaning.morning.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+
+    private lateinit var binding: ActivityMainBinding
 
     private val homeFragment = HomeFragment()
 
@@ -27,29 +28,29 @@ class MainActivity : AppCompatActivity() {
         initNavigationBar()
     }
 
-    private fun initNavigationBar(){
+    private fun initNavigationBar() {
         binding.bottomNavigation.run {
             setOnNavigationItemSelectedListener {
-               when(it.itemId){
-                   R.id.bottom_bar_home ->{
-                       changeFragment(homeFragment)
-                       return@setOnNavigationItemSelectedListener true
-                   }
-                   R.id.bottom_bar_group -> {
-                       val fragment = GroupFragment()
-                       changeFragment(fragment)
-                       return@setOnNavigationItemSelectedListener  true
-                   }
-                   else -> false
-               }
+                when (it.itemId) {
+                    R.id.bottom_bar_home -> {
+                        changeFragment(homeFragment)
+                        return@setOnNavigationItemSelectedListener true
+                    }
+                    R.id.bottom_bar_group -> {
+                        val fragment = GroupFragment()
+                        changeFragment(fragment)
+                        return@setOnNavigationItemSelectedListener true
+                    }
+                    else -> false
+                }
             }
         }
     }
 
-    private fun changeFragment(fragment: Fragment){
+    private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.frame_layout,fragment)
+            .replace(R.id.frame_layout, fragment)
             .commit()
     }
 }

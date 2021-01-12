@@ -2,6 +2,7 @@ package meaning.morning.presentation.adapter
 
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +15,17 @@ import meaning.morning.databinding.HomeCardListItemBinding
 import meaning.morning.presentation.data.HomeCardData
 import kotlin.coroutines.coroutineContext
 
-class HomeCardAdapter(val itemClick : (position :Int, cardItem : HomeCardData) -> Unit) : RecyclerView.Adapter<HomeCardAdapter.HomeCardVH>(){
+class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> Unit) :
+    RecyclerView.Adapter<HomeCardAdapter.HomeCardVH>() {
 
-    private val data : MutableList<HomeCardData> = mutableListOf()
+    private val data: MutableList<HomeCardData> = mutableListOf()
+
+    private lateinit var itemClickListener: ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCardVH {
 
         val binding = HomeCardListItemBinding
-                .inflate(LayoutInflater.from(parent.context),parent,false)
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeCardVH(binding)
 
     }
@@ -31,22 +35,29 @@ class HomeCardAdapter(val itemClick : (position :Int, cardItem : HomeCardData) -
     override fun onBindViewHolder(holder: HomeCardVH, position: Int) {
         holder.onBind(data[position])
         holder.itemView.setOnClickListener {
-            itemClick(position,data[position])
+            itemClick(position, data[position])
+            itemClickListener.onClick(it, position)
         }
     }
 
-    fun submitData(list: List<HomeCardData>){
+    fun submitData(list: List<HomeCardData>) {
         data.addAll(list)
         notifyDataSetChanged()
     }
 
-    class HomeCardVH(val binding : HomeCardListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HomeCardVH(val binding: HomeCardListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: HomeCardData) {
             binding.ivCard.setImageResource(data.iv_card)
         }
 
     }
 
+    interface ItemClickListener{
+        fun onClick(view : View, position: Int)
+    }
+
+    fun setItemClickListener(itemClickListener: ItemClickListener){
+        this.itemClickListener = itemClickListener
+    }
 
 }
-
