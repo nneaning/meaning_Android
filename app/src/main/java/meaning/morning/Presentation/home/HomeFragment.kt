@@ -1,8 +1,13 @@
 /*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+/*
  * Created By: hyooosong
  * on 2021.01.13
  */
-package meaning.morning.presentation
+package meaning.morning.presentation.home
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -17,9 +22,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
 import meaning.morning.databinding.FragmentHomeBinding
-import meaning.morning.presentation.adapter.CalendarAdapter
-import meaning.morning.presentation.adapter.HomeCardAdapter
-import meaning.morning.presentation.data.HomeCardData
+import meaning.morning.presentation.adapter.home.CalendarAdapter
+import meaning.morning.presentation.adapter.home.HomeCardAdapter
+import meaning.morning.data.HomeCardData
+import meaning.morning.presentation.home.card.CardPromiseActivity
+import meaning.morning.presentation.home.card.CardReadingActivity
+import meaning.morning.presentation.home.card.CardTimeStampActivity
+import meaning.morning.presentation.home.card.CardWriteDiaryActivity
 import meaning.morning.utils.HomeCardItemDecoreation
 import java.util.*
 

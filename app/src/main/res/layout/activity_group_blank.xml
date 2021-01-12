@@ -6,13 +6,13 @@
     <data>
         <variable
             name="BlankgroupActivity"
-            type="meaning.morning.presentation.GroupBlankActivity" />
+            type="meaning.morning.presentation.group.GroupBlankActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.GroupBlankActivity">
+        tools:context=".presentation.group.GroupBlankActivity">
 
         <RelativeLayout
             android:id="@+id/layout_blank_group"

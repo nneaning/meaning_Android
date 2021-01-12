@@ -6,14 +6,14 @@
     <data>
         <variable
             name="mission3"
-            type="meaning.morning.presentation.CardWriteDiaryActivity" />
+            type="meaning.morning.presentation.home.card.CardWriteDiaryActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/meaning_lightblue_DE"
-        tools:context=".presentation.CardWriteDiaryActivity">
+        tools:context=".presentation.home.card.CardWriteDiaryActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_topbar"

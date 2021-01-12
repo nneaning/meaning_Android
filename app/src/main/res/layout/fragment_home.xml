@@ -7,7 +7,7 @@
     <data>
         <variable
             name="HomeMain"
-            type="meaning.morning.presentation.HomeFragment" />
+            type="meaning.morning.presentation.home.HomeFragment" />
     </data>
 
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/meaning_ivory_F6"
-        tools:context=".presentation.HomeFragment">
+        tools:context=".presentation.home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_topbar"

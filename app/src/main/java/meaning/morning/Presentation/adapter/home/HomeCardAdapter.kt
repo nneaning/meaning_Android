@@ -1,19 +1,17 @@
-package meaning.morning.presentation.adapter
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+package meaning.morning.presentation.adapter.home
 
 
-import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.R
 import meaning.morning.databinding.HomeCardListItemBinding
-import meaning.morning.presentation.data.HomeCardData
-import kotlin.coroutines.coroutineContext
+import meaning.morning.data.HomeCardData
 
 class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> Unit) :
     RecyclerView.Adapter<HomeCardAdapter.HomeCardVH>() {

@@ -1,14 +1,17 @@
 /*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+/*
  * Created By: hyooosong
  * on 2021.01.07
  */
-package meaning.morning.presentation
+package meaning.morning.presentation.group
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast

@@ -6,14 +6,14 @@
     <data>
         <variable
             name="mission2"
-            type="meaning.morning.presentation.CardPromiseActivity" />
+            type="meaning.morning.presentation.home.card.CardPromiseActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/meaning_lightblue_DE"
-        tools:context=".presentation.CardPromiseActivity">
+        tools:context=".presentation.home.card.CardPromiseActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_topbar"

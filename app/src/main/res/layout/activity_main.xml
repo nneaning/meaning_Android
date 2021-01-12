@@ -7,14 +7,14 @@
 
         <variable
             name="mainActivity"
-            type="meaning.morning.presentation.MainActivity" />
+            type="meaning.morning.presentation.home.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/meaning_ivory_F6"
-        tools:context=".presentation.MainActivity">
+        tools:context=".presentation.home.MainActivity">
 
         <FrameLayout
             android:id="@+id/frame_layout"

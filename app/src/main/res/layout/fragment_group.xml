@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.GroupFragment">
+    tools:context=".presentation.group.GroupFragment">
 
     <data>
 
         <variable
             name="groupFragment"
-            type="meaning.morning.presentation.GroupFragment" />
+            type="meaning.morning.presentation.group.GroupFragment" />
 
         <variable
             name="Group"

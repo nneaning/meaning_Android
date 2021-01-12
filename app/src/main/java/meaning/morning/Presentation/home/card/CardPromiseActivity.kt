@@ -1,11 +1,19 @@
-package meaning.morning.presentation
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
 
-import androidx.appcompat.app.AppCompatActivity
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+package meaning.morning.presentation.home.card
+
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableField
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardPromiseBinding
 

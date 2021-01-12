@@ -1,4 +1,4 @@
-package meaning.morning.presentation.data
+package meaning.morning.data
 
 
 data class HomeCardData(

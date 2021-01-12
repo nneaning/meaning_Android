@@ -1,9 +1,14 @@
 /*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+/*
  * Created By: hyooosong
  * on 2021.01.05
  */
 
-package meaning.morning.presentation.adapter
+package meaning.morning.presentation.adapter.group
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +16,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import meaning.morning.BindingDialog
 import meaning.morning.data.GroupData
-import meaning.morning.data.GroupDetailData
 import meaning.morning.databinding.ItemGroupListBinding
 
 class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder>() {

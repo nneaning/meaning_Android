@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="addgroupActivity"
-            type="meaning.morning.presentation.AddGroupActivity" />
+            type="meaning.morning.presentation.group.AddGroupActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/meaning_ivory_F6"
-        tools:context=".presentation.AddGroupActivity">
+        tools:context=".presentation.group.AddGroupActivity">
 
         <RelativeLayout
             android:id="@+id/layout_add_group"

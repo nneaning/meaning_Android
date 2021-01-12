@@ -1,17 +1,9 @@
 package meaning.morning.utils
 
-import android.animation.ArgbEvaluator
 import android.content.Context
-import android.graphics.ColorMatrix
-import android.graphics.ColorMatrixColorFilter
 import android.util.AttributeSet
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.R
 
 class HorizontalCarouselRecyclerView(
     context: Context,

@@ -1,9 +1,14 @@
 /*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+/*
  * Created By: hyooosong
  * on 2021.01.05
  */
 
-package meaning.morning.presentation.adapter
+package meaning.morning.presentation.adapter.group
 
 import android.content.Context
 import android.view.LayoutInflater

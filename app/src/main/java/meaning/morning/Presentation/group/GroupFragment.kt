@@ -1,25 +1,29 @@
 /*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+/*
  * Created By: hyooosong
  * on 2021.01.05
  */
 
-package meaning.morning.presentation
+package meaning.morning.presentation.group
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import meaning.morning.*
+import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.FragmentGroupBinding
-import meaning.morning.presentation.adapter.GroupAdapter
-import meaning.morning.presentation.adapter.RecommendGroupAdapter
+import meaning.morning.presentation.adapter.group.GroupAdapter
+import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
 
 
 class GroupFragment : Fragment() {

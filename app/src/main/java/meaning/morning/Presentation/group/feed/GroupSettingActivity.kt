@@ -1,17 +1,18 @@
+
 /*
  * Created By: hyooosong
  * on 2021.01.10
  */
-package meaning.morning.presentation
+package meaning.morning.presentation.group.feed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import meaning.morning.R
 import meaning.morning.data.GroupMemberData
 import meaning.morning.databinding.ActivityGroupSettingBinding
-import meaning.morning.presentation.adapter.GroupSettingAdapter
+import meaning.morning.presentation.adapter.group.GroupSettingAdapter
 
 class GroupSettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGroupSettingBinding

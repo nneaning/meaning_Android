@@ -1,12 +1,17 @@
-package meaning.morning.presentation
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+package meaning.morning.presentation.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMainBinding
+import meaning.morning.presentation.group.GroupFragment
 
 class MainActivity : AppCompatActivity() {
 

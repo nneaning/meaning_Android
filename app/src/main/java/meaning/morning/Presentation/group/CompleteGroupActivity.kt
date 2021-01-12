@@ -1,4 +1,9 @@
-package meaning.morning.presentation
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+package meaning.morning.presentation.group
 
 import android.content.Intent
 import android.os.Bundle

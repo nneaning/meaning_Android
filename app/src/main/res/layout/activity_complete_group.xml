@@ -7,14 +7,14 @@
 
         <variable
             name="completeActivity"
-            type="meaning.morning.presentation.CompleteGroupActivity" />
+            type="meaning.morning.presentation.group.CompleteGroupActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/meaning_bg_3_img"
-        tools:context=".presentation.CompleteGroupActivity">
+        tools:context=".presentation.group.CompleteGroupActivity">
 
         <TextView
             android:id="@+id/textview_complete"

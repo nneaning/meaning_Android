@@ -6,14 +6,14 @@
     <data>
         <variable
             name="mission1"
-            type="meaning.morning.presentation.CardTimeStampActivity" />
+            type="meaning.morning.presentation.home.card.CardTimeStampActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/meaning_lightblue_DE"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.CardTimeStampActivity">
+        tools:context=".presentation.home.card.CardTimeStampActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_topbar"

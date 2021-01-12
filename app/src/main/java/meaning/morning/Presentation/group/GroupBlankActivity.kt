@@ -1,4 +1,9 @@
-package meaning.morning.presentation
+/*
+ * Created by jinsu4755
+ * DESC:
+ */
+
+package meaning.morning.presentation.group
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.R
 import meaning.morning.databinding.ActivityGroupBlankBinding
+import meaning.morning.presentation.group.feed.GroupSettingActivity
+import meaning.morning.presentation.home.MainActivity
 
 
 class GroupBlankActivity : AppCompatActivity() {

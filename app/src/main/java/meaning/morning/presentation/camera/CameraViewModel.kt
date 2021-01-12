@@ -1,6 +1,5 @@
 package meaning.morning.presentation.camera
 
-import android.Manifest
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

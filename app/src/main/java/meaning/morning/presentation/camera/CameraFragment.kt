@@ -17,7 +17,6 @@ import androidx.fragment.app.activityViewModels
 import com.google.common.util.concurrent.ListenableFuture
 import meaning.morning.R
 import meaning.morning.databinding.FragmentCameraBinding
-import java.lang.Exception
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
