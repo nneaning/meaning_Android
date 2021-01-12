@@ -7,12 +7,15 @@ package meaning.morning.presentation
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityAddGroupBinding
 import meaning.morning.utils.textCheck
@@ -65,6 +68,11 @@ class AddGroupActivity : AppCompatActivity() {
         if (checkEditTextBlank() && validNum()) {
             val intent = Intent(this, CompleteGroupActivity::class.java)
             startActivity(intent)
+            saveAddGroupData(
+                binding.edittextGroupName.text.toString(),
+                binding.edittextNum.text.toString(),
+                binding.edittextGroupContent.text.toString()
+            )
             finish()
             return
         }
@@ -77,6 +85,10 @@ class AddGroupActivity : AppCompatActivity() {
 
     fun backToGroupList() {
         finish()
+    }
+
+    private fun saveAddGroupData(addName: String, memberLimit: String, addContent: String) {
+        MeaningStorage.getInstance(applicationContext).saveGroup(addName, memberLimit, addContent)
     }
 }
 
