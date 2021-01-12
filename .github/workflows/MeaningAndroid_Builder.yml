@@ -45,11 +45,10 @@ jobs:
         with:
           path: app/build/outputs
 
-      - name: Rename Debug apk name
-        if: ${{ success() }}
-        run: |
-          mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
-          echo `apk=미닝-Debug.apk` >> $GITHUB_ENV
+      # - name: Rename Debug apk name
+      #   if: ${{ success() }}
+      #   run: |
+      #     mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
 
       # # - name: On success, Notify in Slack
       #   if: ${{ success() }}
@@ -64,7 +63,7 @@ jobs:
         if: ${{ success() }}
         run: |
           curl -X POST \
-          -F file=@$apk \
+          -F file=@app/build/outputs/apk/debug/app-debug.apk \
           -F channels=${{secrets.SLACK_CHANNEL_ID}} \
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
