@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/imageview_backBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="@{()->BlankgroupActivity.backToGroupList()}"
                 android:src="@drawable/back_btn"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -48,8 +48,8 @@
 
             <ImageView
                 android:id="@+id/imageview_group_setting"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="5dp"
                 android:onClick="@{()->BlankgroupActivity.goToGroupSetting()}"
