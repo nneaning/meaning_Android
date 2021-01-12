@@ -47,7 +47,7 @@
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="@{Group.groupNumOfPeople}"
-                android:textColor="@color/meaning_navy"
+                android:textColor="@color/meaning_navy_17"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@id/textview_groupName"
                 app:layout_constraintRight_toRightOf="parent"

@@ -63,7 +63,7 @@
                     android:layout_marginTop="13dp"
                     android:fontFamily="@font/spoqahansansneo_bold"
                     android:text="@{recommendGroup.participateNum}"
-                    android:textColor="@color/meaning_navy"
+                    android:textColor="@color/meaning_navy_17"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"

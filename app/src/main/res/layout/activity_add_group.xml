@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/meaning_ivory"
+        android:background="@color/meaning_ivory_F6"
         tools:context=".presentation.AddGroupActivity">
 
         <RelativeLayout
@@ -53,7 +53,7 @@
             android:layout_marginTop="31dp"
             android:fontFamily="@font/spoqahansansneo_medium"
             android:text="그룹 이름"
-            android:textColor="@color/meaning_navy"
+            android:textColor="@color/meaning_navy_17"
             android:textSize="15dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_add_group" />
@@ -84,7 +84,7 @@
             android:layout_marginTop="45dp"
             android:fontFamily="@font/spoqahansansneo_medium"
             android:text="인원수"
-            android:textColor="@color/meaning_navy"
+            android:textColor="@color/meaning_navy_17"
             android:textSize="15dp"
             app:layout_constraintLeft_toLeftOf="@id/textview_group_name"
             app:layout_constraintTop_toBottomOf="@id/edittext_group_name" />
@@ -140,7 +140,7 @@
             android:layout_marginTop="42dp"
             android:fontFamily="@font/spoqahansansneo_medium"
             android:text="그룹 소개"
-            android:textColor="@color/meaning_navy"
+            android:textColor="@color/meaning_navy_17"
             android:textSize="15dp"
             app:layout_constraintLeft_toLeftOf="@id/textview_group_name"
             app:layout_constraintTop_toBottomOf="@id/textview_range_limit" />
@@ -178,7 +178,7 @@
             android:paddingBottom="13dp"
             android:text="그룹 만들기"
             android:textAlignment="center"
-            android:textColor="@color/meaning_white"
+            android:textColor="@color/meaning_white_FF"
             android:textSize="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

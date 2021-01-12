@@ -50,7 +50,7 @@
             android:paddingVertical="13dp"
             android:text="네!"
             android:textAlignment="center"
-            android:textColor="@color/meaning_white"
+            android:textColor="@color/meaning_white_FF"
             android:textSize="14sp" />
 
     </LinearLayout>

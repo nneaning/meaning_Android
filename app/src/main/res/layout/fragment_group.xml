@@ -84,7 +84,7 @@
                     android:fontFamily="@font/spoqahansansneo_regular"
                     android:includeFontPadding="false"
                     android:text="그룹 생성"
-                    android:textColor="@color/meaning_navy"
+                    android:textColor="@color/meaning_navy_17"
                     android:textSize="14sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textview_my_group"
                     android:layout_marginTop="16dp"
-                    android:background="@color/meaning_lightblue"
+                    android:background="@color/meaning_lightblue_DE"
                     android:visibility="visible">
 
                     <TextView
@@ -105,7 +105,7 @@
                         android:layout_marginBottom="38dp"
                         android:fontFamily="@font/spoqahansansneo_medium"
                         android:text="가입하신 그룹이 없네요!"
-                        android:textColor="@color/meaning_navy"
+                        android:textColor="@color/meaning_navy_17"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textview_my_group"
                     android:layout_marginTop="16dp"
-                    android:background="@color/meaning_lightblue"
+                    android:background="@color/meaning_lightblue_DE"
                     android:paddingVertical="20dp"
                     android:visibility="invisible">
 
@@ -142,7 +142,7 @@
                         android:fontFamily="@font/spoqahansansneo_regular"
                         android:lines="1"
                         android:text="효송이를 좋아하는 그룹"
-                        android:textColor="@color/meaning_navy"
+                        android:textColor="@color/meaning_navy_17"
                         android:textSize="15sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@+id/textview_number"
@@ -158,7 +158,7 @@
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:text="10/10"
-                        android:textColor="@color/meaning_navy"
+                        android:textColor="@color/meaning_navy_17"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="@id/textview_groupName"
                         app:layout_constraintRight_toLeftOf="@+id/imageview_next"
