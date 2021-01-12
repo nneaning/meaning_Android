@@ -1,39 +1,54 @@
+/*
+ * Created by <LEE-HYUNGJUN>
+ * DESC:
+ */
 package meaning.morning.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
+import meaning.morning.Presentation.data.MyFeedPictureData
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMyFeedMainBinding
-import meaning.morning.databinding.ItemListBinding
-import meaning.morning.presentation.adapter.MyFeedPictureAdapter
+import meaning.morning.utils.BindFeedPictureEvent
 
-class MyFeedMainActivity : AppCompatActivity() {
+class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
 
-    private lateinit var binding : ActivityMyFeedMainBinding
+    private lateinit var binding: ActivityMyFeedMainBinding
+
+    private var pictureRecyclerviewFragment = PictureRecyclerviewFragment()
+
+    override fun requestToFeedPictureData() {
+        // 서버 통신 로직을 적어줌
+        Log.d("bind","bind")
+        setPictureRcv()
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setBinding()
-        setPictureRcv()
+
+        setTransaction()
+
 
     }
 
-    private fun setBinding(){
+    private fun setBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_feed_main)
-        binding.myFeedMainActivity = this
+        binding.myFeedmainActivity = this
     }
 
-    private fun setPictureRcv(){
-        var myFeedPictureData = mutableListOf<MyFeedPictureData>()
-        val myFeedPictureAdapter = MyFeedPictureAdapter(this)
-        binding.rcvMyfeed.apply {
-            layoutManager = GridLayoutManager(this@MyFeedMainActivity,3)
-            adapter = myFeedPictureAdapter
-        }
+    private fun setTransaction(){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frameLayout_MyFeedMain, pictureRecyclerviewFragment)
+        transaction.commit()
+    }
 
+    private fun setPictureRcv() {
+        var myFeedPictureData = mutableListOf<MyFeedPictureData>()
         myFeedPictureData.apply {
             add(MyFeedPictureData(R.drawable.image_16))
             add(MyFeedPictureData(R.drawable.image_16))
@@ -51,7 +66,12 @@ class MyFeedMainActivity : AppCompatActivity() {
             add(MyFeedPictureData(R.drawable.image_16))
             add(MyFeedPictureData(R.drawable.image_16))
         }
-        myFeedPictureAdapter.submitData(myFeedPictureData)
+        pictureRecyclerviewFragment.setAdapter(myFeedPictureData.toList())
+    }
+
+
+    fun backButton(){
+        finish()
     }
 
 }

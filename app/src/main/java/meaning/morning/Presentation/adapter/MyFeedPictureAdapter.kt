@@ -1,36 +1,45 @@
+/*
+ * Created by <LEE-HYUNGJUN>
+ * DESC:
+ */
 package meaning.morning.presentation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.databinding.ItemListBinding
-import meaning.morning.presentation.MyFeedPictureData
+import meaning.morning.Presentation.data.MyFeedPictureData
+import meaning.morning.databinding.FeedItemListBinding
 
-class MyFeedPictureAdapter (private val context: Context) : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPictureViewHolder>(){
+
+class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPictureViewHolder>() {
 
     var data = mutableListOf<MyFeedPictureData>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedPictureViewHolder {
-        val binding = ItemListBinding.inflate(LayoutInflater.from(context),parent,false)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedPictureViewHolder {
+        val binding = FeedItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyFeedPictureViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int {
+        return data.size
+    }
 
     override fun onBindViewHolder(holder: MyFeedPictureViewHolder, position: Int) {
         holder.onBind(data[position])
     }
+
 
     fun submitData(list : List<MyFeedPictureData>){
         data.addAll(list)
         notifyDataSetChanged()
     }
 
-    class MyFeedPictureViewHolder(val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root){
-        fun onBind(data : MyFeedPictureData){
-            binding.pictureList = data
+
+
+    class MyFeedPictureViewHolder(val binding: FeedItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(data: MyFeedPictureData) {
+            binding.feedItemList = data
         }
     }
 }

@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="myFeed_mainActivity"
+            name="myFeedmainActivity"
             type="meaning.morning.presentation.MyFeedMainActivity" />
     </data>
 
@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:src="@drawable/back_btn"
+                android:onClick="@{()->myFeedmainActivity.backButton()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,10 +38,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
-                android:fontFamily="@font/notosanskr_medium"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:includeFontPadding="false"
                 android:text="마이 피드"
-                android:textColor="@color/grey1"
+                android:textColor="@color/grey1_33"
+                android:background="@color/meaning_white_FF"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,23 +93,26 @@
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/spoqahansansneo_medium"
                             android:text="이기상"
-                            android:textColor="@color/grey1"
+                            android:textColor="@color/grey1_33"
                             android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/iv_myfeed_profile" />
 
-                        <Button
+                        <TextView
                             android:id="@+id/btn_date"
-                            android:layout_width="106dp"
-                            android:layout_height="23dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingStart="9dp"
+                            android:paddingEnd="9dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginTop="9dp"
                             android:background="@drawable/myfeed_whattime_box"
-                            android:includeFontPadding="false"
                             android:minWidth="0dp"
                             android:minHeight="0dp"
                             android:text="매일 오전 5시 기상"
-                            android:textColor="@color/sub"
+                            android:textColor="@color/sub_64"
                             android:textSize="11sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -117,14 +122,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="34dp"
-                            android:background="@color/meaning_lightblue"
+                            android:background="@color/meaning_lightblue_DE"
                             android:paddingTop="10dp"
                             android:paddingBottom="8dp"
-                            android:fontFamily="@font/notosanskr_bold"
+                            android:fontFamily="@font/spoqahansansneo_medium"
                             android:includeFontPadding="false"
                             android:text="오늘은 365일 중에 30번째 의미있는 아침입니다."
                             android:textAlignment="center"
-                            android:textColor="@color/meaning_navy"
+                            android:textColor="@color/meaning_navy_17"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -153,12 +158,16 @@
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_myfeed"
+                    <FrameLayout
+                        android:id="@+id/frameLayout_MyFeedMain"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/item_list" />
+                        android:layout_height="wrap_content"/>
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/rcv_myfeed"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        tools:listitem="@layout/item_list" />-->
 
                 </RelativeLayout>
 

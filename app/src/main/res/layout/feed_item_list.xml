@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="pictureList"
-            type="meaning.morning.presentation.MyFeedPictureData"/>
+            name="feedItemList"
+            type="meaning.morning.Presentation.data.MyFeedPictureData"/>
 
     </data>
 
