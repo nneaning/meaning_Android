@@ -12,15 +12,15 @@
 
     <RelativeLayout
         android:layout_width="210dp"
-        android:layout_height="173dp"
-        android:background="@drawable/group_cardview_background">
+        android:layout_height="173dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_recommend_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="7dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            android:background="@drawable/group_cardview_background">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
