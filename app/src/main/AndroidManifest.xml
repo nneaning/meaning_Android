@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
-        <activity android:name=".GroupBlankActivity"></activity>
+        <activity android:name=".presentation.GroupBlankActivity"></activity>
         <activity android:name=".presentation.GroupSettingActivity" />
         <activity android:name=".presentation.CompleteGroupActivity" />
         <activity android:name=".presentation.AddGroupActivity" />

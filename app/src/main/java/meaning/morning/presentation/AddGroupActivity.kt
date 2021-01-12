@@ -18,6 +18,7 @@ import androidx.databinding.ObservableField
 import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityAddGroupBinding
+import meaning.morning.utils.textCheck
 
 class AddGroupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddGroupBinding
@@ -34,17 +35,12 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     private fun changeLabelEvent(num: EditText) {
-        num.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
+        num.textCheck(
+            observeTextChanged = {
+            },
+            labelColorChanged = {
                 changeLabelColor(binding.textviewRangeLimit)
-            }
-        })
+            })
     }
 
     private fun changeLabelColor(limitLabel: TextView) {
@@ -77,6 +73,7 @@ class AddGroupActivity : AppCompatActivity() {
                 binding.edittextNum.text.toString(),
                 binding.edittextGroupContent.text.toString()
             )
+            finish()
             return
         }
         if (checkEditTextBlank() && !validNum()) {
