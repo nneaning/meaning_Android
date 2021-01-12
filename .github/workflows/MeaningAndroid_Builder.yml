@@ -42,14 +42,15 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: app/build/outputs
+
       - name: Rename Debug apk name
-        if: ${{ success() }}
+        if: success()
         run: |
           mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
           echo `apk=미닝-Debug.apk` >> $GITHUB_ENV
 
       - name: On success, Notify in Slack
-        if: ${{ success() }}
+        if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -58,7 +59,7 @@ jobs:
           SLACK_MESSAGE: 'apk가 생성되었습니다.'
 
       - name: Upload APK at Slack
-        if: ${{ success() }}
+        if: success()
         run: |
           curl -X POST \
           -F file=@$apk \
@@ -67,7 +68,7 @@ jobs:
           https://slack.com/api/files.upload
 
       - name: On Failed, Notify in Slack
-        if: ${{ failure() }}
+        if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
