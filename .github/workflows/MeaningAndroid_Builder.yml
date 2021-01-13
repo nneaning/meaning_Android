@@ -63,7 +63,11 @@ jobs:
       - name: Upload APK at Slack
         if: ${{ success() }}
         run: |
-          curl -X POST -F file=@$apk -F channels=${{secrets.SLACK_CHANNEL_ID}} -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" https:slack.com/api/files.upload
+          url -X POST \
+          -F file=@$apk \
+          -F channels=${{secrets.SLACK_CHANNEL_ID}} \
+          -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
+          https://slack.com/api/files.upload
 
       - name: On Failed, Notify in Slack
         if: ${{ !success() }}
