@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
 
         <variable
@@ -31,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:fontFamily="@font/spoqahansansneo_medium"
-                    android:src="@{recommendGroup.groupImage}"
+                    app:image="@{recommendGroup.groupImage}"
                     app:layout_constraintBottom_toTopOf="@id/textview_participate_num"
                     app:layout_constraintHeight_percent="0.6"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -59,14 +58,13 @@
                     android:id="@+id/textview_participate_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="39dp"
                     android:layout_marginTop="13dp"
                     android:fontFamily="@font/spoqahansansneo_bold"
                     android:text="@{recommendGroup.participateNum}"
                     android:textColor="@color/meaning_navy_17"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/textview_participate"
                     app:layout_constraintTop_toBottomOf="@+id/imageview_group_recommend" />
 
                 <TextView
@@ -75,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="38dp"
                     android:fontFamily="@font/spoqahansansneo_bold"
-                    android:text=" 명이 함께하고 있어요"
+                    android:text="명이 함께하고 있어요"
                     android:textColor="@color/grey3_82"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textview_participate_num"

@@ -23,6 +23,7 @@ class GroupSettingActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_group_setting)
         setGroupSettingAdapter()
         loadGroupMember()
+        binding.settingActivity=this
     }
 
     private fun setGroupSettingAdapter() {
@@ -95,5 +96,9 @@ class GroupSettingActivity : AppCompatActivity() {
             )
         }
         groupSettingAdapter.refreshData(memberData)
+    }
+
+    fun back() {
+        finish()
     }
 }

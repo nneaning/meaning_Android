@@ -1,9 +1,4 @@
 /*
- * Created by jinsu4755
- * DESC:
- */
-
-/*
  * Created By: hyooosong
  * on 2021.01.05
  */
@@ -22,8 +17,15 @@ import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.FragmentGroupBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.GroupListResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
+import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.showError
+import retrofit2.Call
 
 
 class GroupFragment : Fragment() {
@@ -42,9 +44,9 @@ class GroupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setGroupAdapter()
-        loadMyGroupData()
+        loadNoImageGroup()
         setRecommendGroupAdapter()
-        loadRecommendGroupData()
+        loadHasImageGroup()
 
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
@@ -60,44 +62,6 @@ class GroupFragment : Fragment() {
         }
     }
 
-    private fun loadMyGroupData() {
-        var myGroupData = mutableListOf<GroupData>()
-
-        myGroupData.apply {
-            add(
-                GroupData(
-                    "CPA 공시생 아침인증 그룹",
-                    "3/5"
-                )
-            )
-            add(
-                GroupData(
-                    "서울 대학생 그룹",
-                    "2/5"
-                )
-            )
-            add(
-                GroupData(
-                    "진수 공주 그룹",
-                    "5/5"
-                )
-            )
-            add(
-                GroupData(
-                    "형준 공주 그룹",
-                    "4/5"
-                )
-            )
-            add(
-                GroupData(
-                    "형준 공주 그룹",
-                    "4/5"
-                )
-            )
-        }
-        groupAdapter.refreshData(myGroupData)
-    }
-
     private fun setRecommendGroupAdapter() {
         recommendAdapter = RecommendGroupAdapter(requireContext())
         binding.rcvGroupRecommend.apply {
@@ -107,39 +71,54 @@ class GroupFragment : Fragment() {
         }
     }
 
-    private fun loadRecommendGroupData() {
-        var recommendGroupData = mutableListOf<RecommendGroupData>()
+    private fun loadNoImageGroup() {
+        val call: Call<BaseResponse<GroupListResponse>> =
+            MeaningService.getInstance().getGroupList(meaningToken)
+        call.customEnqueue(
+            onSuccess = {
+                val noImageGroup = it.data?.noImageGroupList
+                val noImageGroupData = mutableListOf<GroupData>()
+                for (i in noImageGroup!!.indices) {
+                    noImageGroupData.apply {
+                        add(
+                            GroupData(
+                                noImageGroup[i].groupName,
+                                noImageGroup[i].countMember.toString() + "/" + noImageGroup[i].maximumMemberNumber.toString()
+                            )
+                        )
+                    }
+                }
+                groupAdapter.refreshData(noImageGroupData)
+            },
+            onError = {
+                showError(requireContext(), it)
+            }
+        )
+    }
 
-        recommendGroupData.apply {
-            add(
-                RecommendGroupData(
-                    "경기 안양 미라클 모임",
-                    "25",
-                    R.drawable.group_card_1_img
-                )
-            )
-            add(
-                RecommendGroupData(
-                    "서울 대학생 그룹",
-                    "55",
-                    R.drawable.group_card_2_img
-                )
-            )
-            add(
-                RecommendGroupData(
-                    "진수 최고 그룹",
-                    "13",
-                    R.drawable.group_card_3_img
-                )
-            )
-            add(
-                RecommendGroupData(
-                    "형준 바보 그룹",
-                    "99",
-                    R.drawable.group_card_4_img
-                )
-            )
-        }
-        recommendAdapter.refreshData(recommendGroupData)
+    private fun loadHasImageGroup() {
+        val call: Call<BaseResponse<GroupListResponse>> =
+            MeaningService.getInstance().getGroupList(meaningToken)
+        call.customEnqueue(
+            onSuccess = {
+                val ImageGroupList = it.data?.hasImageGroupList
+                val hasImageGroupData = mutableListOf<RecommendGroupData>()
+                for (i in ImageGroupList!!.indices) {
+                    hasImageGroupData.apply {
+                        add(
+                            RecommendGroupData(
+                                ImageGroupList[i].groupName,
+                                ImageGroupList[i].countMember.toString(),
+                                ImageGroupList[i].imageUrl
+                            )
+                        )
+                    }
+                }
+                recommendAdapter.refreshData(hasImageGroupData.toMutableList())
+            },
+            onError = {
+                showError(requireContext(), it)
+            }
+        )
     }
 }

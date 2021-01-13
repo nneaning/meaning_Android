@@ -11,6 +11,7 @@ import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.network.response.CardDailyDiaryResponse
 import meaning.morning.network.response.CardTodayPromise
+import meaning.morning.network.response.GroupListResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -37,6 +38,12 @@ interface MeaningService {
     fun requestDayPromise(
         @Header("token") token: String
     ): Call<BaseResponse<CardTodayPromise>>
+
+    //그룹 리스트 연결
+    @GET("/group?offset=0")
+    fun getGroupList(
+        @Header("token") token: String?
+    ): Call<BaseResponse<GroupListResponse>>
 
     //미션 3. 회고 일기 작성
     @POST("/user/dailydiary")

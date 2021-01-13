@@ -1,9 +1,4 @@
 /*
- * Created by jinsu4755
- * DESC:
- */
-
-/*
  * Created By: hyooosong
  * on 2021.01.05
  */
@@ -18,39 +13,40 @@ import meaning.morning.BindingDialog
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.ItemGroupRecommendBinding
 
-class RecommendGroupAdapter(context: Context) : RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
-    private val data: MutableList<RecommendGroupData> = mutableListOf()
+class RecommendGroupAdapter(context: Context) :
+    RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
     private val dialog = BindingDialog(context)
+    private var imageGroupData = mutableListOf<RecommendGroupData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ItemGroupRecommendBinding
+        val view = ItemGroupRecommendBinding
             .inflate(layoutInflater, parent, false)
             .let { VHolder(it) }
+
+        return view
     }
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        holder.onBind(data[position])
-
-        holder.sign.setOnClickListener {
+        holder.cardView.setOnClickListener {
             dialog.showDetailDialog()
         }
+        holder.onBind(imageGroupData[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = imageGroupData.size
 
     fun refreshData(list: List<RecommendGroupData>) {
-        data.addAll(list)
+        imageGroupData.addAll(list)
         notifyDataSetChanged()
     }
 
     class VHolder(
         private val binding: ItemGroupRecommendBinding
-        ) : RecyclerView.ViewHolder(binding.root) {
-        val sign = binding.textviewSignGroup
-        fun onBind(data: RecommendGroupData) {
-            binding.imageviewGroupRecommend.setImageResource(data.groupImage)
-            binding.recommendGroup = data
+    ) : RecyclerView.ViewHolder(binding.root) {
+        val cardView = binding.cardviewRecommendGroup
+        fun onBind(data: RecommendGroupData){
+            binding.recommendGroup=data
         }
     }
 }
