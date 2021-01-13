@@ -9,6 +9,7 @@ package meaning.morning.network
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.network.response.CardTodayPromise
+import meaning.morning.network.response.GroupListResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -32,9 +33,18 @@ interface MeaningService {
         @Header("token") token: String
     ): Call<BaseResponse<CardTodayPromise>>
 
+    //그룹 리스트 연결
+    @GET("/group?offset=0")
+    fun getGroupList(
+        @Header("token") token: String?
+    ): Call<BaseResponse<GroupListResponse>>
+
     companion object {
         @Volatile
         private var instance: MeaningService? = null
+
+        const val meaningToken =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiLrsJXtmqjshqEiLCJpYXQiOjE2MTA0NjgyMTIsImV4cCI6MTYxMjI4MjYxMiwiaXNzIjoiU2VydmVyQmFkIn0.sVKcyYHYkEe3nq5xi36hQDLn1XWpxI6l_ermMBt3aYE"
 
         fun getInstance(): MeaningService = instance ?: synchronized(this) {
             instance ?: provideService(MeaningService::class.java)

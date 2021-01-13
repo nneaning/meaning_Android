@@ -21,6 +21,7 @@ import meaning.morning.R
 import meaning.morning.data.HomeCardData
 import meaning.morning.databinding.FragmentHomeBinding
 import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.presentation.adapter.home.CalendarAdapter
@@ -211,42 +212,6 @@ class HomeFragment : Fragment() {
             })
     }
 
-    /*     homeCardAdapter.setItemClickListener(object : HomeCardAdapter.ItemClickListener {
-        override fun onClick(view: View, position: Int) {
-            if (position == 0) {
-                sendMission1()
-            } else if (position == 1) {
-                sendMission2()
-            } else if (position == 2) {
-                sendMission3()
-            } else if (position == 3) {
-                sendMission4()
-            }
-        }
-    })
-}
-
-private fun sendMission1() {
-    val intent = Intent(requireContext(), CardTimeStampActivity::class.java)
-    startActivity(intent)
-}
-
-private fun sendMission2() {
-    val intent = Intent(requireContext(), CardPromiseActivity::class.java)
-    startActivity(intent)
-}
-
-private fun sendMission3() {
-    val intent = Intent(requireContext(), CardWriteDiaryActivity::class.java)
-    startActivity(intent)
-}
-
-private fun sendMission4() {
-    val intent = Intent(requireContext(), CardReadingActivity::class.java)
-    startActivity(intent)
-}
-*/
-
     private fun changeIntent(activity: AppCompatActivity) {
         val intent = Intent(requireContext(), activity::class.java)
         startActivity(intent)
@@ -258,9 +223,7 @@ private fun sendMission4() {
     }
 
     private fun loadCalendarData() {
-        val call: Call<BaseResponse<CalendarResponse>> = MeaningService.getInstance().getCalendar(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiLrsJXtmqjshqEiLCJpYXQiOjE2MTA0NjgyMTIsImV4cCI6MTYxMjI4MjYxMiwiaXNzIjoiU2VydmVyQmFkIn0.sVKcyYHYkEe3nq5xi36hQDLn1XWpxI6l_ermMBt3aYE"
-        )
+        val call: Call<BaseResponse<CalendarResponse>> = MeaningService.getInstance().getCalendar(meaningToken)
         call.customEnqueue(
             onSuccess = {
                 val calendar = it.data!!.calendar

@@ -1,9 +1,4 @@
 /*
- * Created by jinsu4755
- * DESC:
- */
-
-/*
  * Created By: hyooosong
  * on 2021.01.07
  */
