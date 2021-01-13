@@ -13,11 +13,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
 import meaning.morning.data.HomeCardData
 import meaning.morning.databinding.FragmentHomeBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.CalendarResponse
 import meaning.morning.presentation.adapter.home.CalendarAdapter
 import meaning.morning.presentation.adapter.home.HomeCardAdapter
 import meaning.morning.presentation.home.card.CardPromiseActivity
@@ -26,6 +31,10 @@ import meaning.morning.presentation.home.card.CardTimeStampActivity
 import meaning.morning.presentation.home.card.CardWriteDiaryActivity
 import meaning.morning.presentation.home.feed.MyFeedMainActivity
 import meaning.morning.utils.HomeCardItemDecoreation
+import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.showError
+import retrofit2.Call
+import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -34,6 +43,7 @@ class HomeFragment : Fragment() {
     private var isCardView: Boolean = true
     private var isFirstAnim: Boolean = true
     private var mediumAnimationDuration: Int = 0
+    var starData = arrayListOf<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +56,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mediumAnimationDuration = resources.getInteger(android.R.integer.config_mediumAnimTime)
         initView()
+
         showCurrentMonth(Calendar.getInstance())
+        loadCalendarData()
+        setToday()
+        calendarOnClick(binding.tvDate)
 
         setCardListRcv()
-        mediumAnimationDuration = resources.getInteger(android.R.integer.config_mediumAnimTime)
-        calendarOnClick(binding.tvDate)
         clickMyFeedImage()
     }
 
@@ -62,13 +75,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun calendarOnClick(calendatBtn: TextView) {
-        calendatBtn.setOnClickListener {
+    private fun calendarOnClick(calendarBtn: TextView) {
+        calendarBtn.setOnClickListener {
             if (isFirstAnim) {
                 firstAnim()
-                isFirstAnim=false
+                isFirstAnim = false
             }
-            toggleHomeView(binding.tvDate)
+            toggleHomeView(binding.layoutDate)
         }
     }
 
@@ -77,16 +90,20 @@ class HomeFragment : Fragment() {
         binding.textviewCurrentMonth.text = "${currentMonth}월"
     }
 
-    private fun toggleHomeView(dateText: TextView) {
+    private fun toggleHomeView(dateText: ConstraintLayout) {
         if (isCardView) {
             dateText.setBackgroundResource(R.drawable.main_calendar_button)
-            dateText.setTextColor(Color.parseColor("#F6FAFB"))
+            binding.tvDate.setTextColor(Color.parseColor("#F6FAFB"))
+            binding.imageviewArrowCalendar.visibility = View.VISIBLE
+            binding.imageviewArrowCard.visibility = View.INVISIBLE
             calendarViewVisibility()
             isCardView = false
             return
         }
         dateText.setBackgroundResource(R.drawable.main_date_button)
-        dateText.setTextColor(Color.parseColor("#17234D"))
+        binding.tvDate.setTextColor(Color.parseColor("#17234D"))
+        binding.imageviewArrowCalendar.visibility = View.INVISIBLE
+        binding.imageviewArrowCard.visibility = View.VISIBLE
         cardViewVisibility()
         isCardView = true
     }
@@ -119,6 +136,7 @@ class HomeFragment : Fragment() {
                 }
             })
     }
+
     private fun firstAnim() {
         binding.layoutHomeCardView.apply {
             visibility = View.VISIBLE
@@ -142,10 +160,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun clickMyFeedImage(){
+    private fun clickMyFeedImage() {
         binding.ivMyPage.setOnClickListener {
-            val intent = Intent(requireContext(),MyFeedMainActivity::class.java)
-            startActivity(intent)
+            changeIntent(MyFeedMainActivity())
         }
     }
 
@@ -181,38 +198,82 @@ class HomeFragment : Fragment() {
         }
         homeCardAdapter.submitData(homeCardData)
 
-        homeCardAdapter.setItemClickListener(object : HomeCardAdapter.ItemClickListener {
-            override fun onClick(view: View, position: Int) {
-                if (position == 0) {
-                    sendMission1()
-                } else if (position == 1) {
-                    sendMission2()
-                } else if (position == 2) {
-                    sendMission3()
-                } else if (position == 3) {
-                    sendMission4()
+        homeCardAdapter.setItemClickListener(
+            object : HomeCardAdapter.ItemClickListener {
+                override fun onClick(view: View, position: Int) {
+                    when (position) {
+                        0 -> changeIntent(CardTimeStampActivity())
+                        1 -> changeIntent(CardPromiseActivity())
+                        2 -> changeIntent(CardWriteDiaryActivity())
+                        3 -> changeIntent(CardReadingActivity())
+                    }
                 }
+            })
+    }
+
+    /*     homeCardAdapter.setItemClickListener(object : HomeCardAdapter.ItemClickListener {
+        override fun onClick(view: View, position: Int) {
+            if (position == 0) {
+                sendMission1()
+            } else if (position == 1) {
+                sendMission2()
+            } else if (position == 2) {
+                sendMission3()
+            } else if (position == 3) {
+                sendMission4()
             }
-        })
-    }
+        }
+    })
+}
 
-    private fun sendMission1() {
-        val intent = Intent(requireContext(), CardTimeStampActivity::class.java)
+private fun sendMission1() {
+    val intent = Intent(requireContext(), CardTimeStampActivity::class.java)
+    startActivity(intent)
+}
+
+private fun sendMission2() {
+    val intent = Intent(requireContext(), CardPromiseActivity::class.java)
+    startActivity(intent)
+}
+
+private fun sendMission3() {
+    val intent = Intent(requireContext(), CardWriteDiaryActivity::class.java)
+    startActivity(intent)
+}
+
+private fun sendMission4() {
+    val intent = Intent(requireContext(), CardReadingActivity::class.java)
+    startActivity(intent)
+}
+*/
+
+    private fun changeIntent(activity: AppCompatActivity) {
+        val intent = Intent(requireContext(), activity::class.java)
         startActivity(intent)
     }
 
-    private fun sendMission2() {
-        val intent = Intent(requireContext(), CardPromiseActivity::class.java)
-        startActivity(intent)
+    private fun setToday() {
+        val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREAN)
+        binding.tvDate.text = dateFormat.format(Calendar.getInstance().time)
     }
 
-    private fun sendMission3() {
-        val intent = Intent(requireContext(), CardWriteDiaryActivity::class.java)
-        startActivity(intent)
-    }
+    private fun loadCalendarData() {
+        val call: Call<BaseResponse<CalendarResponse>> = MeaningService.getInstance().getCalendar(
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiLrsJXtmqjshqEiLCJpYXQiOjE2MTA0NjgyMTIsImV4cCI6MTYxMjI4MjYxMiwiaXNzIjoiU2VydmVyQmFkIn0.sVKcyYHYkEe3nq5xi36hQDLn1XWpxI6l_ermMBt3aYE"
+        )
+        call.customEnqueue(
+            onSuccess = {
+                val calendar = it.data!!.calendar
+                binding.textviewDateLabelCount.text = "${it.data!!.successDays}번째"
 
-    private fun sendMission4() {
-        val intent = Intent(requireContext(), CardReadingActivity::class.java)
-        startActivity(intent)
+                for (i in calendar.indices) {
+                    starData.add(calendar[i].status)
+                }
+                calendaradapter.dataToAdapter(starData.toList())
+            },
+            onError = {
+                showError(requireContext(), it)
+            }
+        )
     }
 }

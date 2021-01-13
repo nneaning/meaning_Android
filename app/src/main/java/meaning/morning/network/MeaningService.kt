@@ -7,6 +7,7 @@
 package meaning.morning.network
 
 import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.CalendarResponse
 import meaning.morning.network.response.CardTodayPromise
 import retrofit2.Call
 import retrofit2.http.GET
@@ -18,6 +19,12 @@ interface MeaningService {
     * @Annotaion
     * fun request0000():Call<BaseResponse<DataClass or any >>
     * */
+
+    //캘린더 연결
+    @GET("/timestamp/calendar")
+    fun getCalendar(
+        @Header("token") token: String?
+    ): Call<BaseResponse<CalendarResponse>>
 
     /*오늘 하루 다짐*/
     @GET("/user/daypromise")
