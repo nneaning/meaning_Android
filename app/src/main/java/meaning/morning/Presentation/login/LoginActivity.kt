@@ -1,16 +1,22 @@
 /*
  * Created by jinsu4755
- * DESC:
+ * DESC: Login Feature
  */
 
 package meaning.morning.presentation.login
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import meaning.morning.R
+import meaning.morning.databinding.ActivityLoginBinding
+import meaning.morning.presentation.FragmentChangeActivity
 
-class LoginActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+class LoginActivity : FragmentChangeActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val binding: ActivityLoginBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_login)
+
     }
 }
