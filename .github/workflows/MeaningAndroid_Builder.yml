@@ -1,82 +1,9 @@
-# name: MeaningAndroid Builder
+name: MeaningAndroid Builder
 
-# on:
-#   push:
-#     branches: [ develop ]
-#   pull_request:
-#     branches: [ develop ]
+on:
+  push:
+    branches: [ develop ]
 
-# defaults:
-#   run:
-#     shell: bash
-#     working-directory: .
-
-# jobs:
-#   build:
-#     name: Generate APK
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-
-#       - name: Gradle cache
-#         uses: actions/cache@v2
-#         with:
-#           path: |
-#             ~/.gradle/caches
-#             ~/.gradle/wrapper
-#           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-#           restore-keys: |
-#             ${{ runner.os }}-gradle-
-
-#       - name: set up JDK 1.8
-#         uses: actions/setup-java@v1
-#         with:
-#           java-version: 1.8
-
-#       - name: Change gradlew permissions
-#         run: chmod +x ./gradlew
-        
-#       - name: Build with Gradle
-#         run: ./gradlew assembleDebug
-
-#       - name: On Failed, Notify in Slack
-#         if: ${{ failure() }}
-#         uses: rtCamp/action-slack-notify@v2
-#         env:
-#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-#           SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
-#           MSG_MINIMAL: true
-#           SLACK_MESSAGE: '에러를 확인해주세요'
-      
-#       - name: Upload APK
-#         if: ${{ success() }}
-#         uses: actions/upload-artifact@v2
-#         with:
-#           path: app/build/outputs
-
-#       - name: Rename Debug apk name
-#         if: ${{ success() }}
-#         run: |
-#           mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
-#           echo `apk=미닝-Debug.apk` >> $GITHUB_ENV
-
-#       - name: On success, Notify in Slack
-#         if: ${{ success() }}
-#         uses: rtCamp/action-slack-notify@v2
-#         env:
-#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-#           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-#           MSG_MINIMAL: true
-#           SLACK_MESSAGE: 'apk가 생성되었습니다.'
-
-#       - name: Upload APK at Slack
-#         if: ${{ success() }}
-#         run: |
-#           curl -X POST -F file=@$apk -F channels=${{secrets.SLACK_CHANNEL_ID}} -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" https:slack.com/api/files.upload
-
-name: Android Build
-on: [push]
 defaults:
   run:
     shell: bash
@@ -84,12 +11,12 @@ defaults:
 
 jobs:
   build:
+    name: Generate APK
     runs-on: ubuntu-latest
-    name: InstrumentationTest + Build
-    if: "!contains(toJSON(github.event.commits.*.message), '[skip action]') && !startsWith(github.ref, 'refs/tags/')"
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
+
       - name: Gradle cache
         uses: actions/cache@v2
         with:
@@ -99,46 +26,51 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
 
-      - name: Build Debug
-        if: ${{ !contains(github.ref, 'develop') }}
+      - name: Change gradlew permissions
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
         run: ./gradlew assembleDebug
 
-      - name: Archive artifacts
+      - name: On Failed, Notify in Slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
+          MSG_MINIMAL: true
+          SLACK_MESSAGE: '에러를 확인해주세요'
+
+      - name: Upload APK
+        if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
           path: app/build/outputs
+
       - name: Update Release apk name
-        if: ${{ success() && contains(github.ref, 'develop') }}
+        if: ${{ success() && contains(github.ref, 'master') }}
         run: |
-          mv app/build/outputs/apk/release/app-release.apk 미닝-Debug.apk
+          mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
           echo 'apk=미닝-Debug.apk' >> $GITHUB_ENV
-      - name: Upload APK
-        if: ${{ success() && contains(github.ref, 'develop') }}
+      - name: On success, Notify in Slack
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+          MSG_MINIMAL: true
+          SLACK_MESSAGE: 'apk가 생성되었습니다.'
+
+      - name: Upload APK at Slack
+        if: ${{ success() }}
         run: |
           curl -X POST \
           -F file=@$apk \
           -F channels=${{secrets.SLACK_CHANNEL_ID}} \
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
-      - name: On success, Notify with Slack
-        if: ${{ success() && contains(github.ref, 'develop') }}
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_TITLE: '안드로이드 릴리즈 빌드 성공 ✅'
-          MSG_MINIMAL: true
-          SLACK_MESSAGE: 'apk가 생성되었습니다'
-      - name: On fail, Notify with Slack
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_TITLE: '안드로이드 빌드 실패 ❌'
-          MSG_MINIMAL: false
-          SLACK_MESSAGE: '에러를 확인해주세요'
-
-          
-      
-        
-
