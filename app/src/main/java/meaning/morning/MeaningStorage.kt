@@ -1,6 +1,7 @@
 package meaning.morning
 
 import android.content.Context
+import android.util.Log
 
 class MeaningStorage (context: Context) {
     private val meaningSharedPref = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
@@ -10,6 +11,23 @@ class MeaningStorage (context: Context) {
         meaningEdit.putString("groupName", groupName)
         meaningEdit.putString("memberCount", memberCount)
         meaningEdit.putString("groupContent", groupContent)
+        meaningEdit.apply()
+    }
+
+    fun saveMission1(successMission1 : Int){
+        meaningEdit.putInt("successMission1",successMission1)
+        meaningEdit.apply()
+    }
+    fun saveMission2(successMission2 : Int){
+        meaningEdit.putInt("successMission2",successMission2)
+        meaningEdit.apply()
+    }
+    fun saveMission3(successMission3 : Int){
+        meaningEdit.putInt("successMission3",successMission3)
+        meaningEdit.apply()
+    }
+    fun saveMission4(successMission4 : Int){
+        meaningEdit.putInt("successMission4",successMission4)
         meaningEdit.apply()
     }
 
