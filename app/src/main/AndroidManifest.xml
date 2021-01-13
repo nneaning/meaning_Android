@@ -9,10 +9,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_meaning_icon"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_meaning_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeaning">
         <activity android:name=".presentation.home.card.CardReadingActivity"/>
@@ -24,7 +24,8 @@
         <activity android:name=".presentation.group.AddGroupActivity" />
         <activity android:name=".presentation.home.MainActivity" />
         <activity android:name=".presentation.group.GroupBlankActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/Theme.Andromeaning.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,6 +38,8 @@
             android:theme="@style/Theme.Andromeaning.camera"/>
         <activity android:name=".presentation.group.feed.GroupFeedActivity"/>
         <activity android:name=".presentation.home.feed.MyFeedMainActivity"/>
+        <activity android:name=".presentation.login.LoginActivity"
+            android:theme="@style/Theme.Andromeaning.login"/>
     </application>
 
 </manifest>

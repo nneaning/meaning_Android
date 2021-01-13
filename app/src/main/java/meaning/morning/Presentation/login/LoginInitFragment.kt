@@ -11,24 +11,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import meaning.morning.R
-import meaning.morning.databinding.FragmentLoginContentBinding
+import meaning.morning.databinding.FragmentLoginInitBinding
 
-class LoginContentFragment : Fragment() {
-
-    private val loginViewModel:LoginViewModel by activityViewModels()
-
+class LoginInitFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentLoginContentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_login_content, container, false
+        val binding:FragmentLoginInitBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_login_init, container, false
         )
-        binding.viewModel = loginViewModel
-        binding.lifecycleOwner = this
         return binding.root
     }
 }
