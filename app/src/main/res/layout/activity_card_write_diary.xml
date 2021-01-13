@@ -73,7 +73,7 @@
             android:paddingRight="12dp"
             android:paddingTop="12dp"
             android:gravity="top"
-            android:hint="나만 볼 수 있는 자기 회고 및 감사 일기를 써보세요!\n기분 좋은 아침을 시작하게 될 거에요"
+            android:hint="자기 회고 및 감사 일기를 써보세요!\n기분 좋은 아침을 시작하게 될 거에요"
             android:textSize="15sp"
             android:text="@={mission3.writeDairy}"
             android:fontFamily="@font/spoqahansansneo_regular"
