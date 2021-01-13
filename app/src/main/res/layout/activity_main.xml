@@ -23,13 +23,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-
         </FrameLayout>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/cd_layout"
-            android:background="@color/meaning_ivory_F6"
+            android:backgroundTint="@android:color/transparent"
             android:layout_width="0dp"
             android:layout_height="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
