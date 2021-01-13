@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="BlankgroupActivity"
             type="meaning.morning.presentation.group.GroupBlankActivity" />
@@ -14,7 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".presentation.group.GroupBlankActivity">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_blank_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,33 +25,38 @@
 
             <ImageView
                 android:id="@+id/imageview_backBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->BlankgroupActivity.backToGroupList()}"
                 android:src="@drawable/back_btn"
-                android:onClick="@{()->BlankgroupActivity.backToGroupList()}"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textview_group_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/imageview_backBtn"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="9dp"
                 android:fontFamily="@font/spoqahansansneo_medium"
                 android:text="그룹 이름"
                 android:textColor="@color/grey1_33"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageview_group_setting"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="5dp"
+                android:onClick="@{()->BlankgroupActivity.goToGroupSetting()}"
                 android:src="@drawable/frame_38"
-                android:onClick="@{()->BlankgroupActivity.goToGroupSetting()}"/>
-        </RelativeLayout>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_blank_label"
@@ -122,13 +128,13 @@
             android:layout_marginTop="72dp"
             android:background="@drawable/group_button_background"
             android:fontFamily="@font/spoqahansansneo_medium"
+            android:onClick="@{()->BlankgroupActivity.goToHome()}"
             android:paddingHorizontal="97dp"
             android:paddingTop="18dp"
             android:paddingBottom="20dp"
             android:text="홈으로 돌아가기"
             android:textColor="@color/meaning_white_FF"
             android:textSize="15dp"
-            android:onClick="@{()->BlankgroupActivity.goToHome()}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_indicate_label" />
 

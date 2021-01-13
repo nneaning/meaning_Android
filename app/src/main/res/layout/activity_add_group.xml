@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="addgroupActivity"
             type="meaning.morning.presentation.group.AddGroupActivity" />
@@ -15,7 +16,7 @@
         android:background="@color/meaning_ivory_F6"
         tools:context=".presentation.group.AddGroupActivity">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_add_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,24 +26,26 @@
 
             <ImageView
                 android:id="@+id/imageview_backBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="@{()->addgroupActivity.backToGroupList()}"
-                android:src="@drawable/back_btn" />
+                android:src="@drawable/back_btn"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textview_add_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/imageview_backBtn"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="9dp"
                 android:fontFamily="@font/spoqahansansneo_medium"
                 android:text="그룹 생성"
                 android:textColor="@color/grey1_33"
-                android:textSize="17sp" />
-        </RelativeLayout>
+                android:textSize="17sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textview_group_name"
