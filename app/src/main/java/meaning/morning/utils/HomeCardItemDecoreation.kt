@@ -9,10 +9,8 @@ import kotlin.math.roundToInt
 
 class HomeCardItemDecoreation (private val context: Context) : RecyclerView.ItemDecoration(){
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        val pos = parent.getChildLayoutPosition(view)
 
         val horizontalGap = toPixel(20)
-
         outRect.right = horizontalGap / 2
     }
 
