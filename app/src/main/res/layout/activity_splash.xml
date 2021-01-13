@@ -11,16 +11,34 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/meaning_splash"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="mn_splash5.json"
-        app:lottie_loop="true"
-        android:scaleType="centerCrop"
+        app:lottie_loop="false"
         app:lottie_repeatMode="restart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/splash_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="197dp"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container_splash_logo"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/splash_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

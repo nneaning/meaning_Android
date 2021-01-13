@@ -22,7 +22,7 @@ fun <responseType> Call<responseType>.customEnqueue(
                 return
             }
             Log.d("customEnqueueError","커스텀인큐에러")
-            Error(response)
+            /*Error(response)*/
         }
 
     })

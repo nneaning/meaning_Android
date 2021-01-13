@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by jinsu4755
+  ~ DESC:
+  -->
+
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_meaning_icon_background"/>
+    <foreground android:drawable="@mipmap/ic_meaning_icon_foreground"/>
+</adaptive-icon>
