@@ -21,15 +21,10 @@ fun <responseType> Call<responseType>.customEnqueue(
                 Success(response)
                 return
             }
-            showError(response.errorBody())
+            Log.d("customEnqueueError","커스텀인큐에러")
+            Error(response)
         }
 
-        private fun showError(error: ResponseBody?) {
-            val e = error ?: return
-            val ob = JSONObject(e.string())
-            Log.d("showError", ob.getString("messeage"))
-        }
     })
-
 
 }

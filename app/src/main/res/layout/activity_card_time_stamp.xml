@@ -19,26 +19,27 @@
             android:id="@+id/ct_topbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:onClick="@{()->mission1.backToHome()}"
                 android:src="@drawable/back_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{()->mission1.backToHome()}"
-                android:layout_marginStart="5dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:includeFontPadding="false"
-                android:fontFamily="@font/spoqahansansneo_medium"
-                android:text="기상 인증"
                 android:layout_marginTop="11dp"
+                android:fontFamily="@font/spoqahansansneo_medium"
+                android:includeFontPadding="false"
+                android:text="기상 인증"
                 android:textColor="@color/grey1_33"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
