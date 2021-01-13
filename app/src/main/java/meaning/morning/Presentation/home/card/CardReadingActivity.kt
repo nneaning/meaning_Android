@@ -1,12 +1,8 @@
 /*
- * Created by jinsu4755
+ * Created by LEE-HYUNGJUN
  * DESC:
  */
 
-/*
- * Created by jinsu4755
- * DESC:
- */
 
 package meaning.morning.presentation.home.card
 
@@ -19,8 +15,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardReadingBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
+import meaning.morning.network.request.CardBookReadingRequest
+import meaning.morning.network.request.CardDailyDiaryRequest
+import meaning.morning.utils.customEnqueue
 
 class CardReadingActivity : AppCompatActivity() {
 
@@ -42,17 +44,33 @@ class CardReadingActivity : AppCompatActivity() {
 
     private fun pressBtnReading(textView: TextView) {
         textView.setOnClickListener {
-            if (!checkNull()) {
-
+            if (checkNotNull()) {
+                connectBookReadingServer()
+                MeaningStorage(this).saveMission4(1)
+                finish()
             } else {
                 Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun connectBookReadingServer() {
+        MeaningService.getInstance()
+            .requestBookReading(
+                meaningToken,
+                CardBookReadingRequest(bookContents.get().toString(), bookTitle.get().toString())
+            ).customEnqueue(
+                Success = { response ->
 
-    private fun checkNull() : Boolean{
-        return (bookTitle.get().isNullOrBlank() && (bookContents.get().isNullOrBlank()))
+                },
+                Fail = {
+
+                }
+            )
+    }
+
+    private fun checkNotNull(): Boolean {
+        return (!(bookTitle.get().isNullOrEmpty()) && !((bookContents.get().isNullOrEmpty())))
     }
 
     private fun countTextNumReading(etBookContents: EditText) {
