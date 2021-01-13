@@ -53,7 +53,7 @@ jobs:
         if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
-          path: app/build/outputs
+          path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: On success, Notify in Slack
         if: ${{ success() }}
