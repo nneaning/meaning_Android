@@ -35,7 +35,7 @@ class CameraViewModel : ViewModel() {
     }
 
     companion object {
-        const val TIME_FORMAT = "hh : mm"
+        const val TIME_FORMAT = "hh:mm"
         const val DATE_FORMAT = "yyyy년 MM월 dd일 (EE)"
         const val REQUEST_CODE_PERMISSIONS = 10
     }
