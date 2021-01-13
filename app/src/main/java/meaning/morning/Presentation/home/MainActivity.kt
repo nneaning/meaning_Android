@@ -5,12 +5,14 @@
 
 package meaning.morning.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
 import meaning.morning.databinding.ActivityMainBinding
+import meaning.morning.presentation.camera.TimeStampCameraActivity
 import meaning.morning.presentation.group.GroupFragment
 
 class MainActivity : AppCompatActivity() {
@@ -25,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.mainActivity = this
 
-
         changeFragment(homeFragment)
         initNavigationBar()
+        initFloatingButtonEvent()
     }
 
     private fun initNavigationBar() {
@@ -56,4 +58,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.frame_layout, fragment)
             .commit()
     }
+
+    private fun initFloatingButtonEvent() {
+        binding.floatingActionButton.setOnClickListener {
+            val intent = Intent(this, TimeStampCameraActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 }

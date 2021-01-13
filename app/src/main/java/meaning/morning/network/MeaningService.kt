@@ -8,6 +8,7 @@ package meaning.morning.network
 
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
+import meaning.morning.network.response.CardTodayPromise
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -24,6 +25,12 @@ interface MeaningService {
     fun getCalendar(
         @Header("token") token: String?
     ): Call<BaseResponse<CalendarResponse>>
+
+    /*오늘 하루 다짐*/
+    @GET("/user/daypromise")
+    fun requestDayPromise(
+        @Header("token") token: String
+    ): Call<BaseResponse<CardTodayPromise>>
 
     companion object {
         @Volatile

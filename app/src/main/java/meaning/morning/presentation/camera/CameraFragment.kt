@@ -42,12 +42,14 @@ class CameraFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = cameraViewModel
         initView(binding)
-        cameraViewModel.runCurrentTimeThread()
+        cameraViewModel.runCurrentTimer()
         return binding.root
     }
 
     private fun initView(binding: FragmentCameraBinding) {
+        cameraViewModel.isEnableTimer = true
         startCamera()
+        binding.cameraCancel.setOnClickListener { requireActivity().onBackPressed() }
         binding.cameraTakePhoto.setOnClickListener {
             takePhoto()
         }
@@ -105,6 +107,7 @@ class CameraFragment : Fragment() {
 
     private fun imageCaptureEvent(image: Bitmap) {
         cameraViewModel.image = image
+        cameraViewModel.isEnableTimer = false
         (requireActivity() as TimeStampCameraActivity).changeFragment(
             CameraResultFragment(),
             null

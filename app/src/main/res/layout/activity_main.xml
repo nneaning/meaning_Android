@@ -24,13 +24,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/cd_layout"
             app:layout_constraintTop_toTopOf="parent">
-
-
         </FrameLayout>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/cd_layout"
-            android:background="@color/meaning_ivory_F6"
+            android:backgroundTint="@android:color/transparent"
             android:layout_width="0dp"
             android:layout_height="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,9 +68,7 @@
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/meaning_navy_17"
                 android:src="@drawable/nav_item_camera_icn"
-                android:tint="@color/white"
                 app:layout_anchor="@id/bottom_app_bar" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
