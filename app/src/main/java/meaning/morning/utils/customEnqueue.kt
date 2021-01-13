@@ -9,8 +9,7 @@ import retrofit2.Response
 
 fun <responseType> Call<responseType>.customEnqueue(
     Success: (Response<responseType>) -> Unit,
-    Fail: () -> Unit = {},
-    Error: (Response<responseType>) -> Unit = {}
+    Fail: () -> Unit = {}
 ) {
     this.enqueue(object : Callback<responseType> {
         override fun onFailure(call: Call<responseType>, t: Throwable) {
@@ -27,4 +26,5 @@ fun <responseType> Call<responseType>.customEnqueue(
         }
 
     })
+
 }

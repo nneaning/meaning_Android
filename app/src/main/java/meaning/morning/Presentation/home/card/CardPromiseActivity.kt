@@ -62,10 +62,11 @@ class CardPromiseActivity : AppCompatActivity() {
                     successDayPromiseResponse(response)
                 },
                 Fail = {
-                    Log.d("logFail", "fail")
+                    
                 }
             )
     }
+
 
     private fun successDayPromiseResponse(response: Response<BaseResponse<CardTodayPromise>>) {
         textViewFamousSaying.set(response.body()?.data?.contents)

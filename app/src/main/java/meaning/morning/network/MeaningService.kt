@@ -16,6 +16,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import meaning.morning.network.response.CalendarResponse
 
 interface MeaningService {
     /*TODO 서버 연결을 위한 함수는 여기
@@ -23,6 +24,13 @@ interface MeaningService {
     * @Annotaion
     * fun request0000():Call<BaseResponse<DataClass or any >>
     * */
+
+
+    //캘린더 연결
+    @GET("/timestamp/calendar")
+    fun getCalendar(
+        @Header("token") token: String?
+    ): Call<BaseResponse<CalendarResponse>>
 
     //미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
@@ -43,7 +51,6 @@ interface MeaningService {
         @Header("token") token: String,
         @Body body : CardBookReadingRequest
     ): Call<BaseResponse<CardBookReadingRequest>>
-
 
     companion object {
         @Volatile

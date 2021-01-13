@@ -10,6 +10,7 @@ class CalendarView {
     private val calendar = Calendar.getInstance()
     private var currentMonthMaxDate = 0
     var data = arrayListOf<Int>()
+    var starData = arrayListOf<Int>()
 
     init {
         calendar.time = Date()
