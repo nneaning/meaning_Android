@@ -9,7 +9,8 @@ import retrofit2.Response
 
 fun <responseType> Call<responseType>.customEnqueue(
     Success: (Response<responseType>) -> Unit,
-    Fail: () -> Unit = {}
+    Fail: () -> Unit = {},
+    Error: (Response<responseType>) -> Unit = {}
 ) {
     this.enqueue(object : Callback<responseType> {
         override fun onFailure(call: Call<responseType>, t: Throwable) {
@@ -21,15 +22,9 @@ fun <responseType> Call<responseType>.customEnqueue(
                 Success(response)
                 return
             }
-            showError(response.errorBody())
+            Log.d("customEnqueueError","커스텀인큐에러")
+            Error(response)
         }
 
-        private fun showError(error: ResponseBody?) {
-            val e = error ?: return
-            val ob = JSONObject(e.string())
-            Log.d("showError", ob.getString("messeage"))
-        }
     })
-
-
 }

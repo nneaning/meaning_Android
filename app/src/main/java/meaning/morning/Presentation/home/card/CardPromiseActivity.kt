@@ -16,6 +16,7 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardPromiseBinding
 import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CardTodayPromise
 import meaning.morning.utils.customEnqueue
@@ -24,7 +25,9 @@ import retrofit2.Response
 class CardPromiseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCardPromiseBinding
+
     val textViewFamousSaying = ObservableField<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +55,11 @@ class CardPromiseActivity : AppCompatActivity() {
     private fun connectDayPromiseServer() {
         MeaningService.getInstance()
             .requestDayPromise(
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiLrsJXtmqjshqEiLCJpYXQiOjE2MTA0NjgyMTIsImV4cCI6MTYxMjI4MjYxMiwiaXNzIjoiU2VydmVyQmFkIn0.sVKcyYHYkEe3nq5xi36hQDLn1XWpxI6l_ermMBt3aYE"
+                meaningToken
             )
             .customEnqueue(
                 Success = { response ->
-                    responseDayPromiseSuccess(response)
+                    successDayPromiseResponse(response)
                 },
                 Fail = {
                     Log.d("logFail", "fail")
@@ -64,7 +67,7 @@ class CardPromiseActivity : AppCompatActivity() {
             )
     }
 
-    private fun responseDayPromiseSuccess(response: Response<BaseResponse<CardTodayPromise>>) {
+    private fun successDayPromiseResponse(response: Response<BaseResponse<CardTodayPromise>>) {
         textViewFamousSaying.set(response.body()?.data?.contents)
     }
 
