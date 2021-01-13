@@ -3,8 +3,6 @@ name: MeaningAndroid Builder
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 defaults:
   run:
