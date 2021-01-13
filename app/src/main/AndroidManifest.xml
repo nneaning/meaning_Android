@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -14,14 +15,17 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Andromeaning">
         <activity android:name=".presentation.home.card.CardReadingActivity"/>
         <activity android:name=".presentation.home.card.CardWriteDiaryActivity" />
-        <activity android:name=".presentation.home.card.CardPromiseActivity" />
+        <activity android:name=".presentation.home.card.CardPromiseActivity"
+            android:theme="@style/Theme.Andromeaning"/>
         <activity android:name=".presentation.home.card.CardTimeStampActivity"/>
         <activity android:name=".presentation.group.feed.GroupSettingActivity" />
         <activity android:name=".presentation.group.CompleteGroupActivity" />
-        <activity android:name=".presentation.group.AddGroupActivity" />
+        <activity android:name=".presentation.group.AddGroupActivity"
+            android:theme="@style/Theme.Andromeaning"/>
         <activity android:name=".presentation.home.MainActivity" />
         <activity android:name=".presentation.group.GroupBlankActivity" />
         <activity android:name=".SplashActivity">

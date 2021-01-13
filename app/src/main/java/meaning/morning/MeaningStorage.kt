@@ -6,10 +6,18 @@ class MeaningStorage (context: Context) {
     private val meaningSharedPref = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
     private var meaningEdit = meaningSharedPref.edit()
 
+    val userToken : String?
+        get() = meaningSharedPref.getString("userToken",null)
+
     fun saveGroup(groupName: String, memberCount: String, groupContent: String) {
         meaningEdit.putString("groupName", groupName)
         meaningEdit.putString("memberCount", memberCount)
         meaningEdit.putString("groupContent", groupContent)
+        meaningEdit.apply()
+    }
+
+    fun saveUserToken(token: String) {
+        meaningEdit.putString("userToken", token)
         meaningEdit.apply()
     }
 
