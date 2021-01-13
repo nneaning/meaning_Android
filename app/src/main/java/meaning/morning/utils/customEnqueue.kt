@@ -17,20 +17,17 @@ fun <responseType> Call<responseType>.customEnqueue(
         }
 
         override fun onResponse(call: Call<responseType>, response: Response<responseType>) {
-            response.takeIf { it.isSuccessful }
-                ?.body()
-                ?.let {
-                    Success(response)
-                    return
-                } ?: let {
-                showError(response.errorBody())
+            if (response.isSuccessful) {
+                Success(response)
+                return
             }
+            showError(response.errorBody())
         }
 
         private fun showError(error: ResponseBody?) {
             val e = error ?: return
             val ob = JSONObject(e.string())
-            Log.d("showError",ob.getString("messeage"))
+            Log.d("showError", ob.getString("messeage"))
         }
     })
 
