@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="settingActivity"
+            type="meaning.morning.presentation.group.feed.GroupSettingActivity" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/back_btn"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{()->settingActivity.back()}"/>
 
             <TextView
                 android:id="@+id/textview_add_group"
