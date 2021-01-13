@@ -29,11 +29,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".presentation.group.feed.GroupFeedSnsActivity"/>
         <activity android:name=".presentation.home.feed.MyFeedSnsActivity"/>
-        <activity android:name=".presentation.camera.TimeStampCameraActivity"/>
+        <activity android:name=".presentation.camera.TimeStampCameraActivity"
+            android:theme="@style/Theme.Andromeaning.camera"/>
         <activity android:name=".presentation.group.feed.GroupFeedActivity"/>
         <activity android:name=".presentation.home.feed.MyFeedMainActivity"/>
     </application>
