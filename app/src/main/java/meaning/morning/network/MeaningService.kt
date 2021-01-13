@@ -13,6 +13,8 @@ interface MeaningService {
     * fun request0000():Call<BaseResponse<DataClass or any >>
     * */
 
+    
+
     companion object {
         @Volatile
         private var instance: MeaningService? = null
