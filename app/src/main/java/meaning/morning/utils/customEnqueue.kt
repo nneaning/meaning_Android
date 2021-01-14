@@ -21,7 +21,7 @@ fun <responseType> Call<responseType>.customEnqueue(
                 Success(response)
                 return
             }
-            Log.d("customEnqueueError","커스텀인큐에러")
+            Log.d("customEnqueueError", "커스텀인큐에러")
             /*Error(response)*/
         }
 

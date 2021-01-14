@@ -20,35 +20,34 @@ import meaning.morning.R
 import meaning.morning.databinding.ActivityCardTimeStampBinding
 
 class CardTimeStampActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityCardTimeStampBinding
+    private lateinit var binding: ActivityCardTimeStampBinding
     val recognitionWakeup = ObservableField<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_card_time_stamp)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_card_time_stamp)
         binding.mission1 = this
 
         pressBtnPictureUpload(binding.btnUpload)
 
     }
 
-    private fun pressBtnPictureUpload(textView: TextView){
+    private fun pressBtnPictureUpload(textView: TextView) {
         textView.setOnClickListener {
-           if(checkNull()){
-               Toast.makeText(this,"내용을 입력하세요",Toast.LENGTH_LONG).show()
-           }
-            else{
+            if (checkNull()) {
+                Toast.makeText(this, "내용을 입력하세요", Toast.LENGTH_LONG).show()
+            } else {
 
-           }
+            }
         }
     }
-  
-    private fun checkNull() : Boolean{
+
+    private fun checkNull(): Boolean {
         return recognitionWakeup.get().isNullOrEmpty()
     }
 
-    fun backToHome(){
+    fun backToHome() {
         finish()
     }
 }

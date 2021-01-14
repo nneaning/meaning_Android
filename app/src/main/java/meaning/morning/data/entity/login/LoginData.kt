@@ -6,6 +6,6 @@
 package meaning.morning.data.entity.login
 
 data class LoginData(
-    val email:String,
-    val password:String
+    val email: String,
+    val password: String
 )

@@ -17,7 +17,7 @@ import meaning.morning.presentation.group.GroupFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private val homeFragment = HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_bar_home -> {
-                        changeFragment(homeFragment)
+                        homeFragment.goCardHomeFragment()
                         return@setOnNavigationItemSelectedListener true
                     }
                     R.id.bottom_bar_group -> {

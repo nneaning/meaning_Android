@@ -30,7 +30,7 @@ class CalendarView {
     }
 
     private fun makeCurrentMonth(calendar: Calendar) {
-        for (i in 1 until calendar.getActualMaximum(Calendar.DATE)+1)
+        for (i in 1 until calendar.getActualMaximum(Calendar.DATE) + 1)
             data.add(i)
     }
 }

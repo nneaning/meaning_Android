@@ -45,6 +45,23 @@ fun AppCompatActivity.replaceFragmentWithAnimation(
         .commit()
 }
 
+fun AppCompatActivity.replaceViewWithAnimation(
+    @IdRes layoutId: Int,
+    changeFragment: Fragment,
+    backStackName: String?
+) {
+    supportFragmentManager.beginTransaction()
+        .setCustomAnimations(
+            R.anim.enter_from_right_fragment,
+            R.anim.fragment_fade_exit,
+            R.anim.fragment_open_enter,
+            R.anim.exit_to_right_fragment
+        )
+        .replace(layoutId, changeFragment)
+        .addToBackStack(backStackName)
+        .commit()
+}
+
 fun Activity.nextActivityAnimation() {
-    this.overridePendingTransition(R.anim.fragment_fade_enter,R.anim.fragment_fade_exit)
+    this.overridePendingTransition(R.anim.fragment_fade_enter, R.anim.fragment_fade_exit)
 }

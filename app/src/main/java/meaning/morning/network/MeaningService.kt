@@ -13,21 +13,34 @@ import meaning.morning.network.request.GroupJoinApproveRequest
 import meaning.morning.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.CalendarResponse
+import meaning.morning.network.response.CardDailyDiaryResponse
+import meaning.morning.network.response.CardTodayPromise
+import meaning.morning.network.response.GroupListResponse
+import meaning.morning.network.response.MyFeedResponse
+import meaning.morning.network.response.MyGroupResponse
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface MeaningService {
-    //캘린더 연결
+    // 캘린더 연결
     @GET("/timestamp/calendar")
     fun getCalendar(
         @Header("token") token: String?
     ): Call<BaseResponse<CalendarResponse>>
 
-    //그룹 리스트 연결
+    // 그룹 리스트 연결
     @GET("/group?offset=0")
     fun getGroupList(
         @Header("token") token: String?
     ): Call<BaseResponse<GroupListResponse>>
 
-    //가입 그룹 조회
+    // 가입 그룹 조회
     @GET("/group/my")
     fun getMyGroup(
         @Header("token") token: String?
@@ -61,25 +74,32 @@ interface MeaningService {
         @Body body: GroupAddRequest
     ): Call<BaseResponse<GroupAddResponse>>
 
-    //미션 2. 오늘 하루 다짐
+    // 미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
     fun requestDayPromise(
         @Header("token") token: String
     ): Call<BaseResponse<CardTodayPromise>>
 
-    //미션 3. 회고 일기 작성
+    // 미션 3. 회고 일기 작성
     @POST("/user/dailydiary")
     fun requestDailyDaiary(
-        @Header("token") token : String,
-        @Body body : CardDailyDiaryRequest
+        @Header("token") token: String,
+        @Body body: CardDailyDiaryRequest
     ): Call<BaseResponse<CardDailyDiaryResponse>>
 
-    //미션 4. 짧은 독서 작성
+    // 미션 4. 짧은 독서 작성
     @POST("/user/bookreview")
     fun requestBookReading(
         @Header("token") token: String,
-        @Body body : CardBookReadingRequest
+        @Body body: CardBookReadingRequest
     ): Call<BaseResponse<CardBookReadingRequest>>
+
+    // 마이 피드 연결
+    @GET("/user/mypage")
+    fun requestMyFeed(
+        @Header("token") token: String,
+        @Query("offset") offset: Int
+    ): Call<BaseResponse<MyFeedResponse>>
 
     companion object {
         @Volatile

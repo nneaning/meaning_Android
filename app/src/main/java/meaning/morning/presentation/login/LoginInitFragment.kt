@@ -20,7 +20,7 @@ class LoginInitFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding:FragmentLoginInitBinding = DataBindingUtil.inflate(
+        val binding: FragmentLoginInitBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login_init, container, false
         )
         return binding.root

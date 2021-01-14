@@ -20,11 +20,12 @@ class GroupBlankActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityGroupBlankBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_group_blank)
-        binding.blankgroupActivity=this
+        binding.blankgroupActivity = this
 
         binding.textviewGroupName.text = "효송이를 좋아하는 모임"
 
     }
+
     fun goToHome() {
         changeIntent(MainActivity())
         finish()

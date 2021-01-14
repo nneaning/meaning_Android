@@ -3,8 +3,6 @@ package meaning.morning.presentation.camera
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
-import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -38,7 +36,10 @@ class TimeStampCameraActivity : AppCompatActivity() {
     }
 
     private fun allPermissionGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(applicationContext,it) == PackageManager.PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(
+            applicationContext,
+            it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestPermission() {
@@ -68,7 +69,7 @@ class TimeStampCameraActivity : AppCompatActivity() {
     }
 
     private fun permissionDeniedEvent() {
-        //TODO 커스텀 토스트로 변경하기.
+        // TODO 커스텀 토스트로 변경하기.
         Toast.makeText(
             this,
             "권한을 승인하지 않으면 당신의 미라클 모닝을 기록할 수 없어요!",
@@ -117,5 +118,4 @@ class TimeStampCameraActivity : AppCompatActivity() {
         private val REQUIRED_PERMISSIONS =
             arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
-
 }

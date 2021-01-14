@@ -108,6 +108,15 @@ class HomeFragment : Fragment() {
         isCardView = true
     }
 
+    fun goCardHomeFragment(){
+        binding.layoutDate.setBackgroundResource(R.drawable.main_date_button)
+        binding.tvDate.setTextColor(Color.parseColor("#17234D"))
+        binding.imageviewArrowCalendar.visibility = View.INVISIBLE
+        binding.imageviewArrowCard.visibility = View.VISIBLE
+        cardViewVisibility()
+        isCardView = true
+    }
+
     private fun cardViewVisibility() {
         crossfade(binding.layoutHomeCardView, binding.layoutHomeCalendarView)
     }
@@ -222,7 +231,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadCalendarData() {
-        val call: Call<BaseResponse<CalendarResponse>> = MeaningService.getInstance().getCalendar(meaningToken)
+        val call: Call<BaseResponse<CalendarResponse>> =
+            MeaningService.getInstance().getCalendar(meaningToken)
         call.customEnqueue(
             onSuccess = {
                 val calendar = it.body()!!.data!!.calendar

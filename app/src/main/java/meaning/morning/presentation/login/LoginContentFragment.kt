@@ -17,7 +17,7 @@ import meaning.morning.databinding.FragmentLoginContentBinding
 
 class LoginContentFragment : Fragment() {
 
-    private val loginViewModel:LoginViewModel by activityViewModels()
+    private val loginViewModel: LoginViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

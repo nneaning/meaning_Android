@@ -61,7 +61,7 @@ class LoginViewModel : ViewModel() {
         return errorTextCaseId.value.isNullOrBlank() && errorTextCasePassword.value.isNullOrBlank()
     }
 
-    fun getUserLoginData():LoginData = LoginData(
+    fun getUserLoginData(): LoginData = LoginData(
         inputIdForm.value.toString(),
         inputPasswordForm.value.toString()
     )

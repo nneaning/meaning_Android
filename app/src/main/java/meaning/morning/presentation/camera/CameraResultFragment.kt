@@ -11,9 +11,9 @@ import meaning.morning.R
 import meaning.morning.databinding.FragmentCameraResultBinding
 import meaning.morning.utils.MeaningToast
 
-class CameraResultFragment: Fragment() {
+class CameraResultFragment : Fragment() {
 
-    private val cameraViewModel:CameraViewModel by activityViewModels()
+    private val cameraViewModel: CameraViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +43,7 @@ class CameraResultFragment: Fragment() {
         }
         binding.useImageButton.setOnClickListener {
             TimeStampImageCreator(requireContext()).saveOf(binding.cameraResultPreviewFrame)
-            MeaningToast(requireContext(),"사진 저장 완료").showToast()
+            MeaningToast(requireContext(), "사진 저장 완료").showToast()
         }
     }
 }
