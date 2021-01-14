@@ -12,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.R
 import meaning.morning.databinding.ActivityLoginBinding
-import meaning.morning.presentation.home.MainActivity
+import meaning.morning.presentation.onboarding.OnBoardingActivity
 import meaning.morning.utils.replaceFragment
 import meaning.morning.utils.replaceFragmentWithAnimation
-import meaning.morning.utils.showToast
 
 class LoginActivity : AppCompatActivity() {
 
@@ -73,8 +72,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onClickEnabledLoginButton() {
         if (loginViewModel.isCanLogin()) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

@@ -31,14 +31,14 @@ import meaning.morning.utils.SnsFeedItemDecoration
 
 class SnsRecyclerviewFragment : Fragment() {
 
-    private var snsFeedAdapter : SnsFeedAdapter? = null
-    private var bindFeedPictureEvent : BindFeedPictureEvent? = null
+    private var snsFeedAdapter: SnsFeedAdapter? = null
+    private var bindFeedPictureEvent: BindFeedPictureEvent? = null
 
-    private lateinit var binding : FragmentSnsRecyclerviewBinding
+    private lateinit var binding: FragmentSnsRecyclerviewBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context !is BindFeedPictureEvent){
+        if (context !is BindFeedPictureEvent) {
             throw RuntimeException(context.toString())
         }
         bindFeedPictureEvent = context
@@ -49,7 +49,8 @@ class SnsRecyclerviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_sns_recyclerview, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_sns_recyclerview, container, false)
         return binding.root
     }
 
@@ -59,7 +60,7 @@ class SnsRecyclerviewFragment : Fragment() {
         bindFeedPictureEvent?.requestToFeedPictureData()
     }
 
-    fun setAdapter(snsFeedData: List<SnsFeedData>){
+    fun setAdapter(snsFeedData: List<SnsFeedData>) {
         snsFeedAdapter = SnsFeedAdapter()
         snsFeedAdapter?.submitData(snsFeedData)
         binding.rcvPicture.apply {

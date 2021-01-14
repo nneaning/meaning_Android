@@ -50,11 +50,11 @@ class HomeCardAdapter(val itemClick: (position: Int, cardItem: HomeCardData) -> 
 
     }
 
-    interface ItemClickListener{
-        fun onClick(view : View, position: Int)
+    interface ItemClickListener {
+        fun onClick(view: View, position: Int)
     }
 
-    fun setItemClickListener(itemClickListener: ItemClickListener){
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
         this.itemClickListener = itemClickListener
     }
 

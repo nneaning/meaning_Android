@@ -232,7 +232,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadCalendarData() {
-        val call: Call<BaseResponse<CalendarResponse>> = MeaningService.getInstance().getCalendar(meaningToken)
+        val call: Call<BaseResponse<CalendarResponse>> =
+            MeaningService.getInstance().getCalendar(meaningToken)
         call.customEnqueue(
             onSuccess = {
                 val calendar = it.data!!.calendar

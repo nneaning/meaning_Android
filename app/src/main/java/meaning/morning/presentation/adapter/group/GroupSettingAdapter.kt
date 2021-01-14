@@ -46,6 +46,7 @@ class GroupSettingAdapter : RecyclerView.Adapter<GroupSettingAdapter.VHolder>() 
         fun onBind(memberData: GroupMemberData) {
             binding.groupMember = memberData
         }
+
         fun changeBackColor() {
             binding.textviewLastname.setBackgroundResource(R.drawable.member_profile_lightblue_background)
             binding.textviewLastname.setTextColor(Color.parseColor("#17234D"))

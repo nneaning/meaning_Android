@@ -42,7 +42,7 @@ class HorizontalCarouselRecyclerView(
             }
         }
     }
-    
+
     //sparedFactor 가 높을수록 종 곡선이 넓어지고 화면 가장자리에 있을 때 뷰가 더 많이 조정
     // scaleFactor , minScaleOffset = 뷰가 화면에 있기를 원하는 스케일
 

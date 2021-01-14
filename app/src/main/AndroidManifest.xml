@@ -36,6 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.onboarding.OnBoardingActivity"
+            android:theme="@style/Theme.Andromeaning.login">
+        </activity>
         <activity android:name=".presentation.group.feed.GroupFeedSnsActivity"/>
         <activity android:name=".presentation.home.feed.MyFeedSnsActivity"/>
         <activity android:name=".presentation.camera.TimeStampCameraActivity"

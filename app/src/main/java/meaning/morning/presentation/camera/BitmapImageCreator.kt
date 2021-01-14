@@ -76,7 +76,7 @@ class TimeStampImageCreator(private val context: Context) {
     private fun galleryAddPicture() {
         //FIXME : Deprecated 30 방법을 바꿔야함.
         Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).also {
-            it.data  = Uri.fromFile(getOutputDirectory())
+            it.data = Uri.fromFile(getOutputDirectory())
             context.sendBroadcast(it)
         }
     }

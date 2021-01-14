@@ -22,7 +22,7 @@ class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
     private var snsRecyclerviewFragment = SnsRecyclerviewFragment()
 
-    private lateinit var binding : ActivityGroupFeedSnsBinding
+    private lateinit var binding: ActivityGroupFeedSnsBinding
 
     override fun requestToFeedPictureData() {
         setPictureRcv()
@@ -84,7 +84,7 @@ class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         snsRecyclerviewFragment.setAdapter(groupFeedSnsData.toList())
     }
 
-    fun backButton(){
+    fun backButton() {
         finish()
     }
 }

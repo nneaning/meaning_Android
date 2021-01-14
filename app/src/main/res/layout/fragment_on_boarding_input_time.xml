@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by jinsu4755
+  ~ DESC:
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="meaning.morning.presentation.onboarding.OnBoardingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:background="@drawable/meaning_bg_1_img">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nick_result_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="(NickName)\n asdf">
+
+            <TextView
+                android:id="@+id/text_nick_name_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="15dp"
+                android:text="@{viewModel.inputNickName}"
+                android:textColor="@android:color/white"
+                android:textSize="21dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="이름"
+                />
+            <TextView
+                android:id="@+id/text_nick_name_of"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="15dp"
+                android:text=" 님의"
+                android:textColor="@android:color/white"
+                android:textSize="21dp"
+                app:layout_constraintStart_toEndOf="@id/text_nick_name_result"
+                app:layout_constraintTop_toTopOf="@id/text_nick_name_result"
+                app:layout_constraintBottom_toBottomOf="@id/text_nick_name_result"
+                />
+
+            <TextView
+                android:id="@+id/text_nick_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="15dp"
+                android:text="@string/nick_name_result"
+                android:textColor="@android:color/white"
+                android:textSize="21dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="@id/text_nick_name_result"
+                app:layout_constraintTop_toBottomOf="@id/text_nick_name_result"
+                 />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/text_time_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="79dp"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:letterSpacing="-0.03"
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            android:text="@{viewModel.dateTimeText}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/text_time_result_label"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nick_result_layout"
+            tools:text="오전 5시" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/text_time_result"
+            app:layout_constraintEnd_toEndOf="@id/text_time_result"
+            app:layout_constraintStart_toStartOf="@+id/text_time_result" />
+
+        <TextView
+            android:id="@+id/text_time_result_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:letterSpacing="-0.03"
+            android:text="@string/time_result_label"
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_time_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_time_result"
+            app:layout_constraintTop_toTopOf="@+id/text_time_result" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/on_boarding_time_next_button"
+            style="@style/Theme.Andromeaning.login.button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/meaning_ivory_F6"
+            android:layout_marginBottom="72dp"
+            android:paddingVertical="21dp"
+            android:text="다음으로 넘어가기"
+            android:textColor="@color/meaning_navy_17"
+            android:letterSpacing="-0.04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/input_nick_name_form"
+            app:layout_constraintStart_toStartOf="@+id/input_nick_name_form" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -35,8 +35,8 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.VHolder>() {
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
         holder.date.text = calendar.data[position].toString()
-        if(star.toList().size == itemCount){
-            if(star[position] == 1){
+        if (star.toList().size == itemCount) {
+            if (star[position] == 1) {
                 holder.star.visibility = View.VISIBLE
             }
         }
