@@ -43,7 +43,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
-          SLACK_COLOR: `#FF5733`
+          SLACK_COLOR: '#FF5733'
           MSG_MINIMAL: true
           SLACK_MESSAGE: '에러를 확인해주세요'
 
@@ -74,7 +74,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-          SLACK_COLOR: `#5BFF33`
+          SLACK_COLOR: '#5BFF33'
           MSG_MINIMAL: true
           SLACK_MESSAGE: 'apk 생성 완료! '
 
@@ -84,6 +84,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-          SLACK_COLOR: `#FFF233`
+          SLACK_COLOR: '#FFF233'
           MSG_MINIMAL: true
           SLACK_MESSAGE: '빌드는 완료 되었으나 apk업로드 에러'
