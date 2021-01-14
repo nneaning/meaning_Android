@@ -16,7 +16,7 @@ import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupSettingResponse
 import meaning.morning.presentation.adapter.group.GroupSettingAdapter
-import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
 class GroupSettingActivity : AppCompatActivity() {
@@ -44,7 +44,7 @@ class GroupSettingActivity : AppCompatActivity() {
             MeaningService.getInstance().getGroupSetting(
                 meaningToken, groupid = 41
             )
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 val settingGroupList = it.body()!!.data!!.group
                 val settingUserList = it.body()!!.data!!.users

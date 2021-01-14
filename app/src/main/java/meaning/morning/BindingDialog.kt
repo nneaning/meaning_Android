@@ -19,7 +19,7 @@ import meaning.morning.network.request.GroupJoinApproveRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupDetailResponse
 import meaning.morning.network.response.GroupJoinApproveResponse
-import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
 class BindingDialog(private val context: Context) {
@@ -52,7 +52,7 @@ class BindingDialog(private val context: Context) {
             MeaningService.getInstance().getGroupDetail(
                 meaningToken, groupid = groupId
             )
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 val groupDetailList = it.body()!!.data!!.groupDetail
                 binding.textviewDetailName.text = groupDetailList.groupName
@@ -110,7 +110,7 @@ class BindingDialog(private val context: Context) {
                 meaningToken,
                 GroupJoinApproveRequest(MeaningStorage.getInstance(context).getGroupId())
             )
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
 //                Log.e("adad", "stats : " + it.status.toString())
 //                if (it.status == 406) {

@@ -24,7 +24,7 @@ import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.MyGroupResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
-import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
 
@@ -59,11 +59,11 @@ class GroupFragment : Fragment() {
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
             MeaningService.getInstance().getMyGroup(meaningToken)
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 if(it.body()?.data==null) {
                     binding.layoutMyGroupNull.visibility = View.VISIBLE
-                    return@customEnqueue
+                    return@enqueueListener
                 }
                 binding.textviewGroupName.text = it.body()?.data!!.groupName
                 binding.textviewNumber.text = it.body()?.data!!.countMember.toString() + "/" + it.body()?.data!!.maximumMemberNumber.toString()
@@ -78,7 +78,7 @@ class GroupFragment : Fragment() {
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
             MeaningService.getInstance().getGroupList(meaningToken)
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 val noImageGroup = it.body()!!.data!!.noImageGroupList
                 val noImageGroupData = mutableListOf<GroupData>()
@@ -103,7 +103,7 @@ class GroupFragment : Fragment() {
     private fun loadHasImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
             MeaningService.getInstance().getGroupList(meaningToken)
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 val ImageGroupList = it.body()!!.data!!.hasImageGroupList
                 val hasImageGroupData = mutableListOf<RecommendGroupData>()

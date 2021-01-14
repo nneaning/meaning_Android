@@ -20,7 +20,7 @@ import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.GroupAddRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupAddResponse
-import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.enqueueListener
 import meaning.morning.utils.showToast
 import meaning.morning.utils.textCheck
 import retrofit2.Call
@@ -44,7 +44,7 @@ class AddGroupActivity : AppCompatActivity() {
             MeaningService.getInstance().addGroup(
                 meaningToken, GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
             )
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 MeaningStorage.getInstance(this).saveGroupId(it.body()!!.data!!.groupId)
             },
