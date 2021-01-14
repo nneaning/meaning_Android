@@ -8,6 +8,11 @@ package meaning.morning.network
 
 import meaning.morning.network.request.CardBookReadingRequest
 import meaning.morning.network.request.CardDailyDiaryRequest
+import meaning.morning.network.request.GroupAddRequest
+import meaning.morning.network.request.GroupJoinApproveRequest
+import meaning.morning.network.response.*
+import retrofit2.Call
+import retrofit2.http.*
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.network.response.CardDailyDiaryResponse
@@ -40,6 +45,34 @@ interface MeaningService {
     fun getMyGroup(
         @Header("token") token: String?
     ): Call<BaseResponse<MyGroupResponse>>
+
+    //그룹 상세보기 연결
+    @GET("/group/{groupid}")
+    fun getGroupDetail(
+        @Header("token") token: String?,
+        @Path("groupid") groupid : Int
+    ): Call<BaseResponse<GroupDetailResponse>>
+
+    //그룹 설정 연결
+    @GET("/group/{groupId}/edit")
+    fun getGroupSetting(
+        @Header("token") token: String?,
+        @Path("groupId") groupid: Int
+    ): Call<BaseResponse<GroupSettingResponse>>
+
+    //그룹 참가 신청 연결
+    @POST("/group/join")
+    fun getApproveJoinGroup(
+        @Header("token") token: String?,
+        @Body body: GroupJoinApproveRequest
+    ): Call<GroupJoinApproveResponse>
+
+    //그룹 생성 연결
+    @POST("/group")
+    fun addGroup(
+        @Header("token") token: String?,
+        @Body body: GroupAddRequest
+    ): Call<BaseResponse<GroupAddResponse>>
 
     // 미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")

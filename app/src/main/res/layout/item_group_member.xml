@@ -22,7 +22,7 @@
             android:background="@drawable/member_profile_background"
             android:fontFamily="@font/spoqahansansneo_regular"
             android:gravity="center_vertical|center_horizontal"
-            android:text="김"
+            android:text="@{groupMember.lastName}"
             android:textAlignment="center"
             android:textColor="@color/meaning_white_FF"
             android:textSize="16sp"

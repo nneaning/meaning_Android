@@ -33,7 +33,6 @@ import meaning.morning.presentation.home.card.CardWriteDiaryActivity
 import meaning.morning.presentation.home.feed.MyFeedMainActivity
 import meaning.morning.utils.HomeCardItemDecoreation
 import meaning.morning.utils.customEnqueue
-import meaning.morning.utils.showError
 import retrofit2.Call
 import java.text.SimpleDateFormat
 import java.util.*
@@ -236,8 +235,8 @@ class HomeFragment : Fragment() {
             MeaningService.getInstance().getCalendar(meaningToken)
         call.customEnqueue(
             onSuccess = {
-                val calendar = it.data!!.calendar
-                binding.textviewDateLabelCount.text = "${it.data!!.successDays}번째"
+                val calendar = it.body()!!.data!!.calendar
+                binding.textviewDateLabelCount.text = "${it.body()!!.data!!.successDays}번째"
 
                 for (i in calendar.indices) {
                     starData.add(calendar[i].status)
@@ -245,7 +244,6 @@ class HomeFragment : Fragment() {
                 calendaradapter.dataToAdapter(starData.toList())
             },
             onError = {
-                showError(requireContext(), it)
             }
         )
     }

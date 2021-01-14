@@ -15,8 +15,15 @@ import androidx.databinding.ObservableField
 import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityAddGroupBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
+import meaning.morning.network.request.GroupAddRequest
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.GroupAddResponse
+import meaning.morning.utils.customEnqueue
 import meaning.morning.utils.showToast
 import meaning.morning.utils.textCheck
+import retrofit2.Call
 
 class AddGroupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddGroupBinding
@@ -32,6 +39,19 @@ class AddGroupActivity : AppCompatActivity() {
         changeLabelEvent(binding.edittextNum)
     }
 
+    private fun remoteAddGroup(){
+        val call: Call<BaseResponse<GroupAddResponse>> =
+            MeaningService.getInstance().addGroup(
+                meaningToken, GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
+            )
+        call.customEnqueue(
+            onSuccess = {
+                MeaningStorage.getInstance(this).saveGroupId(it.body()!!.data!!.groupId)
+            },
+            onError = {
+            }
+        )
+    }
     private fun changeLabelEvent(num: EditText) {
         num.textCheck(
             observeTextChanged = {
@@ -64,6 +84,7 @@ class AddGroupActivity : AppCompatActivity() {
 
     fun checkBlankEvent() {
         if (checkEditTextBlank() && validNum()) {
+            remoteAddGroup()
             val intent = Intent(this, CompleteGroupActivity::class.java)
             startActivity(intent)
             saveAddGroupData(

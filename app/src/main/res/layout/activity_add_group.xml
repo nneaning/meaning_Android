@@ -69,7 +69,7 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/group_edittext_background"
             android:hint="이름을 설정해주세요!"
-            android:maxLength="20"
+            android:maxLength="12"
             android:paddingLeft="11dp"
             android:paddingTop="11dp"
             android:paddingBottom="12dp"
