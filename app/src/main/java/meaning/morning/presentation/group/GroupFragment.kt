@@ -50,11 +50,13 @@ class GroupFragment : Fragment() {
         loadHasImageGroup()
         hasMyGroup()
 
+
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
             startActivity(intent)
         }
     }
+
 
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
@@ -73,8 +75,7 @@ class GroupFragment : Fragment() {
                 showError(requireContext(), it)
             }
         )
-    }
-
+      
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
             MeaningService.getInstance().getGroupList(meaningToken)
@@ -126,6 +127,7 @@ class GroupFragment : Fragment() {
         )
     }
 
+
     private fun setGroupAdapter() {
         groupAdapter = GroupAdapter(requireContext())
         binding.rcvOtherGroup.apply {
@@ -142,5 +144,4 @@ class GroupFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
-
 }
