@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by jinsu4755
+  ~ DESC:
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:background="@drawable/meaning_bg_1_img">
+
+        <TextView
+            android:id="@+id/text_nick_name_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="(NickName)" />
+
+        <TextView
+            android:id="@+id/text_time_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="79dp"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:letterSpacing="-0.03"
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/text_time_result_label"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_nick_name_result"
+            tools:text="오전 5시" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+
+            app:layout_constraintStart_toStartOf="@+id/text_time_result" />
+
+        <TextView
+            android:id="@+id/text_time_result_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:letterSpacing="-0.03"
+            android:text="@string/time_result_label"
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_time_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_time_result"
+            app:layout_constraintTop_toTopOf="@+id/text_time_result" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

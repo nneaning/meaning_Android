@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by jinsu4755
+  ~ DESC:
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:background="@drawable/meaning_bg_1_img"
+        >
+
+        <TextView
+            android:id="@+id/text_request_input_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/request_input_nick_name"
+            android:textSize="21dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/spoqahansansneo_light"
+            android:letterSpacing="-0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/input_nick_name_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_request_input_nick_name"
+            app:layout_constraintStart_toStartOf="@id/text_request_input_nick_name"
+            android:textSize="21dp"
+            android:gravity="center"
+            android:paddingBottom="23dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:layout_marginTop="209dp"
+            android:layout_marginHorizontal="26dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
+            tools:text="test"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/on_boarding_next_button"
+            style="@style/Theme.Andromeaning.login.button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/meaning_ivory_F6"
+            android:layout_marginBottom="72dp"
+            android:paddingVertical="21dp"
+            android:text="다음으로 넘어가기"
+            android:letterSpacing="-0.04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/input_nick_name_form"
+            app:layout_constraintStart_toStartOf="@+id/input_nick_name_form" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

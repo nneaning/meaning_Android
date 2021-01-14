@@ -5,4 +5,7 @@
     <string name="blankText">내용을 입력해주세요</string>
     <string name="id">아이디</string>
     <string name="password">비밀번호</string>
+    <string name="request_input_nick_name"><b>사용하실</b> 닉네임<b>을 적어주세요.</b></string>
+    <string name="nick_name_result"> 님의\n목표 기상시간을 알려주세요\n하루를 길게 쓸 수 있게 도와 드릴게요!</string>
+    <string name="time_result_label">에 일어날래요</string>
 </resources>
