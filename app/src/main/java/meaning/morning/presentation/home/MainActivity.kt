@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         changeFragment(homeFragment)
         initNavigationBar()
         initFloatingButtonEvent()
+
     }
 
     private fun initNavigationBar() {
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_bar_home -> {
-                        homeFragment.goCardHomeFragment()
+                        homeFragment.showCardHomeFragment()
                         return@setOnNavigationItemSelectedListener true
                     }
                     R.id.bottom_bar_group -> {
