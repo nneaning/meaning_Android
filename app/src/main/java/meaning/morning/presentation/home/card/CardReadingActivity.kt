@@ -60,7 +60,7 @@ class CardReadingActivity : AppCompatActivity() {
                 meaningToken,
                 CardBookReadingRequest(bookContents.get().toString(), bookTitle.get().toString())
             ).customEnqueue(
-                Success = { response ->
+                Success = {
 
                 },
                 Fail = {
