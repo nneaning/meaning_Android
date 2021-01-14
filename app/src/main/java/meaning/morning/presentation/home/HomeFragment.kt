@@ -32,7 +32,7 @@ import meaning.morning.presentation.home.card.CardTimeStampActivity
 import meaning.morning.presentation.home.card.CardWriteDiaryActivity
 import meaning.morning.presentation.home.feed.MyFeedMainActivity
 import meaning.morning.utils.HomeCardItemDecoreation
-import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 import java.text.SimpleDateFormat
 import java.util.*
@@ -233,7 +233,7 @@ class HomeFragment : Fragment() {
     private fun loadCalendarData() {
         val call: Call<BaseResponse<CalendarResponse>> =
             MeaningService.getInstance().getCalendar(meaningToken)
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
                 val calendar = it.body()!!.data!!.calendar
                 binding.textviewDateLabelCount.text = "${it.body()!!.data!!.successDays}번째"

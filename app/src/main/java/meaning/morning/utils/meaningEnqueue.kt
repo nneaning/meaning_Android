@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <ResponseType> Call<ResponseType>.customEnqueue(
+fun <ResponseType> Call<ResponseType>.enqueueListener(
     onSuccess: (Response<ResponseType>) -> Unit,
     onError: (Response<ResponseType>) -> Unit = {},
     onFail: () -> Unit = {},

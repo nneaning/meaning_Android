@@ -21,7 +21,6 @@ import meaning.morning.databinding.ActivityCardReadingBinding
 import meaning.morning.network.MeaningService
 import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.CardBookReadingRequest
-import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.utils.customEnqueue
 
 class CardReadingActivity : AppCompatActivity() {

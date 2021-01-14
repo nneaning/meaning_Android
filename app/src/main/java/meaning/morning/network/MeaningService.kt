@@ -10,14 +10,15 @@ import meaning.morning.network.request.CardBookReadingRequest
 import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.network.request.GroupAddRequest
 import meaning.morning.network.request.GroupJoinApproveRequest
-import meaning.morning.network.response.*
-import retrofit2.Call
-import retrofit2.http.*
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.network.response.CardDailyDiaryResponse
 import meaning.morning.network.response.CardTodayPromise
+import meaning.morning.network.response.GroupAddResponse
+import meaning.morning.network.response.GroupDetailResponse
+import meaning.morning.network.response.GroupJoinApproveResponse
 import meaning.morning.network.response.GroupListResponse
+import meaning.morning.network.response.GroupSettingResponse
 import meaning.morning.network.response.MyFeedResponse
 import meaning.morning.network.response.MyGroupResponse
 import retrofit2.Call
@@ -25,6 +26,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MeaningService {

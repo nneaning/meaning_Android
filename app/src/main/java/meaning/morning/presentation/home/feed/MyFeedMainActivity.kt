@@ -17,16 +17,15 @@ package meaning.morning.presentation.home.feed
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import meaning.morning.data.MyFeedPictureData
 import meaning.morning.R
+import meaning.morning.data.MyFeedPictureData
 import meaning.morning.databinding.ActivityMyFeedMainBinding
 import meaning.morning.network.MeaningService
 import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.MyFeedResponse
 import meaning.morning.utils.BindFeedPictureEvent
-import meaning.morning.utils.customEnqueue
-import meaning.morning.utils.showError
+import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
 class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
@@ -65,10 +64,10 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
     private fun connectMyFeedServer() {
         val call: Call<BaseResponse<MyFeedResponse>> =
             MeaningService.getInstance().requestMyFeed(meaningToken, 0)
-        call.customEnqueue(
+        call.enqueueListener(
             onSuccess = {
-                val myFeedList = it.data?.getMyPage
-                val successDay = it.data?.successDays
+                val myFeedList = it.body()!!.data!!.getMyPage
+                val successDay = it.body()!!.data!!.successDays
 //                var myFeedMainList = mutableListOf<MyFeedMainListData>()
                 var myFeedPictureData = mutableListOf<MyFeedPictureData>()
                 binding.tvCountDay.text = "오늘은 365일 중에 " + successDay.toString() + "번째 의미있는 아침입니다"
@@ -98,7 +97,6 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                 )
             },
             onError = {
-                showError(this, it)
             }
         )
     }
