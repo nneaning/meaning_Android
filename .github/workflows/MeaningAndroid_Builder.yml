@@ -69,7 +69,7 @@ jobs:
       - name: Update Release apk name
         if: ${{ success() }}
         run: |
-          mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
+          mv app-debug.apk 미닝-Debug.apk
           echo 'apk=미닝-Debug.apk' >> $GITHUB_ENV
           
       - name: Upload APK at Slack
