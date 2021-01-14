@@ -10,10 +10,7 @@ import meaning.morning.network.request.CardBookReadingRequest
 import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.network.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MeaningService {
     //캘린더 연결
@@ -53,6 +50,14 @@ interface MeaningService {
         @Header("token") token: String,
         @Body body : CardBookReadingRequest
     ): Call<BaseResponse<CardBookReadingRequest>>
+
+    //마이 피드 연결
+    @GET("/user/mypage")
+    fun requestMyFeed(
+        @Header("token") token : String,
+        @Query("offset") offset : Int
+    ): Call<BaseResponse<MyFeedResponse>>
+
 
     companion object {
         @Volatile
