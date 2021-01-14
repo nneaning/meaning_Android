@@ -59,9 +59,9 @@ jobs:
     needs: [build]
     name: upload to Slack
     runs-on: ubuntu-latest
-    steps:
+    steps:        
       - name: download Article
-        uses: actions/download-article@v2
+        uses: actions/download-artifact@v2
         with:
           name: app/build/outputs  
           
