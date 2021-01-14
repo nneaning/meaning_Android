@@ -63,11 +63,12 @@ class GroupFragment : Fragment() {
             MeaningService.getInstance().getMyGroup(meaningToken)
         call.customEnqueue(
             onSuccess = {
-                if(it.data==null) {
+                if (it.data == null) {
                     binding.layoutMyGroupNull.visibility = View.VISIBLE
                 } else
-                binding.textviewGroupName.text = it.data?.groupName
-                binding.textviewNumber.text = it.data?.countMember.toString() + "/" + it.data?.maximumMemberNumber.toString()
+                    binding.textviewGroupName.text = it.data?.groupName
+                binding.textviewNumber.text =
+                    it.data?.countMember.toString() + "/" + it.data?.maximumMemberNumber.toString()
                 binding.layoutMyGroupNull.visibility = View.INVISIBLE
                 binding.layoutMyGroup.visibility = View.VISIBLE
             },
@@ -75,6 +76,7 @@ class GroupFragment : Fragment() {
                 showError(requireContext(), it)
             }
         )
+    }
       
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
