@@ -12,7 +12,7 @@ import meaning.morning.presentation.login.LoginInitFragment
 import meaning.morning.utils.nextActivityAnimation
 import meaning.morning.utils.replaceFragmentWithAnimation
 
-class SplashActivity : AppCompatActivity(), Animator.AnimatorListener{
+class SplashActivity : AppCompatActivity(), Animator.AnimatorListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +21,8 @@ class SplashActivity : AppCompatActivity(), Animator.AnimatorListener{
         binding.meaningSplash.addAnimatorListener(this)
     }
 
-    override fun onAnimationStart(animation: Animator?){
-        replaceFragmentWithAnimation(R.id.container_splash_logo ,LoginInitFragment(),null)
+    override fun onAnimationStart(animation: Animator?) {
+        replaceFragmentWithAnimation(R.id.container_splash_logo, LoginInitFragment(), null)
     }
 
     override fun onAnimationEnd(animation: Animator?) {

@@ -9,7 +9,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="meaning.morning.presentation.onboarding.OnBoardingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +40,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_request_input_nick_name"
             app:layout_constraintStart_toStartOf="@id/text_request_input_nick_name"
+            android:text="@={viewModel.inputNickName}"
             android:textSize="21dp"
             android:gravity="center"
             android:paddingBottom="23dp"
@@ -50,7 +53,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/on_boarding_next_button"
+            android:id="@+id/on_boarding_nick_next_button"
             style="@style/Theme.Andromeaning.login.button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
             android:layout_marginBottom="72dp"
             android:paddingVertical="21dp"
             android:text="다음으로 넘어가기"
+            android:textColor="@color/meaning_navy_17"
             android:letterSpacing="-0.04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/input_nick_name_form"

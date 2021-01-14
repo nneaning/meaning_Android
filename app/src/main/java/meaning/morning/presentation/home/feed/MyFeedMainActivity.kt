@@ -31,7 +31,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
 
     override fun requestToFeedPictureData() {
         // 서버 통신 로직을 적어줌
-        Log.d("bind","bind")
+        Log.d("bind", "bind")
         setPictureRcv()
 
     }
@@ -51,7 +51,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
         binding.myFeedmainActivity = this
     }
 
-    private fun setTransaction(){
+    private fun setTransaction() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frameLayout_MyFeedMain, pictureRecyclerviewFragment)
         transaction.commit()
@@ -80,7 +80,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
     }
 
 
-    fun backButton(){
+    fun backButton() {
         finish()
     }
 

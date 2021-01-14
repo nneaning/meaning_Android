@@ -48,15 +48,15 @@ interface MeaningService {
     //미션 3. 회고 일기 작성
     @POST("/user/dailydiary")
     fun requestDailyDaiary(
-        @Header("token") token : String,
-        @Body body : CardDailyDiaryRequest
+        @Header("token") token: String,
+        @Body body: CardDailyDiaryRequest
     ): Call<BaseResponse<CardDailyDiaryResponse>>
 
     //미션 4. 짧은 독서 작성
     @POST("/user/bookreview")
     fun requestBookReading(
         @Header("token") token: String,
-        @Body body : CardBookReadingRequest
+        @Body body: CardBookReadingRequest
     ): Call<BaseResponse<CardBookReadingRequest>>
 
     companion object {

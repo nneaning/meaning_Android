@@ -30,23 +30,30 @@ import meaning.morning.utils.BindFeedPictureEvent
 
 class PictureRecyclerviewFragment : Fragment() {
 
-    private var myFeedPictureAdapter : MyFeedPictureAdapter? = null
-    private var bindFeedPictureEvent : BindFeedPictureEvent? = null
+    private var myFeedPictureAdapter: MyFeedPictureAdapter? = null
+    private var bindFeedPictureEvent: BindFeedPictureEvent? = null
 
-    private lateinit var binding : FragmentPictureRecyclerviewBinding
+    private lateinit var binding: FragmentPictureRecyclerviewBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context !is BindFeedPictureEvent){
+        if (context !is BindFeedPictureEvent) {
             throw RuntimeException(context.toString())
         }
         bindFeedPictureEvent = context
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_picture_recyclerview, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_picture_recyclerview,
+            container,
+            false
+        )
         return binding.root
     }
 
@@ -57,7 +64,7 @@ class PictureRecyclerviewFragment : Fragment() {
         bindFeedPictureEvent?.requestToFeedPictureData()
     }
 
-    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>){
+    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>) {
         myFeedPictureAdapter = MyFeedPictureAdapter()
         myFeedPictureAdapter?.submitData(myFeedPictureData)
         binding.rcvPicture.adapter = myFeedPictureAdapter

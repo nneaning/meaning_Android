@@ -62,7 +62,7 @@ class CardPromiseActivity : AppCompatActivity() {
                     successDayPromiseResponse(response)
                 },
                 Fail = {
-                    
+
                 }
             )
     }

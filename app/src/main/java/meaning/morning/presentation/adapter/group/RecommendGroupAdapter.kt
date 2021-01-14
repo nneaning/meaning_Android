@@ -45,8 +45,8 @@ class RecommendGroupAdapter(context: Context) :
         private val binding: ItemGroupRecommendBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         val cardView = binding.cardviewRecommendGroup
-        fun onBind(data: RecommendGroupData){
-            binding.recommendGroup=data
+        fun onBind(data: RecommendGroupData) {
+            binding.recommendGroup = data
         }
     }
 }

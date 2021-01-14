@@ -1,4 +1,3 @@
-
 /*
  * Created By: hyooosong
  * on 2021.01.10
@@ -23,7 +22,7 @@ class GroupSettingActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_group_setting)
         setGroupSettingAdapter()
         loadGroupMember()
-        binding.settingActivity=this
+        binding.settingActivity = this
     }
 
     private fun setGroupSettingAdapter() {

@@ -7,8 +7,13 @@ import androidx.annotation.Px
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.roundToInt
 
-class SnsFeedItemDecoration (private val context: Context) : RecyclerView.ItemDecoration(){
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+class SnsFeedItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         val pos = parent.getChildLayoutPosition(view)
 
         val horizontalGap = toPixel(30)

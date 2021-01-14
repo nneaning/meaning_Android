@@ -23,7 +23,8 @@ class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPic
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedPictureViewHolder {
-        val binding = FeedItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            FeedItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyFeedPictureViewHolder(binding)
     }
 
@@ -36,14 +37,14 @@ class MyFeedPictureAdapter : RecyclerView.Adapter<MyFeedPictureAdapter.MyFeedPic
     }
 
 
-    fun submitData(list : List<MyFeedPictureData>){
+    fun submitData(list: List<MyFeedPictureData>) {
         data.addAll(list)
         notifyDataSetChanged()
     }
 
 
-
-    class MyFeedPictureViewHolder(val binding: FeedItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyFeedPictureViewHolder(val binding: FeedItemListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: MyFeedPictureData) {
             binding.feedItemList = data
         }

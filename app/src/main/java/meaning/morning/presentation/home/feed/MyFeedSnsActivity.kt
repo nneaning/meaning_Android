@@ -87,7 +87,8 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         }
         snsRecyclerviewFragment.setAdapter(myFeedSnsData.toList())
     }
-    fun backButton(){
+
+    fun backButton() {
         finish()
     }
 }
