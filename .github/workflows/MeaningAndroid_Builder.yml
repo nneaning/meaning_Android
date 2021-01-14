@@ -69,7 +69,7 @@ jobs:
       - name: Update Release apk name
         if: ${{ success() }}
         run: |
-          mv apk/app-debug.apk 미닝-Debug.apk
+          mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
           echo 'apk=미닝-Debug.apk' >> $GITHUB_ENV
           
       - name: Upload APK at Slack
@@ -81,22 +81,22 @@ jobs:
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
           
-      - name: On Success
-        if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-          SLACK_COLOR: '#5BFF33'
-          MSG_MINIMAL: true
-          SLACK_MESSAGE: 'apk 생성 완료! '
+#       - name: On Success
+#         if: ${{ success() }}
+#         uses: rtCamp/action-slack-notify@v2
+#         env:
+#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+#           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+#           SLACK_COLOR: '#5BFF33'
+#           MSG_MINIMAL: true
+#           SLACK_MESSAGE: 'apk 생성 완료! '
 
-      - name: On Success but Fail
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
-          SLACK_COLOR: '#FFF233'
-          MSG_MINIMAL: true
-          SLACK_MESSAGE: '빌드는 완료 되었으나 apk업로드 에러'
+#       - name: On Success but Fail
+#         if: ${{ failure() }}
+#         uses: rtCamp/action-slack-notify@v2
+#         env:
+#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+#           SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+#           SLACK_COLOR: '#FFF233'
+#           MSG_MINIMAL: true
+#           SLACK_MESSAGE: '빌드는 완료 되었으나 apk업로드 에러'
