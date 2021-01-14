@@ -110,7 +110,7 @@ class HomeFragment : Fragment() {
     }
 
     fun goCardHomeFragment(){
-        dateText.setBackgroundResource(R.drawable.main_date_button)
+        binding.layoutDate.setBackgroundResource(R.drawable.main_date_button)
         binding.tvDate.setTextColor(Color.parseColor("#17234D"))
         binding.imageviewArrowCalendar.visibility = View.INVISIBLE
         binding.imageviewArrowCard.visibility = View.VISIBLE
