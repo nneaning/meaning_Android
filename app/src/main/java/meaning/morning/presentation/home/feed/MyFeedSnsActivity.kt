@@ -39,8 +39,6 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
         setBinding()
 
-        var intent = intent.getParcelableExtra<MyFeedMainListData>("myFeedMainList")
-        Log.d("mmmmmm",intent.toString())
         setTransaction()
     }
 

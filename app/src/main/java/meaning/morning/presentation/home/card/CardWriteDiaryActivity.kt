@@ -76,7 +76,7 @@ class CardWriteDiaryActivity : AppCompatActivity() {
                 CardDailyDiaryRequest(writeDairy.get().toString())
             )
             .customEnqueue(
-                Success = { response ->
+                Success = {
 
                 },
                 Fail = {
