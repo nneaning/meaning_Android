@@ -38,6 +38,13 @@ interface MeaningService {
         @Path("groupid") groupid : Int
     ): Call<BaseResponse<GroupDetailResponse>>
 
+    //그룹 설정 연결
+    @GET("/group/{groupId}/edit")
+    fun getGroupSetting(
+        @Header("token") token: String?,
+        @Path("groupId") groupid: Int
+    ): Call<BaseResponse<GroupSettingResponse>>
+
     //미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
     fun requestDayPromise(

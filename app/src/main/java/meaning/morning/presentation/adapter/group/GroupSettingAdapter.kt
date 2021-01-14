@@ -1,9 +1,4 @@
 /*
- * Created by jinsu4755
- * DESC:
- */
-
-/*
  * Created By: hyooosong
  * on 2021.01.10
  */
@@ -18,7 +13,7 @@ import meaning.morning.data.GroupMemberData
 import meaning.morning.databinding.ItemGroupMemberBinding
 
 class GroupSettingAdapter : RecyclerView.Adapter<GroupSettingAdapter.VHolder>() {
-    private val data: MutableList<GroupMemberData> = mutableListOf()
+    private val groupSettingUser: MutableList<GroupMemberData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,16 +23,16 @@ class GroupSettingAdapter : RecyclerView.Adapter<GroupSettingAdapter.VHolder>() 
     }
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        holder.onBind(data[position])
+        holder.onBind(groupSettingUser[position])
 
         if (position % 2 == 1)
             holder.changeBackColor()
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = groupSettingUser.size
 
     fun refreshData(list: List<GroupMemberData>) {
-        data.addAll(list)
+        groupSettingUser.addAll(list)
         notifyDataSetChanged()
     }
 
