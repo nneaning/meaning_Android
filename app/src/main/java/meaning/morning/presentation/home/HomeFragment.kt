@@ -109,6 +109,15 @@ class HomeFragment : Fragment() {
         isCardView = true
     }
 
+    fun goCardHomeFragment(){
+        dateText.setBackgroundResource(R.drawable.main_date_button)
+        binding.tvDate.setTextColor(Color.parseColor("#17234D"))
+        binding.imageviewArrowCalendar.visibility = View.INVISIBLE
+        binding.imageviewArrowCard.visibility = View.VISIBLE
+        cardViewVisibility()
+        isCardView = true
+    }
+
     private fun cardViewVisibility() {
         crossfade(binding.layoutHomeCardView, binding.layoutHomeCalendarView)
     }
