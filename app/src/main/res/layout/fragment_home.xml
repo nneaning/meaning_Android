@@ -64,10 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/spoqahansansneo_regular"
-                android:letterSpacing="0.1"
+                android:letterSpacing="0"
                 android:paddingVertical="7dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="5dp"
+                android:paddingLeft="13dp"
+                android:paddingRight="8dp"
                 android:text="2021년 1월 1일"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -77,20 +77,20 @@
 
             <ImageView
                 android:id="@+id/imageview_arrow_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="10dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:paddingRight="13dp"
                 android:src="@drawable/back_ic"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/tv_date"
                 app:layout_constraintLeft_toRightOf="@+id/tv_date"
-                app:layout_constraintTop_toTopOf="@+id/tv_date" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <ImageView
                 android:id="@+id/imageview_arrow_calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="10dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:paddingRight="13dp"
                 android:src="@drawable/back_ic_white"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/tv_date"

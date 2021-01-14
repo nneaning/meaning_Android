@@ -8,20 +8,22 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <ResponseType> Call<ResponseType>.customEnqueue(
-    onSuccess: (ResponseType) -> Unit,
-    onError: (ResponseBody?) -> Unit = {}
+fun <ResponseType> Call<ResponseType>.enqueueListener(
+    onSuccess: (Response<ResponseType>) -> Unit,
+    onError: (Response<ResponseType>) -> Unit = {},
+    onFail: () -> Unit = {},
 ) {
     this.enqueue(object : Callback<ResponseType> {
-        override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {
-            response.takeIf { it.isSuccessful }
-                ?.body()
-                ?.let {
-                    onSuccess(it)
-                } ?: onError(response.errorBody())
+        override fun onFailure(call: Call<ResponseType>, t: Throwable) {
+            onFail()
         }
 
-        override fun onFailure(call: Call<ResponseType>, t: Throwable) {
+        override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {
+            if (response.isSuccessful) {
+                onSuccess(response)
+                return
+            }
+            onError(response)
         }
     })
 }

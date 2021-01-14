@@ -14,7 +14,7 @@ import meaning.morning.data.GroupData
 import meaning.morning.databinding.ItemGroupListBinding
 
 class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder>() {
-    private val data: MutableList<GroupData> = mutableListOf()
+    private val noImageGroupData: MutableList<GroupData> = mutableListOf()
     private val dialog = BindingDialog(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
@@ -25,16 +25,16 @@ class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder
     }
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        holder.onBind(data[position])
+        holder.onBind(noImageGroupData[position])
         holder.groupName.setOnClickListener {
-            dialog.showDetailDialog()
+           dialog.showDetailDialog(noImageGroupData[position].groupId)
         }
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = noImageGroupData.size
 
     fun refreshData(list: List<GroupData>) {
-        data.addAll(list)
+        noImageGroupData.addAll(list)
         notifyDataSetChanged()
     }
 
