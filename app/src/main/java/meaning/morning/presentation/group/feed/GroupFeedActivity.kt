@@ -25,7 +25,7 @@ class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
     private var pictureRecyclerviewFragment = PictureRecyclerviewFragment()
 
     override fun requestToFeedPictureData() {
-        setPictureRcv()
+//        setPictureRcv()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,19 +47,19 @@ class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
         transaction.commit()
     }
 
-    private fun setPictureRcv() {
-        var groupFeedPictureData = mutableListOf<MyFeedPictureData>()
-
-        groupFeedPictureData.apply {
-            add(MyFeedPictureData(R.drawable.image_16))
-            add(MyFeedPictureData(R.drawable.image_16))
-            add(MyFeedPictureData(R.drawable.image_16))
-            add(MyFeedPictureData(R.drawable.image_16))
-            add(MyFeedPictureData(R.drawable.image_16))
-        }
-        pictureRecyclerviewFragment.setAdapter(groupFeedPictureData.toList())
-
-    }
+//    private fun setPictureRcv() {
+//        var groupFeedPictureData = mutableListOf<MyFeedPictureData>()
+//
+//        groupFeedPictureData.apply {
+//            add(MyFeedPictureData(R.drawable.image_16))
+//            add(MyFeedPictureData(R.drawable.image_16))
+//            add(MyFeedPictureData(R.drawable.image_16))
+//            add(MyFeedPictureData(R.drawable.image_16))
+//            add(MyFeedPictureData(R.drawable.image_16))
+//        }
+//        pictureRecyclerviewFragment.setAdapter(groupFeedPictureData.toList())
+//
+//    }
 
     fun backButton() {
         finish()

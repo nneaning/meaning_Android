@@ -15,9 +15,11 @@
 package meaning.morning.presentation.home.feed
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.R
+import meaning.morning.data.MyFeedMainListData
 import meaning.morning.databinding.ActivityMyFeedSnsBinding
 import meaning.morning.data.SnsFeedData
 import meaning.morning.utils.BindFeedPictureEvent
@@ -37,6 +39,8 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
         setBinding()
 
+        var intent = intent.getParcelableExtra<MyFeedMainListData>("myFeedMainList")
+        Log.d("mmmmmm",intent.toString())
         setTransaction()
     }
 

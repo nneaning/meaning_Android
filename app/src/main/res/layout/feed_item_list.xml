@@ -6,7 +6,6 @@
         <variable
             name="feedItemList"
             type="meaning.morning.data.MyFeedPictureData"/>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,12 +13,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            app:image="@{feedItemList.iv_picture}"
             android:id="@+id/iv_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/image_16" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
