@@ -57,7 +57,6 @@ class GroupFragment : Fragment() {
         }
     }
 
-
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
             MeaningService.getInstance().getMyGroup(meaningToken)
@@ -75,7 +74,8 @@ class GroupFragment : Fragment() {
                 showError(requireContext(), it)
             }
         )
-      
+    }
+
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
             MeaningService.getInstance().getGroupList(meaningToken)
