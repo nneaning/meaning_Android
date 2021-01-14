@@ -16,6 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
 
       - name: Gradle cache
         uses: actions/cache@v2
@@ -59,6 +60,11 @@ jobs:
           mv app/build/outputs/apk/debug/app-debug.apk 미닝-Debug.apk
           echo 'apk=미닝-Debug.apk' >> $GITHUB_ENV
 
+  upload:
+    needs: [build]
+    name: upload to Slack
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload APK at Slack
         if: ${{ success() }}
         run: |
@@ -67,8 +73,8 @@ jobs:
           -F channels=${{secrets.SLACK_CHANNEL_ID}} \
           -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
           https://slack.com/api/files.upload
-
-      - name: On Success but Fail
+          
+      - name: On Success
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
