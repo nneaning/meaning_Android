@@ -14,9 +14,11 @@
  */
 package meaning.morning.presentation.home.feed
 
+import MyFeedListData
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -68,15 +70,16 @@ class PictureRecyclerviewFragment : Fragment() {
 
     }
 
-    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>,successDay : String) {
+    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>,myFeedList: List<MyFeedListData>,successDay : String) {
         val myFeedPictureAdapter = MyFeedPictureAdapter()
-        myFeedPictureAdapter?.submitData(myFeedPictureData)
+        myFeedPictureAdapter.submitData(myFeedPictureData)
         binding.rcvPicture.adapter = myFeedPictureAdapter
 
         myFeedPictureAdapter.setItemClickListener(
             object : MyFeedPictureAdapter.ItemClickListener {
                 override fun onClick(view: View, position: Int) {
-                    val intent = Intent(requireContext(),MyFeedSnsActivity::class.java)
+                    val intent = Intent(requireContext(), MyFeedSnsActivity::class.java)
+                    intent.putParcelableArrayListExtra("myFeedList",myFeedList as ArrayList<out Parcelable>)
                     intent.putExtra("successDay",successDay)
                     startActivity(intent)
                 }

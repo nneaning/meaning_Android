@@ -14,6 +14,7 @@
  */
 package meaning.morning.presentation.home.feed
 
+import MyFeedListData
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,11 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         setBinding()
 
         setTransaction()
+
+        val intent = intent
+        Log.d("log111",intent.getParcelableArrayListExtra<MyFeedListData>("myFeedList").toString())
+        Log.d("log112",intent.getStringExtra("successDay").toString())
+
     }
 
     private fun setBinding() {
@@ -53,6 +59,12 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
     }
 
     private fun setPictureRcv() {
+        val feedList = intent?.getParcelableArrayListExtra<MyFeedListData>("myFeedList")
+        Log.d("log333",feedList!![0].createdAt)
+
+        Log.d("log221",intent.getParcelableArrayListExtra<MyFeedListData>("myFeedList").toString())
+        Log.d("log222",intent.getStringExtra("successDay").toString())
+
         var myFeedSnsData = mutableListOf<SnsFeedData>()
         myFeedSnsData.apply {
             add(
