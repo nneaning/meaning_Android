@@ -17,7 +17,6 @@ import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupSettingResponse
 import meaning.morning.presentation.adapter.group.GroupSettingAdapter
 import meaning.morning.utils.customEnqueue
-import meaning.morning.utils.showError
 import retrofit2.Call
 
 class GroupSettingActivity : AppCompatActivity() {
@@ -47,8 +46,8 @@ class GroupSettingActivity : AppCompatActivity() {
             )
         call.customEnqueue(
             onSuccess = {
-                val settingGroupList = it.data!!.group
-                val settingUserList = it.data.users
+                val settingGroupList = it.body()!!.data!!.group
+                val settingUserList = it.body()!!.data!!.users
                 val settingUserData = mutableListOf<GroupMemberData>()
 
                 binding.textviewGroupName.text = settingGroupList.groupName
@@ -85,7 +84,6 @@ class GroupSettingActivity : AppCompatActivity() {
                 groupSettingAdapter.refreshData(settingUserData)
             },
             onError = {
-                showError(this, it)
             }
         )
     }

@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
@@ -26,7 +25,6 @@ import meaning.morning.network.response.MyGroupResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
 import meaning.morning.utils.customEnqueue
-import meaning.morning.utils.showError
 import retrofit2.Call
 
 
@@ -63,16 +61,16 @@ class GroupFragment : Fragment() {
             MeaningService.getInstance().getMyGroup(meaningToken)
         call.customEnqueue(
             onSuccess = {
-                if(it.data==null) {
+                if(it.body()?.data==null) {
                     binding.layoutMyGroupNull.visibility = View.VISIBLE
-                } else
-                binding.textviewGroupName.text = it.data?.groupName
-                binding.textviewNumber.text = it.data?.countMember.toString() + "/" + it.data?.maximumMemberNumber.toString()
+                    return@customEnqueue
+                }
+                binding.textviewGroupName.text = it.body()?.data!!.groupName
+                binding.textviewNumber.text = it.body()?.data!!.countMember.toString() + "/" + it.body()?.data!!.maximumMemberNumber.toString()
                 binding.layoutMyGroupNull.visibility = View.INVISIBLE
                 binding.layoutMyGroup.visibility = View.VISIBLE
             },
             onError = {
-                showError(requireContext(), it)
             }
         )
     }
@@ -82,10 +80,9 @@ class GroupFragment : Fragment() {
             MeaningService.getInstance().getGroupList(meaningToken)
         call.customEnqueue(
             onSuccess = {
-                val noImageGroup = it.data?.noImageGroupList
+                val noImageGroup = it.body()!!.data!!.noImageGroupList
                 val noImageGroupData = mutableListOf<GroupData>()
-                for (i in noImageGroup!!.indices) {
-                    MeaningStorage.getInstance(requireContext()).saveGroupId(noImageGroup[i].groupId)
+                for (i in noImageGroup.indices) {
                     noImageGroupData.apply {
                         add(
                             GroupData(
@@ -99,7 +96,6 @@ class GroupFragment : Fragment() {
                 groupAdapter.refreshData(noImageGroupData)
             },
             onError = {
-                showError(requireContext(), it)
             }
         )
     }
@@ -109,10 +105,9 @@ class GroupFragment : Fragment() {
             MeaningService.getInstance().getGroupList(meaningToken)
         call.customEnqueue(
             onSuccess = {
-                val ImageGroupList = it.data?.hasImageGroupList
+                val ImageGroupList = it.body()!!.data!!.hasImageGroupList
                 val hasImageGroupData = mutableListOf<RecommendGroupData>()
-                for (i in ImageGroupList!!.indices) {
-                    MeaningStorage.getInstance(requireContext()).saveGroupId(ImageGroupList[i].groupId)
+                for (i in ImageGroupList.indices) {
                     hasImageGroupData.apply {
                         add(
                             RecommendGroupData(
@@ -127,7 +122,6 @@ class GroupFragment : Fragment() {
                 recommendAdapter.refreshData(hasImageGroupData.toMutableList())
             },
             onError = {
-                showError(requireContext(), it)
             }
         )
     }

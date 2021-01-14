@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="76dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/spoqahansansneo_bold"
             android:text="@{dialogData.detailName}"
             android:textAlignment="center"
@@ -35,10 +35,10 @@
 
         <TextView
             android:id="@+id/textview_detail_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="91dp"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="29dp"
             android:background="@drawable/radius_6_background"
             android:fontFamily="@font/spoqahansansneo_regular"
             android:paddingHorizontal="32dp"
