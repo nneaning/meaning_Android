@@ -14,28 +14,19 @@
  */
 package meaning.morning.presentation.home.feed
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import meaning.morning.data.MyFeedPictureData
 import meaning.morning.R
-import meaning.morning.data.MyFeedMainListData
 import meaning.morning.databinding.ActivityMyFeedMainBinding
 import meaning.morning.network.MeaningService
 import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
-import meaning.morning.network.response.CardTodayPromise
-import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.MyFeedResponse
-import meaning.morning.presentation.adapter.feed.MyFeedPictureAdapter
 import meaning.morning.utils.BindFeedPictureEvent
 import meaning.morning.utils.customEnqueue
 import meaning.morning.utils.showError
-import okhttp3.Response
 import retrofit2.Call
 
 class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
