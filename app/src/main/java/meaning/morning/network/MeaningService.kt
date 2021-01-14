@@ -7,43 +7,38 @@
 package meaning.morning.network
 
 import meaning.morning.network.request.CardBookReadingRequest
-import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.request.CardDailyDiaryRequest
-import meaning.morning.network.response.CardDailyDiaryResponse
-import meaning.morning.network.response.CardTodayPromise
-import meaning.morning.network.response.GroupListResponse
+import meaning.morning.network.response.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
-import meaning.morning.network.response.CalendarResponse
 
 interface MeaningService {
-    /*TODO 서버 연결을 위한 함수는 여기
-    * Ex)
-    * @Annotaion
-    * fun request0000():Call<BaseResponse<DataClass or any >>
-    * */
-
-
     //캘린더 연결
     @GET("/timestamp/calendar")
     fun getCalendar(
         @Header("token") token: String?
     ): Call<BaseResponse<CalendarResponse>>
 
-    //미션 2. 오늘 하루 다짐
-    @GET("/user/daypromise")
-    fun requestDayPromise(
-        @Header("token") token: String
-    ): Call<BaseResponse<CardTodayPromise>>
-
     //그룹 리스트 연결
     @GET("/group?offset=0")
     fun getGroupList(
         @Header("token") token: String?
     ): Call<BaseResponse<GroupListResponse>>
+
+    //가입 그룹 조회
+    @GET("/group/my")
+    fun getMyGroup(
+        @Header("token") token: String?
+    ): Call<BaseResponse<MyGroupResponse>>
+
+    //미션 2. 오늘 하루 다짐
+    @GET("/user/daypromise")
+    fun requestDayPromise(
+        @Header("token") token: String
+    ): Call<BaseResponse<CardTodayPromise>>
 
     //미션 3. 회고 일기 작성
     @POST("/user/dailydiary")

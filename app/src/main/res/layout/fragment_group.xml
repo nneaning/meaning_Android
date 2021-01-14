@@ -94,7 +94,7 @@
                     android:layout_below="@id/textview_my_group"
                     android:layout_marginTop="16dp"
                     android:background="@color/meaning_lightblue_DE"
-                    android:visibility="visible">
+                    android:visibility="invisible">
 
                     <TextView
                         android:id="@+id/textview_my_group_null"

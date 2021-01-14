@@ -21,6 +21,7 @@ import meaning.morning.network.MeaningService
 import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupListResponse
+import meaning.morning.network.response.MyGroupResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
 import meaning.morning.utils.customEnqueue
@@ -47,6 +48,7 @@ class GroupFragment : Fragment() {
         loadNoImageGroup()
         setRecommendGroupAdapter()
         loadHasImageGroup()
+        hasMyGroup()
 
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
@@ -54,21 +56,23 @@ class GroupFragment : Fragment() {
         }
     }
 
-    private fun setGroupAdapter() {
-        groupAdapter = GroupAdapter(requireContext())
-        binding.rcvOtherGroup.apply {
-            adapter = groupAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-    }
-
-    private fun setRecommendGroupAdapter() {
-        recommendAdapter = RecommendGroupAdapter(requireContext())
-        binding.rcvGroupRecommend.apply {
-            adapter = recommendAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        }
+    private fun hasMyGroup() {
+        val call: Call<BaseResponse<MyGroupResponse>> =
+            MeaningService.getInstance().getMyGroup(meaningToken)
+        call.customEnqueue(
+            onSuccess = {
+                if(it.data==null) {
+                    binding.layoutMyGroupNull.visibility = View.VISIBLE
+                } else
+                binding.textviewGroupName.text = it.data?.groupName
+                binding.textviewNumber.text = it.data?.countMember.toString() + "/" + it.data?.maximumMemberNumber.toString()
+                binding.layoutMyGroupNull.visibility = View.INVISIBLE
+                binding.layoutMyGroup.visibility = View.VISIBLE
+            },
+            onError = {
+                showError(requireContext(), it)
+            }
+        )
     }
 
     private fun loadNoImageGroup() {
@@ -121,4 +125,22 @@ class GroupFragment : Fragment() {
             }
         )
     }
+
+    private fun setGroupAdapter() {
+        groupAdapter = GroupAdapter(requireContext())
+        binding.rcvOtherGroup.apply {
+            adapter = groupAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun setRecommendGroupAdapter() {
+        recommendAdapter = RecommendGroupAdapter(requireContext())
+        binding.rcvGroupRecommend.apply {
+            adapter = recommendAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
 }
