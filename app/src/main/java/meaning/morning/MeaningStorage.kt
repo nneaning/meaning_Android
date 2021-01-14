@@ -1,7 +1,6 @@
 package meaning.morning
 
 import android.content.Context
-import android.util.Log
 
 class MeaningStorage (context: Context) {
     private val meaningSharedPref = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
@@ -15,6 +14,14 @@ class MeaningStorage (context: Context) {
         meaningEdit.putString("memberCount", memberCount)
         meaningEdit.putString("groupContent", groupContent)
         meaningEdit.apply()
+    }
+
+    fun saveGroupId(groupId: Int){
+        meaningEdit.putInt("groupId", groupId)
+    }
+
+    fun getGroupId() {
+        meaningSharedPref.getInt("groupId", 0)
     }
 
     fun saveUserToken(token: String) {

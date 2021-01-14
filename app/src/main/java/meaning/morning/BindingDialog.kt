@@ -10,10 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import meaning.morning.data.GroupDetailData
 import meaning.morning.databinding.DialogGroupDetailBinding
 import meaning.morning.databinding.DialogGroupRecyclerBinding
 import meaning.morning.databinding.FragmentGroupBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.MeaningService.Companion.meaningToken
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.GroupDetailResponse
+import meaning.morning.utils.customEnqueue
+import meaning.morning.utils.showError
+import retrofit2.Call
 
 class BindingDialog(private val context: Context) {
     private val binding: FragmentGroupBinding = DataBindingUtil
@@ -28,11 +34,11 @@ class BindingDialog(private val context: Context) {
     private var dialog = Dialog(context)
     private var approveDialog = Dialog(context)
 
-    fun showDetailDialog() {
+    fun showDetailDialog(groupId: Int) {
         dialog.setCancelable(false)
         dialog.setContentView(dialogBinding.root)
 
-        setGroupDetailData(dialogBinding)
+        setGroupDetailData(dialogBinding, groupId)
         closeDialog(dialogBinding.imageviewClose)
 
         changeDialog(dialogBinding.textviewJoinBtn)
@@ -40,12 +46,23 @@ class BindingDialog(private val context: Context) {
         dialog.show()
     }
 
-    private fun setGroupDetailData(binding: DialogGroupDetailBinding) {
-        binding.dialogData = GroupDetailData(
-            "송이 좋아하는 그룹",
-            "취준생끼리취준생끼리취준생끼리 \n취준생끼리취준생끼리취준생끼리 \n취준생끼리취준생끼리취준생끼리",
-            "4",
-            "5"
+    private fun setGroupDetailData(binding: DialogGroupDetailBinding, groupId: Int) {
+        val call: Call<BaseResponse<GroupDetailResponse>> =
+            MeaningService.getInstance().getGroupDetail(
+                meaningToken, groupid = groupId
+            )
+        call.customEnqueue(
+            onSuccess = {
+                val groupDetailList = it.data!!.groupDetail
+                binding.textviewDetailName.text = groupDetailList.groupName
+                binding.textviewDetailContent.text = groupDetailList.introduction
+                binding.textviewPeopleNum.text = groupDetailList.countMember.toString()
+                binding.textviewPeopleLimit.text = groupDetailList.maximumMemberNumber.toString()
+            },
+            onError =
+            {
+                showError(context, it)
+            }
         )
     }
 

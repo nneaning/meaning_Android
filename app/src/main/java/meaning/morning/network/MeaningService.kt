@@ -10,10 +10,7 @@ import meaning.morning.network.request.CardBookReadingRequest
 import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.network.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MeaningService {
     //캘린더 연결
@@ -33,6 +30,13 @@ interface MeaningService {
     fun getMyGroup(
         @Header("token") token: String?
     ): Call<BaseResponse<MyGroupResponse>>
+
+    //그룹 상세보기 연결
+    @GET("/group/{groupid}")
+    fun getGroupDetail(
+        @Header("token") token: String?,
+        @Path("groupid") groupid : Int
+    ): Call<BaseResponse<GroupDetailResponse>>
 
     //미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")

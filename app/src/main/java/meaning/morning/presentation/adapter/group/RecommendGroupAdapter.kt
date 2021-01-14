@@ -29,7 +29,7 @@ class RecommendGroupAdapter(context: Context) :
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
         holder.cardView.setOnClickListener {
-            dialog.showDetailDialog()
+            dialog.showDetailDialog(imageGroupData[position].groupId)
         }
         holder.onBind(imageGroupData[position])
     }

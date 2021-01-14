@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
@@ -84,9 +85,11 @@ class GroupFragment : Fragment() {
                 val noImageGroup = it.data?.noImageGroupList
                 val noImageGroupData = mutableListOf<GroupData>()
                 for (i in noImageGroup!!.indices) {
+                    MeaningStorage.getInstance(requireContext()).saveGroupId(noImageGroup[i].groupId)
                     noImageGroupData.apply {
                         add(
                             GroupData(
+                                noImageGroup[i].groupId,
                                 noImageGroup[i].groupName,
                                 noImageGroup[i].countMember.toString() + "/" + noImageGroup[i].maximumMemberNumber.toString()
                             )
@@ -109,9 +112,11 @@ class GroupFragment : Fragment() {
                 val ImageGroupList = it.data?.hasImageGroupList
                 val hasImageGroupData = mutableListOf<RecommendGroupData>()
                 for (i in ImageGroupList!!.indices) {
+                    MeaningStorage.getInstance(requireContext()).saveGroupId(ImageGroupList[i].groupId)
                     hasImageGroupData.apply {
                         add(
                             RecommendGroupData(
+                                ImageGroupList[i].groupId,
                                 ImageGroupList[i].groupName,
                                 ImageGroupList[i].countMember.toString(),
                                 ImageGroupList[i].imageUrl
@@ -126,7 +131,6 @@ class GroupFragment : Fragment() {
             }
         )
     }
-
 
     private fun setGroupAdapter() {
         groupAdapter = GroupAdapter(requireContext())
