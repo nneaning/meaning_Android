@@ -25,7 +25,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.data.MyFeedPictureData
 import meaning.morning.R
-import meaning.morning.data.MyFeedMainListData
 import meaning.morning.databinding.FragmentPictureRecyclerviewBinding
 import meaning.morning.network.response.MyFeedResponse
 import meaning.morning.presentation.adapter.feed.MyFeedPictureAdapter
