@@ -110,6 +110,12 @@ interface MeaningService {
         @Query("offset") offset: Int,
     ): Call<BaseResponse<MyFeedResponse>>
 
+    @GET("/group/41/feed")
+    fun requestGroupFeed(
+        @Header("token") token: String?,
+        @Query("offset") offset: Int,
+    ): Call<BaseResponse<GroupFeedResponse>>
+
     // 타임스템프 카메라 업로드
     @Multipart
     @POST("/timestamp")
