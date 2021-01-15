@@ -10,11 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.DialogGroupDetailBinding
 import meaning.morning.databinding.DialogGroupRecyclerBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.GroupJoinApproveRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupDetailResponse
@@ -49,7 +49,7 @@ class GroupDialog(private val context: Context) {
     private fun setGroupDetailData(binding: DialogGroupDetailBinding, groupId: Int) {
         val call: Call<BaseResponse<GroupDetailResponse>> =
             MeaningService.getInstance().getGroupDetail(
-                meaningToken, groupid = groupId
+                MeaningStorage.getInstance(context).accessToken, groupid = groupId
             )
         call.enqueueListener(
             onSuccess = {
@@ -86,7 +86,7 @@ class GroupDialog(private val context: Context) {
     private fun remoteApproveDialog(binding: DialogGroupRecyclerBinding, groupid: Int) {
         val call: Call<GroupJoinApproveResponse> =
             MeaningService.getInstance().getApproveJoinGroup(
-                meaningToken,
+                MeaningStorage.getInstance(context).accessToken,
                 GroupJoinApproveRequest(groupid)
             )
         call.enqueueListener(

@@ -17,12 +17,12 @@ package meaning.morning.presentation.home.feed
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.MyFeedPictureData
 import meaning.morning.databinding.ActivityMyFeedMainBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.MyFeedResponse
 import meaning.morning.utils.BindFeedPictureEvent
@@ -64,7 +64,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
 
     private fun connectMyFeedServer() {
         val call: Call<BaseResponse<MyFeedResponse>> =
-            MeaningService.getInstance().requestMyFeed(meaningToken, 0)
+            MeaningService.getInstance().requestMyFeed(MeaningStorage.getInstance(this).accessToken, 0)
         call.enqueueListener(
             onSuccess = {
                 val myFeedList = it.body()!!.data!!.getMyPage

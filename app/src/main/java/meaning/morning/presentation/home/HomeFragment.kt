@@ -17,11 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.HomeCardData
 import meaning.morning.databinding.FragmentHomeBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.presentation.adapter.home.CalendarAdapter
@@ -29,7 +29,6 @@ import meaning.morning.presentation.adapter.home.HomeCardAdapter
 import meaning.morning.presentation.camera.TimeStampCameraActivity
 import meaning.morning.presentation.home.card.CardPromiseActivity
 import meaning.morning.presentation.home.card.CardReadingActivity
-import meaning.morning.presentation.home.card.CardTimeStampActivity
 import meaning.morning.presentation.home.card.CardWriteDiaryActivity
 import meaning.morning.presentation.home.feed.MyFeedMainActivity
 import meaning.morning.utils.HomeCardItemDecoreation
@@ -233,7 +232,7 @@ class HomeFragment : Fragment() {
 
     private fun loadCalendarData() {
         val call: Call<BaseResponse<CalendarResponse>> =
-            MeaningService.getInstance().getCalendar(meaningToken)
+            MeaningService.getInstance().getCalendar(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 val calendar = it.body()!!.data!!.calendar

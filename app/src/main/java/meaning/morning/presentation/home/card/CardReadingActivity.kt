@@ -19,7 +19,6 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardReadingBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.CardBookReadingRequest
 import meaning.morning.utils.customEnqueue
 
@@ -56,7 +55,7 @@ class CardReadingActivity : AppCompatActivity() {
     private fun connectBookReadingServer() {
         MeaningService.getInstance()
             .requestBookReading(
-                meaningToken,
+                MeaningStorage.getInstance(this).accessToken,
                 CardBookReadingRequest(bookContents.get().toString(), bookTitle.get().toString())
             ).customEnqueue(
                 Success = {

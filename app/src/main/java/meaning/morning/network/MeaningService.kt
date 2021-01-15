@@ -85,27 +85,27 @@ interface MeaningService {
     // 미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
     fun requestDayPromise(
-        @Header("token") token: String,
+        @Header("token") token: String?,
     ): Call<BaseResponse<CardTodayPromise>>
 
     // 미션 3. 회고 일기 작성
     @POST("/user/dailydiary")
     fun requestDailyDaiary(
-        @Header("token") token: String,
+        @Header("token") token: String?,
         @Body body: CardDailyDiaryRequest,
     ): Call<BaseResponse<CardDailyDiaryResponse>>
 
     // 미션 4. 짧은 독서 작성
     @POST("/user/bookreview")
     fun requestBookReading(
-        @Header("token") token: String,
+        @Header("token") token: String?,
         @Body body: CardBookReadingRequest,
     ): Call<BaseResponse<CardBookReadingRequest>>
 
     // 마이 피드 연결
     @GET("/user/mypage")
     fun requestMyFeed(
-        @Header("token") token: String,
+        @Header("token") token: String?,
         @Query("offset") offset: Int,
     ): Call<BaseResponse<MyFeedResponse>>
 
@@ -121,9 +121,6 @@ interface MeaningService {
     companion object {
         @Volatile
         private var instance: MeaningService? = null
-
-        const val meaningToken =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsIm5hbWUiOiJtaW5zZXVuZyIsImlhdCI6MTYxMDY0NjYwMSwiZXhwIjoxNjEyNDYxMDAxLCJpc3MiOiJTZXJ2ZXJCYWQifQ.o22g_z0nR0BWzqOv7vsNz2ebKGEjddnKgSJqvBWdtlU"
 
         fun getInstance(): MeaningService = instance ?: synchronized(this) {
             instance ?: provideService(MeaningService::class.java)
