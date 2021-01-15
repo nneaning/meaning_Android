@@ -60,7 +60,7 @@ class BottomSheetModal : BottomSheetDialogFragment() {
     private fun setMinHour(binding: BottomSheetTimePickerBinding) {
         binding.timePickerOnBoarding.apply {
             hour = MIN_HOUR
-            hour = MIN_MINUTE
+            minute = MIN_MINUTE
         }
     }
 
