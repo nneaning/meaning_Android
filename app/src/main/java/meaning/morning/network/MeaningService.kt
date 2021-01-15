@@ -108,8 +108,7 @@ interface MeaningService {
         private var instance: MeaningService? = null
 
         const val meaningToken =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiLrsJXtmqjshqEiLCJpYXQiOjE2MTA0NjgyMTIsImV4cCI6MTYxMjI4MjYxMiwiaXNzIjoiU2VydmVyQmFkIn0.sVKcyYHYkEe3nq5xi36hQDLn1XWpxI6l_ermMBt3aYE"
-
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsIm5hbWUiOiJtaW5zZXVuZyIsImlhdCI6MTYxMDY0NjYwMSwiZXhwIjoxNjEyNDYxMDAxLCJpc3MiOiJTZXJ2ZXJCYWQifQ.o22g_z0nR0BWzqOv7vsNz2ebKGEjddnKgSJqvBWdtlU"
         fun getInstance(): MeaningService = instance ?: synchronized(this) {
             instance ?: provideService(MeaningService::class.java)
                 .apply { instance = this }

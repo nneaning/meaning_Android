@@ -22,10 +22,11 @@ class MeaningStorage(context: Context) {
     val userToken: String?
         get() = meaningSharedPref.getString("userToken", null)
 
-    fun saveGroup(groupName: String, memberCount: String, groupContent: String) {
+    fun getGroupName(): String? {
+        return meaningSharedPref.getString("groupName", "")
+    }
+    fun saveGroupName(groupName: String) {
         meaningEdit.putString("groupName", groupName)
-        meaningEdit.putString("memberCount", memberCount)
-        meaningEdit.putString("groupContent", groupContent)
         meaningEdit.apply()
     }
 

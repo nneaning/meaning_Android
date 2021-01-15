@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityGroupBlankBinding
 import meaning.morning.presentation.group.feed.GroupSettingActivity
@@ -22,9 +23,10 @@ class GroupBlankActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_group_blank)
         binding.blankgroupActivity = this
 
-        binding.textviewGroupName.text = "효송이를 좋아하는 모임"
-
+        binding.textviewGroupName.text =
+            MeaningStorage.getInstance(this).getGroupName()
     }
+
 
     fun goToHome() {
         changeIntent(MainActivity())

@@ -9,13 +9,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.BindingDialog
+import meaning.morning.presentation.group.GroupDialog
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.ItemGroupRecommendBinding
 
 class RecommendGroupAdapter(context: Context) :
     RecyclerView.Adapter<RecommendGroupAdapter.VHolder>() {
-    private val dialog = BindingDialog(context)
+    private val dialog = GroupDialog(context)
     private var imageGroupData = mutableListOf<RecommendGroupData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {

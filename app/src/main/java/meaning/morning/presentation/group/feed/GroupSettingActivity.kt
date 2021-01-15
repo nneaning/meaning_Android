@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.GroupMemberData
 import meaning.morning.databinding.ActivityGroupSettingBinding
@@ -42,7 +43,7 @@ class GroupSettingActivity : AppCompatActivity() {
     private fun loadGroupMember() {
         val call: Call<BaseResponse<GroupSettingResponse>> =
             MeaningService.getInstance().getGroupSetting(
-                meaningToken, groupid = 41
+                meaningToken, groupid = MeaningStorage.getInstance(this).getGroupId()
             )
         call.enqueueListener(
             onSuccess = {

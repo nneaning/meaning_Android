@@ -10,7 +10,7 @@
 
         <variable
             name="dialogbinding"
-            type="meaning.morning.BindingDialog" />
+            type="meaning.morning.presentation.group.GroupDialog" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
