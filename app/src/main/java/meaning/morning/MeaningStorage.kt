@@ -20,6 +20,7 @@ class MeaningStorage(context: Context) {
     val nickName: String?
         get() = meaningSharedPref.getString(NICK_NAME, null)
 
+
     fun getGroupName(): String? {
         return meaningSharedPref.getString("groupName", "")
     }
@@ -74,6 +75,10 @@ class MeaningStorage(context: Context) {
             putString(NICK_NAME, nickName)
             putString(TIME, wakeUpTime)
         }.apply()
+    }
+
+    fun getWakeUpTime() : String?{
+        return meaningSharedPref.getString("wakeUpTime","")
     }
 
     companion object {

@@ -17,6 +17,7 @@ package meaning.morning.presentation.home.feed
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.SnsFeedData
@@ -33,14 +34,15 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
         val intent = intent
         val feedList = intent.getParcelableArrayListExtra<MyFeedMainListData>("myFeedList")
+        val nickName = MeaningStorage.getInstance(this).nickName
         var myFeedSnsData = mutableListOf<SnsFeedData>()
         for (i in feedList!!.indices) {
             myFeedSnsData.apply {
                 add(
                     SnsFeedData(
-                        "이형준",
+                        nickName!!,
                         "5분전",
-                        "매일 오전 5시 기상",
+                        "매일 오전 " + MeaningStorage.getInstance(baseContext).getWakeUpTime() + " 기상",
                         feedList[i].timeStampContents,
                         feedList[i].timeStampImageUrl
                     )
@@ -59,6 +61,7 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
         binding.tvSuccessDay.text =
             "오늘은 365일 중에 " + intent.getStringExtra("successDay") + "번째 의미있는 아침입니다."
+
     }
 
     private fun setBinding() {
