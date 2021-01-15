@@ -36,6 +36,14 @@ class MeaningStorage(context: Context) {
         return meaningSharedPref.getInt("groupId", 0)
     }
 
+    fun saveGroupNumber(groupNumber : Int){
+        meaningEdit.putInt("groupNumber",groupNumber)
+    }
+
+    fun getGroupNumber() : Int{
+        return meaningSharedPref.getInt("groupNumber",0)
+    }
+
     fun saveUserToken(token: String) {
         meaningEdit.putString("userToken", token)
         meaningEdit.apply()

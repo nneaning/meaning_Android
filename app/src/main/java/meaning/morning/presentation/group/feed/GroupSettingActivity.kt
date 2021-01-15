@@ -56,6 +56,7 @@ class GroupSettingActivity : AppCompatActivity() {
                             "${settingGroupList.createdAt.slice(IntRange(5, 6))}월 " +
                             "${settingGroupList.createdAt.slice(IntRange(8, 9))}일"
                 binding.textviewMemberNum.text = "${settingGroupList.currentMemberNumber}명"
+                MeaningStorage.getInstance(this).saveGroupNumber(settingGroupList.currentMemberNumber)
 
                 for (i in settingUserList.indices) {
                     settingUserData.apply {

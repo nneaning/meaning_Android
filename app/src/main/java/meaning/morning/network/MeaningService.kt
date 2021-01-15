@@ -16,6 +16,7 @@ import meaning.morning.network.response.CardDailyDiaryResponse
 import meaning.morning.network.response.CardTodayPromise
 import meaning.morning.network.response.GroupAddResponse
 import meaning.morning.network.response.GroupDetailResponse
+import meaning.morning.network.response.GroupFeedResponse
 import meaning.morning.network.response.GroupJoinApproveResponse
 import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.GroupSettingResponse
@@ -109,6 +110,12 @@ interface MeaningService {
         @Query("offset") offset: Int,
     ): Call<BaseResponse<MyFeedResponse>>
 
+    @GET("/group/41/feed")
+    fun requestGroupFeed(
+        @Header("token") token: String?,
+        @Query("offset") offset: Int,
+    ): Call<BaseResponse<GroupFeedResponse>>
+
     // 타임스템프 카메라 업로드
     @Multipart
     @POST("/timestamp")
@@ -126,5 +133,7 @@ interface MeaningService {
             instance ?: provideService(MeaningService::class.java)
                 .apply { instance = this }
         }
+
+
     }
 }

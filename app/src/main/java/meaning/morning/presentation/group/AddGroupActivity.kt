@@ -111,6 +111,11 @@ class AddGroupActivity : AppCompatActivity() {
         finish()
     }
 
+    fun sendGroupId() : Int{
+        val groupId = MeaningStorage.getInstance(this).getGroupId()
+        return groupId
+    }
+
     private fun saveAddGroupData(addName: String) {
         MeaningStorage.getInstance(applicationContext)
             .saveGroupName(addName)
