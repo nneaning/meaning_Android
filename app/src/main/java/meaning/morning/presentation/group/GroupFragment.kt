@@ -105,16 +105,16 @@ class GroupFragment : Fragment() {
             MeaningService.getInstance().getGroupList(meaningToken)
         call.enqueueListener(
             onSuccess = {
-                val ImageGroupList = it.body()!!.data!!.hasImageGroupList
+                val imageGroupList = it.body()!!.data!!.hasImageGroupList
                 val hasImageGroupData = mutableListOf<RecommendGroupData>()
-                for (i in ImageGroupList.indices) {
+                for (i in imageGroupList.indices) {
                     hasImageGroupData.apply {
                         add(
                             RecommendGroupData(
-                                ImageGroupList[i].groupId,
-                                ImageGroupList[i].groupName,
-                                ImageGroupList[i].countMember.toString(),
-                                ImageGroupList[i].imageUrl
+                                imageGroupList[i].groupId,
+                                imageGroupList[i].groupName,
+                                imageGroupList[i].countMember.toString(),
+                                imageGroupList[i].imageUrl
                             )
                         )
                     }
