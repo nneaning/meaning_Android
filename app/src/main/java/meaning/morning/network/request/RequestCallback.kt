@@ -5,6 +5,8 @@
 
 package meaning.morning.network.request
 
+import android.text.TextUtils
+import android.util.Log
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import meaning.morning.network.response.BaseResponse
@@ -47,6 +49,9 @@ class RequestCallback<T> : Callback<BaseResponse<T>> {
     }
 
     override fun onFailure(call: Call<BaseResponse<T>>, t: Throwable) {
+        Log.d("jinsu4755", "${t.message} \n")
+        Log.d("jinsu4755", "${t.localizedMessage} \n")
+        Log.d("jinsu4755", TextUtils.join("\n", t.stackTrace))
         onFailureListener?.invoke(t)
     }
 }
