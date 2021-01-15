@@ -18,10 +18,12 @@ import meaning.morning.network.response.GroupSettingResponse
 import meaning.morning.presentation.adapter.group.GroupSettingAdapter
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
+import kotlin.properties.Delegates
 
 class GroupSettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGroupSettingBinding
     private lateinit var groupSettingAdapter: GroupSettingAdapter
+    var groupIdx by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,21 +52,21 @@ class GroupSettingActivity : AppCompatActivity() {
                 val settingUserList = it.body()!!.data!!.users
                 val settingUserData = mutableListOf<GroupMemberData>()
 
+                groupIdx = settingGroupList.groupId.toInt()
                 binding.textviewGroupName.text = settingGroupList.groupName
                 binding.textviewCreateDate.text =
                     "${settingGroupList.createdAt.slice(IntRange(0, 3))}년 " +
                             "${settingGroupList.createdAt.slice(IntRange(5, 6))}월 " +
                             "${settingGroupList.createdAt.slice(IntRange(8, 9))}일"
                 binding.textviewMemberNum.text = "${settingGroupList.currentMemberNumber}명"
-                MeaningStorage.getInstance(this).saveGroupNumber(settingGroupList.currentMemberNumber)
 
                 for (i in settingUserList.indices) {
                     settingUserData.apply {
                         if (settingUserList[i].wakeUpTime.slice(IntRange(3, 4)) != "00") {
                             add(
                                 GroupMemberData(
-                                    settingUserList[i].userName.slice(IntRange(0, 0)),
-                                    settingUserList[i].userName,
+                                    settingUserList[i].nickName.slice(IntRange(0, 0)),
+                                    settingUserList[i].nickName,
                                     "매일 ${settingUserList[i].wakeUpTime.slice(IntRange(1, 1))}시" +
                                             " ${settingUserList[i].wakeUpTime.slice(IntRange(3, 4))}분 기상",
                                     "${settingUserList[i].dayPassed}일째 진행 중"
@@ -88,6 +90,7 @@ class GroupSettingActivity : AppCompatActivity() {
             }
         )
     }
+
 
     fun back() {
         finish()
