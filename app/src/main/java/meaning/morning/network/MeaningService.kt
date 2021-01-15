@@ -79,8 +79,8 @@ interface MeaningService {
     @POST("/group")
     fun addGroup(
         @Header("token") token: String?,
-        @Body body: GroupAddRequest,
-    ): Call<BaseResponse<GroupAddResponse>>
+        @Body body: GroupAddRequest
+    ): Call<GroupAddResponse>
 
     // 미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
@@ -124,6 +124,7 @@ interface MeaningService {
 
         const val meaningToken =
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsIm5hbWUiOiJtaW5zZXVuZyIsImlhdCI6MTYxMDY0NjYwMSwiZXhwIjoxNjEyNDYxMDAxLCJpc3MiOiJTZXJ2ZXJCYWQifQ.o22g_z0nR0BWzqOv7vsNz2ebKGEjddnKgSJqvBWdtlU"
+
         fun getInstance(): MeaningService = instance ?: synchronized(this) {
             instance ?: provideService(MeaningService::class.java)
                 .apply { instance = this }
