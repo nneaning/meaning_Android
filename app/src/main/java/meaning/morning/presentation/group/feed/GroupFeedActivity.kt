@@ -12,11 +12,16 @@ package meaning.morning.presentation.group.feed
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import meaning.morning.data.MyFeedPictureData
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityGroupFeedBinding
+import meaning.morning.network.MeaningService
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.GroupFeedResponse
 import meaning.morning.presentation.home.feed.PictureRecyclerviewFragment
 import meaning.morning.utils.BindFeedPictureEvent
+import meaning.morning.utils.enqueueListener
+import retrofit2.Call
 
 class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
 
@@ -25,7 +30,7 @@ class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
     private var pictureRecyclerviewFragment = PictureRecyclerviewFragment()
 
     override fun requestToFeedPictureData() {
-//        setPictureRcv()
+        connectGroupFeedServer()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,24 +51,27 @@ class GroupFeedActivity : AppCompatActivity(), BindFeedPictureEvent {
         transaction.replace(R.id.frameLayout_groupFeed, pictureRecyclerviewFragment)
         transaction.commit()
     }
+    //,groupid = MeaningStorage.getInstance(this).getGroupId()
 
-//    private fun setPictureRcv() {
-//        var groupFeedPictureData = mutableListOf<MyFeedPictureData>()
-//
-//        groupFeedPictureData.apply {
-//            add(MyFeedPictureData(R.drawable.image_16))
-//            add(MyFeedPictureData(R.drawable.image_16))
-//            add(MyFeedPictureData(R.drawable.image_16))
-//            add(MyFeedPictureData(R.drawable.image_16))
-//            add(MyFeedPictureData(R.drawable.image_16))
-//        }
-//        pictureRecyclerviewFragment.setAdapter(groupFeedPictureData.toList())
-//
-//    }
+    private fun connectGroupFeedServer(){
+        val call : Call<BaseResponse<GroupFeedResponse>> =
+            MeaningService.getInstance().requestGroupFeed(MeaningStorage.getInstance(this).accessToken, 0)
+        call.enqueueListener(
+            onSuccess = {
+
+            },
+            onError = {
+
+            }
+        )
+
+    }
 
     fun backButton() {
         finish()
     }
 
-
+    companion object {
+        private const val LOG_TAG = "Group_Feed"
+    }
 }

@@ -50,36 +50,36 @@ class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
     private fun setPictureRcv() {
         var groupFeedSnsData = mutableListOf<SnsFeedData>()
         groupFeedSnsData.apply {
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "이형준",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "나비보배따우",
-                    R.drawable.image_16
-                )
-            )
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "박효송",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "송송송송송송",
-                    R.drawable.image_16
-                )
-            )
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "양승완",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "맨유우승안돼",
-                    R.drawable.image_16
-                )
-            )
+//            add(
+//                SnsFeedData(
+//                    R.drawable.myfeed_profile,
+//                    "이형준",
+//                    "5분전",
+//                    "매일 오전 5시 기상",
+//                    "나비보배따우",
+//                    R.drawable.image_16
+//                )
+//            )
+//            add(
+//                SnsFeedData(
+//                    R.drawable.myfeed_profile,
+//                    "박효송",
+//                    "5분전",
+//                    "매일 오전 5시 기상",
+//                    "송송송송송송",
+//                    R.drawable.image_16
+//                )
+//            )
+//            add(
+//                SnsFeedData(
+//                    R.drawable.myfeed_profile,
+//                    "양승완",
+//                    "5분전",
+//                    "매일 오전 5시 기상",
+//                    "맨유우승안돼",
+//                    R.drawable.image_16
+//                )
+//            )
         }
         snsRecyclerviewFragment.setAdapter(groupFeedSnsData.toList())
     }

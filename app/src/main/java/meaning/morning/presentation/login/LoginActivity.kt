@@ -10,15 +10,24 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityLoginBinding
+import meaning.morning.presentation.home.MainActivity
 import meaning.morning.presentation.onboarding.OnBoardingActivity
 import meaning.morning.utils.replaceFragment
 import meaning.morning.utils.replaceFragmentWithAnimation
 
 class LoginActivity : AppCompatActivity() {
 
-    private val loginViewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+                LoginViewModel(MeaningStorage.getInstance(this@LoginActivity)) as T
+        }
+    }
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +47,18 @@ class LoginActivity : AppCompatActivity() {
     private fun observeLoginEvent() {
         loginViewModel.isLoginClick.observe(this) {
             eventLoginTrigger(it)
+        }
+        loginViewModel.loginTrigger.observe(this) {
+            if (it) {
+                showOnBoarding()
+                loginViewModel.setLoginEnable()
+            }
+        }
+        loginViewModel.isSaveUser.observe(this){
+            if (it) {
+                showHomeView()
+                loginViewModel.returnSaveUser()
+            }
         }
     }
 
@@ -72,10 +93,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onClickEnabledLoginButton() {
         if (loginViewModel.isCanLogin()) {
-            val intent = Intent(this, OnBoardingActivity::class.java)
-            startActivity(intent)
-            finish()
+            loginViewModel.requestLogin()
         }
+    }
+
+    private fun showOnBoarding() {
+        val intent = Intent(this, OnBoardingActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showHomeView() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onBackPressed() {

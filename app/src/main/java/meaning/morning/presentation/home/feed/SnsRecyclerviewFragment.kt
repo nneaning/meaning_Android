@@ -22,16 +22,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
+import meaning.morning.data.SnsFeedData
 import meaning.morning.databinding.FragmentSnsRecyclerviewBinding
 import meaning.morning.presentation.adapter.feed.SnsFeedAdapter
-import meaning.morning.data.SnsFeedData
 import meaning.morning.utils.BindFeedPictureEvent
 import meaning.morning.utils.SnsFeedItemDecoration
 
 
 class SnsRecyclerviewFragment : Fragment() {
 
-    private var snsFeedAdapter: SnsFeedAdapter? = null
     private var bindFeedPictureEvent: BindFeedPictureEvent? = null
 
     private lateinit var binding: FragmentSnsRecyclerviewBinding
@@ -51,6 +50,7 @@ class SnsRecyclerviewFragment : Fragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_sns_recyclerview, container, false)
+
         return binding.root
     }
 
@@ -61,11 +61,10 @@ class SnsRecyclerviewFragment : Fragment() {
     }
 
     fun setAdapter(snsFeedData: List<SnsFeedData>) {
-        snsFeedAdapter = SnsFeedAdapter()
-        snsFeedAdapter?.submitData(snsFeedData)
-        binding.rcvPicture.apply {
-            adapter = snsFeedAdapter
-            addItemDecoration(SnsFeedItemDecoration(requireContext()))
-        }
+        val snsFeedAdapter = SnsFeedAdapter()
+        snsFeedAdapter.submitData(snsFeedData)
+        binding.rcvPicture.adapter = snsFeedAdapter
+        binding.rcvPicture.addItemDecoration(SnsFeedItemDecoration(requireContext()))
+
     }
 }

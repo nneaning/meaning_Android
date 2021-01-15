@@ -7,8 +7,18 @@ class MeaningStorage(context: Context) {
         context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
     private var meaningEdit = meaningSharedPref.edit()
 
-    val userToken: String?
-        get() = meaningSharedPref.getString("userToken", null)
+    var accessToken: String?
+        get() = meaningSharedPref.getString(ACCESS_TOKEN, null)
+        set(value) = meaningEdit.putString(ACCESS_TOKEN, value)
+            .apply()
+
+    var refreshToken: String?
+        get() = meaningSharedPref.getString(REFRESH_TOKEN, null)
+        set(value) = meaningEdit.putString(REFRESH_TOKEN, value)
+            .apply()
+
+    val nickName: String?
+        get() = meaningSharedPref.getString(NICK_NAME, null)
 
     fun getGroupName(): String? {
         return meaningSharedPref.getString("groupName", "")
@@ -24,6 +34,14 @@ class MeaningStorage(context: Context) {
 
     fun getGroupId(): Int{
         return meaningSharedPref.getInt("groupId", 0)
+    }
+
+    fun saveGroupNumber(groupNumber : Int){
+        meaningEdit.putInt("groupNumber",groupNumber)
+    }
+
+    fun getGroupNumber() : Int{
+        return meaningSharedPref.getInt("groupNumber",0)
     }
 
     fun saveUserToken(token: String) {
@@ -51,6 +69,13 @@ class MeaningStorage(context: Context) {
         meaningEdit.apply()
     }
 
+    fun saveUserData(nickName: String?, wakeUpTime: String?) {
+        meaningEdit.apply {
+            putString(NICK_NAME, nickName)
+            putString(TIME, wakeUpTime)
+        }.apply()
+    }
+
     companion object {
         private var instance: MeaningStorage? = null
 
@@ -61,5 +86,9 @@ class MeaningStorage(context: Context) {
         }
 
         const val PREFERENCE_NAME = "meaningPref"
+        private const val ACCESS_TOKEN = "accessToken"
+        private const val REFRESH_TOKEN = "refreshToken"
+        private const val NICK_NAME = "nickName"
+        private const val TIME = "wakeUpTime"
     }
 }

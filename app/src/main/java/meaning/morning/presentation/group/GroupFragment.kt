@@ -13,17 +13,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.FragmentGroupBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.MyGroupResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
+import meaning.morning.presentation.group.feed.GroupFeedActivity
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
@@ -54,11 +55,16 @@ class GroupFragment : Fragment() {
             val intent = Intent(activity, AddGroupActivity::class.java)
             startActivity(intent)
         }
+
+        binding.imageviewNext.setOnClickListener {
+            val intent = Intent(requireContext(),GroupFeedActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
-            MeaningService.getInstance().getMyGroup(meaningToken)
+            MeaningService.getInstance().getMyGroup(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 if(it.body()?.data==null) {
@@ -77,7 +83,7 @@ class GroupFragment : Fragment() {
 
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
-            MeaningService.getInstance().getGroupList(meaningToken)
+            MeaningService.getInstance().getGroupList(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 val noImageGroup = it.body()!!.data!!.noImageGroupList
@@ -102,7 +108,7 @@ class GroupFragment : Fragment() {
 
     private fun loadHasImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
-            MeaningService.getInstance().getGroupList(meaningToken)
+            MeaningService.getInstance().getGroupList(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 val imageGroupList = it.body()!!.data!!.hasImageGroupList

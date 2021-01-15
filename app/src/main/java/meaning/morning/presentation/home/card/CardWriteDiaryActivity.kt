@@ -13,7 +13,6 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardWriteDiaryBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.CardDailyDiaryRequest
 import meaning.morning.utils.customEnqueue
 
@@ -71,7 +70,7 @@ class CardWriteDiaryActivity : AppCompatActivity() {
     private fun connectDailyDiaryServer() {
         MeaningService.getInstance()
             .requestDailyDaiary(
-                meaningToken,
+                MeaningStorage.getInstance(this).accessToken,
                 CardDailyDiaryRequest(writeDairy.get().toString())
             )
             .customEnqueue(

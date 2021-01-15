@@ -16,7 +16,6 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityAddGroupBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.GroupAddRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupAddResponse
@@ -42,7 +41,8 @@ class AddGroupActivity : AppCompatActivity() {
     private fun remoteAddGroup(){
         val call: Call <GroupAddResponse> =
             MeaningService.getInstance().addGroup(
-                meaningToken, GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
+                MeaningStorage.getInstance(this).accessToken,
+                GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
             )
         call.enqueueListener(
             onSuccess = {
@@ -109,6 +109,11 @@ class AddGroupActivity : AppCompatActivity() {
 
     fun backToGroupList() {
         finish()
+    }
+
+    fun sendGroupId() : Int{
+        val groupId = MeaningStorage.getInstance(this).getGroupId()
+        return groupId
     }
 
     private fun saveAddGroupData(addName: String) {
