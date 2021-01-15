@@ -26,8 +26,13 @@ interface UserService {
     @PUT("/user/onboard")
     fun requestPutUserData(
         @Header("token") token: String,
-        @Body body: UserData
+        @Body body: UserData,
     ): Call<BaseResponse<Unit>>
+
+    @PUT("/user/refreshtoken")
+    fun requestTokenRefresh(
+        @Header("refreshtoken") refreshToken: String?,
+    ): Call<BaseResponse<LoginResponse>>
 
     companion object {
         @Volatile

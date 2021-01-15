@@ -15,8 +15,7 @@ import meaning.morning.presentation.group.GroupDialog
 
 class GroupAdapter(context: Context) : RecyclerView.Adapter<GroupAdapter.VHolder>() {
     private val noImageGroupData: MutableList<GroupData> = mutableListOf()
-    val adpapterContext = context
-    private val dialog = GroupDialog(adpapterContext)
+    private val dialog = GroupDialog(context)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {

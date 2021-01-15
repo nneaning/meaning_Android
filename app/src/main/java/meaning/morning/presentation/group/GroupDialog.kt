@@ -6,16 +6,15 @@ package meaning.morning.presentation.group
 
 import android.app.Dialog
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.DialogGroupDetailBinding
 import meaning.morning.databinding.DialogGroupRecyclerBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.GroupJoinApproveRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupDetailResponse
@@ -50,7 +49,7 @@ class GroupDialog(private val context: Context) {
     private fun setGroupDetailData(binding: DialogGroupDetailBinding, groupId: Int) {
         val call: Call<BaseResponse<GroupDetailResponse>> =
             MeaningService.getInstance().getGroupDetail(
-                meaningToken, groupid = groupId
+                MeaningStorage.getInstance(context).accessToken, groupid = groupId
             )
         call.enqueueListener(
             onSuccess = {
@@ -87,7 +86,7 @@ class GroupDialog(private val context: Context) {
     private fun remoteApproveDialog(binding: DialogGroupRecyclerBinding, groupid: Int) {
         val call: Call<GroupJoinApproveResponse> =
             MeaningService.getInstance().getApproveJoinGroup(
-                meaningToken,
+                MeaningStorage.getInstance(context).accessToken,
                 GroupJoinApproveRequest(groupid)
             )
         call.enqueueListener(
@@ -96,21 +95,20 @@ class GroupDialog(private val context: Context) {
                     binding.textviewDialogLabel.text = "그룹 참가가 완료되었습니다."
             },
             onError = {
-                Log.d("adad", it.errorBody()!!.toString())
-                if(it.body()?.status != null) {
-                    if (it.body()!!.status == 406) {
-                        binding.textviewDialogLabel.text = "그룹 참가 기능 인원을 초과했어요."
-                        return@enqueueListener
-                    }
-                    if (it.body()!!.status == 400) {
-                        Log.d("adad", "dadadadadadad")
-                        binding.textviewDialogLabel.text = "이미 함께 하고 있는 그룹이 있어요!"
-                    }
-                }
+                failApproveGroup(it, binding)
             }
         )
     }
 
+    private fun failApproveGroup(
+        baseResponse: BaseResponse<GroupJoinApproveResponse>,
+        binding: DialogGroupRecyclerBinding
+    ) {
+        when (baseResponse.status) {
+            400 -> binding.textviewDialogLabel.text = "이미 함께 하고 있는 그룹이 있어요!"
+            406 -> binding.textviewDialogLabel.text = "그룹 참가 기능 인원을 초과했어요."
+        }
+    }
 
     private fun changeDialog(joinBtn: TextView) {
         joinBtn.setOnClickListener {

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityLoginBinding
+import meaning.morning.presentation.home.MainActivity
 import meaning.morning.presentation.onboarding.OnBoardingActivity
 import meaning.morning.utils.replaceFragment
 import meaning.morning.utils.replaceFragmentWithAnimation
@@ -48,9 +49,15 @@ class LoginActivity : AppCompatActivity() {
             eventLoginTrigger(it)
         }
         loginViewModel.loginTrigger.observe(this) {
-            if (loginViewModel.loginTrigger.value == true) {
+            if (it) {
                 showOnBoarding()
                 loginViewModel.setLoginEnable()
+            }
+        }
+        loginViewModel.isSaveUser.observe(this){
+            if (it) {
+                showHomeView()
+                loginViewModel.returnSaveUser()
             }
         }
     }
@@ -92,6 +99,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showOnBoarding() {
         val intent = Intent(this, OnBoardingActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showHomeView() {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

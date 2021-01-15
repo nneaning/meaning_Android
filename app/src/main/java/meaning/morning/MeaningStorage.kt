@@ -16,11 +16,9 @@ class MeaningStorage(context: Context) {
         get() = meaningSharedPref.getString(REFRESH_TOKEN, null)
         set(value) = meaningEdit.putString(REFRESH_TOKEN, value)
             .apply()
+
     val nickName: String?
         get() = meaningSharedPref.getString(NICK_NAME, null)
-
-    val userToken: String?
-        get() = meaningSharedPref.getString("userToken", null)
 
     fun getGroupName(): String? {
         return meaningSharedPref.getString("groupName", "")

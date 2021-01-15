@@ -13,7 +13,6 @@ import meaning.morning.R
 import meaning.morning.data.GroupMemberData
 import meaning.morning.databinding.ActivityGroupSettingBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupSettingResponse
 import meaning.morning.presentation.adapter.group.GroupSettingAdapter
@@ -43,7 +42,7 @@ class GroupSettingActivity : AppCompatActivity() {
     private fun loadGroupMember() {
         val call: Call<BaseResponse<GroupSettingResponse>> =
             MeaningService.getInstance().getGroupSetting(
-                meaningToken, groupid = MeaningStorage.getInstance(this).getGroupId()
+                MeaningStorage.getInstance(this).accessToken, groupid = MeaningStorage.getInstance(this).getGroupId()
             )
         call.enqueueListener(
             onSuccess = {

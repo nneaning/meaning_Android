@@ -19,6 +19,10 @@ class LoginViewModel(
     private val meaningStorage: MeaningStorage,
 ) : ViewModel() {
 
+    private val _isSavedUser = MutableLiveData(false)
+    val isSaveUser: LiveData<Boolean>
+        get() = _isSavedUser
+
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
@@ -48,6 +52,10 @@ class LoginViewModel(
 
     fun onLoginTrigger() {
         _isLoginClick.value = true
+    }
+
+    fun returnSaveUser() {
+        _isSavedUser.value = false
     }
 
     fun resetLoginTrigger() {
@@ -120,6 +128,14 @@ class LoginViewModel(
     }
 
     private fun successLoginEvent(loginResponse: LoginResponse) {
+        if (loginResponse.wakeUpTime.isNullOrBlank()) {
+            saveNewUserEvent(loginResponse)
+            return
+        }
+        saveRefreshUserEvent(loginResponse)
+    }
+
+    private fun saveNewUserEvent(loginResponse: LoginResponse) {
         meaningStorage.apply {
             accessToken = loginResponse.accessToken
             refreshToken = loginResponse.refreshToken
@@ -127,6 +143,16 @@ class LoginViewModel(
         }
         _isLoading.value = false
         _loginTrigger.value = true
+    }
+
+    private fun saveRefreshUserEvent(loginResponse: LoginResponse) {
+        meaningStorage.apply {
+            accessToken = loginResponse.accessToken
+            refreshToken = loginResponse.refreshToken
+            saveUserData(loginResponse.nickName, loginResponse.wakeUpTime)
+        }
+        _isLoading.value = false
+        _isSavedUser.value = true
     }
 
     private fun failLoginEvent(baseResponse: BaseResponse<Unit>) {
