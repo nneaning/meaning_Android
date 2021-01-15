@@ -7,7 +7,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="viewModel"
+            type="meaning.morning.presentation.onboarding.OnBoardingViewModel" />
 
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +49,19 @@
             app:layout_constraintEnd_toEndOf="@id/on_boarding_top_bar"
             app:layout_constraintStart_toStartOf="@id/on_boarding_top_bar"
             app:layout_constraintTop_toBottomOf="@id/on_boarding_top_bar" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:background="@color/meaning_login_30_36"
+            android:visibility="@{viewModel.isLoading()? View.VISIBLE : View.GONE}"
+            android:padding="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

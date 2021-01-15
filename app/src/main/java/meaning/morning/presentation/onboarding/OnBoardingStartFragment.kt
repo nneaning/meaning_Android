@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import meaning.morning.R
 import meaning.morning.databinding.FragmentOnBoardingStartMeaningBinding
 import meaning.morning.presentation.home.MainActivity
 
 class OnBoardingStartFragment : Fragment() {
+    private val onBoardingViewModel: OnBoardingViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,9 +32,11 @@ class OnBoardingStartFragment : Fragment() {
 
     private fun initView(binding: FragmentOnBoardingStartMeaningBinding) {
         binding.onBoardingStartNextButton.setOnClickListener {
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            requireActivity().startActivity(intent)
-            requireActivity().finish()
+            putUserDataEvent()
         }
+    }
+
+    private fun putUserDataEvent() {
+        onBoardingViewModel.requestPutUserData()
     }
 }
