@@ -1,17 +1,17 @@
 package meaning.morning.utils
 
-import android.content.Context
-import android.widget.Toast
-import okhttp3.ResponseBody
-import org.json.JSONObject
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import meaning.morning.network.response.BaseResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 fun <ResponseType> Call<ResponseType>.enqueueListener(
     onSuccess: (Response<ResponseType>) -> Unit,
-    onError: (Response<ResponseType>) -> Unit,
-    onFail: () -> Unit = {},
+    onError: (BaseResponse<ResponseType>) -> Unit,
+    onFail: () -> Unit = {}
 ) {
     this.enqueue(object : Callback<ResponseType> {
         override fun onFailure(call: Call<ResponseType>, t: Throwable) {
@@ -20,16 +20,18 @@ fun <ResponseType> Call<ResponseType>.enqueueListener(
 
         override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {
             if (response.isSuccessful) {
-                onSuccess(response)
+                onSuccess.invoke(response)
                 return
             }
-            onError(response)
+            val errorBody = response.errorBody()?.string() ?: return
+            val errorResponse = createResponseErrorBody(errorBody)
+            onError.invoke(errorResponse)
+        }
+
+        private fun createResponseErrorBody(errorBody: String): BaseResponse<ResponseType> {
+            val gson = GsonBuilder().create()
+            val responseType = object : TypeToken<BaseResponse<ResponseType>>() {}.type
+            return gson.fromJson(errorBody, responseType)
         }
     })
-}
-
-fun showError(context: Context, error: ResponseBody?) {
-    val e = error ?: return
-    val ob = JSONObject(e.string())
-    Toast.makeText(context, ob.getString("message"), Toast.LENGTH_SHORT).show()
 }

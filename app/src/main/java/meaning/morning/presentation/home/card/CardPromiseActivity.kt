@@ -15,7 +15,6 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityCardPromiseBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CardTodayPromise
 import meaning.morning.utils.customEnqueue
@@ -54,7 +53,7 @@ class CardPromiseActivity : AppCompatActivity() {
     private fun connectDayPromiseServer() {
         MeaningService.getInstance()
             .requestDayPromise(
-                meaningToken
+                MeaningStorage.getInstance(this).accessToken
             )
             .customEnqueue(
                 Success = { response ->

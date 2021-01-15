@@ -13,12 +13,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.data.GroupData
 import meaning.morning.data.RecommendGroupData
 import meaning.morning.databinding.FragmentGroupBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.MyGroupResponse
@@ -58,7 +58,7 @@ class GroupFragment : Fragment() {
 
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
-            MeaningService.getInstance().getMyGroup(meaningToken)
+            MeaningService.getInstance().getMyGroup(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 if(it.body()?.data==null) {
@@ -77,7 +77,7 @@ class GroupFragment : Fragment() {
 
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
-            MeaningService.getInstance().getGroupList(meaningToken)
+            MeaningService.getInstance().getGroupList(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
                 val noImageGroup = it.body()!!.data!!.noImageGroupList
@@ -102,19 +102,19 @@ class GroupFragment : Fragment() {
 
     private fun loadHasImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
-            MeaningService.getInstance().getGroupList(meaningToken)
+            MeaningService.getInstance().getGroupList(MeaningStorage.getInstance(requireContext()).accessToken)
         call.enqueueListener(
             onSuccess = {
-                val ImageGroupList = it.body()!!.data!!.hasImageGroupList
+                val imageGroupList = it.body()!!.data!!.hasImageGroupList
                 val hasImageGroupData = mutableListOf<RecommendGroupData>()
-                for (i in ImageGroupList.indices) {
+                for (i in imageGroupList.indices) {
                     hasImageGroupData.apply {
                         add(
                             RecommendGroupData(
-                                ImageGroupList[i].groupId,
-                                ImageGroupList[i].groupName,
-                                ImageGroupList[i].countMember.toString(),
-                                ImageGroupList[i].imageUrl
+                                imageGroupList[i].groupId,
+                                imageGroupList[i].groupName,
+                                imageGroupList[i].countMember.toString(),
+                                imageGroupList[i].imageUrl
                             )
                         )
                     }

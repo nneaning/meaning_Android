@@ -16,7 +16,6 @@ import meaning.morning.MeaningStorage
 import meaning.morning.R
 import meaning.morning.databinding.ActivityAddGroupBinding
 import meaning.morning.network.MeaningService
-import meaning.morning.network.MeaningService.Companion.meaningToken
 import meaning.morning.network.request.GroupAddRequest
 import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.GroupAddResponse
@@ -40,18 +39,30 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     private fun remoteAddGroup(){
-        val call: Call<BaseResponse<GroupAddResponse>> =
+        val call: Call <GroupAddResponse> =
             MeaningService.getInstance().addGroup(
-                meaningToken, GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
+                MeaningStorage.getInstance(this).accessToken,
+                GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
             )
         call.enqueueListener(
             onSuccess = {
-                MeaningStorage.getInstance(this).saveGroupId(it.body()!!.data!!.groupId)
+                MeaningStorage.getInstance(this).saveGroupId(it.body()!!.groupId)
+                val intent = Intent(this, CompleteGroupActivity::class.java)
+                startActivity(intent)
             },
             onError = {
+                failAddGroup(it)
             }
         )
     }
+
+    private fun failAddGroup(baseResponse: BaseResponse<GroupAddResponse>) {
+        when (baseResponse.status) {
+            403 -> showToast("이미 그룹에 속해 있습니다")
+            406 -> showToast("이미 있는 그룹명입니다.")
+        }
+    }
+
     private fun changeLabelEvent(num: EditText) {
         num.textCheck(
             observeTextChanged = {
@@ -86,8 +97,6 @@ class AddGroupActivity : AppCompatActivity() {
         if (checkEditTextBlank() && validNum()) {
             remoteAddGroup()
             saveAddGroupData(groupName.get().toString())
-            val intent = Intent(this, CompleteGroupActivity::class.java)
-            startActivity(intent)
             finish()
             return
         }
