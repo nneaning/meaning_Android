@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
 import meaning.morning.databinding.ActivityTimeStampCameraBinding
+import meaning.morning.utils.showToast
 
 class TimeStampCameraActivity : AppCompatActivity() {
 
@@ -69,12 +70,7 @@ class TimeStampCameraActivity : AppCompatActivity() {
     }
 
     private fun permissionDeniedEvent() {
-        // TODO 커스텀 토스트로 변경하기.
-        Toast.makeText(
-            this,
-            "권한을 승인하지 않으면 당신의 미라클 모닝을 기록할 수 없어요!",
-            Toast.LENGTH_LONG
-        ).show()
+        showToast("권한을 승인하지 않으면 당신의 미라클 모닝을 기록할 수 없어요!")
         finish()
     }
 

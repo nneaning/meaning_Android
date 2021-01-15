@@ -107,12 +107,9 @@
             android:id="@+id/tv_inputNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="309dp"
             android:layout_marginTop="13dp"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintEnd_toStartOf="@id/tv_maxNum"
             android:text="0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_bookContents"
             app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
 
         <TextView
@@ -123,7 +120,6 @@
             android:layout_marginEnd="16dp"
             android:text="/ 30"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_inputNum"
             app:layout_constraintTop_toBottomOf="@id/et_bookContents" />
 
         <TextView

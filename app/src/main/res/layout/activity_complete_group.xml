@@ -34,7 +34,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="35dp"
-            android:layout_marginTop="355dp"
             android:background="@drawable/group_button_background"
             android:fontFamily="@font/spoqahansansneo_medium"
             android:onClick="@{()->completeActivity.goToGroup()}"
@@ -43,8 +42,10 @@
             android:textAlignment="center"
             android:textColor="@color/meaning_white_FF"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
