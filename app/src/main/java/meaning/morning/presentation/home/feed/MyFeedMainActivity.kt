@@ -62,10 +62,11 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
         transaction.replace(R.id.frameLayout_MyFeedMain, pictureRecyclerviewFragment)
         transaction.commit()
     }
-    
+
     private fun connectMyFeedServer() {
         val call: Call<BaseResponse<MyFeedResponse>> =
-            MeaningService.getInstance().requestMyFeed(MeaningStorage.getInstance(this).accessToken, 0)
+            MeaningService.getInstance()
+                .requestMyFeed(MeaningStorage.getInstance(this).accessToken, 0)
         call.enqueueListener(
             onSuccess = {
                 val myFeedList = it.body()!!.data!!.getMyPage
@@ -73,9 +74,11 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                 var myFeedMainList = mutableListOf<MyFeedMainListData>()
                 var myFeedPictureData = mutableListOf<MyFeedPictureData>()
                 binding.tvCountDay.text = "오늘은 365일 중에 " + successDay.toString() + "번째 의미있는 아침입니다"
-                binding.tvNameInImage.text = MeaningStorage.getInstance(this).nickName?.slice(IntRange(0,0))
+                binding.tvNameInImage.text =
+                    MeaningStorage.getInstance(this).nickName?.slice(IntRange(0, 0))
                 binding.tvMyfeedName.text = MeaningStorage.getInstance(this).nickName
-                binding.btnDate.text = "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime() + " 기상"
+                binding.btnDate.text =
+                    "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime() + " 기상"
 
                 for (i in myFeedList!!.indices) {
                     myFeedPictureData.apply {
