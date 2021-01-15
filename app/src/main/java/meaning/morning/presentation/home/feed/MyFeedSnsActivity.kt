@@ -14,14 +14,13 @@
  */
 package meaning.morning.presentation.home.feed
 
-import MyFeedListData
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.R
-import meaning.morning.databinding.ActivityMyFeedSnsBinding
+import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.SnsFeedData
+import meaning.morning.databinding.ActivityMyFeedSnsBinding
 import meaning.morning.utils.BindFeedPictureEvent
 
 class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
@@ -31,7 +30,24 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
     private var snsRecyclerviewFragment = SnsRecyclerviewFragment()
 
     override fun requestToFeedPictureData() {
-        setPictureRcv()
+
+        val intent = intent
+        val feedList = intent.getParcelableArrayListExtra<MyFeedMainListData>("myFeedList")
+        var myFeedSnsData = mutableListOf<SnsFeedData>()
+        for (i in feedList!!.indices) {
+            myFeedSnsData.apply {
+                add(
+                    SnsFeedData(
+                        "이형준",
+                        "5분전",
+                        "매일 오전 5시 기상",
+                        feedList[i].timeStampContents,
+                        feedList[i].timeStampImageUrl
+                    )
+                )
+            }
+        }
+        snsRecyclerviewFragment.setAdapter(myFeedSnsData.toList())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +57,8 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
         setTransaction()
 
-        val intent = intent
-        Log.d("log111",intent.getParcelableArrayListExtra<MyFeedListData>("myFeedList").toString())
-        Log.d("log112",intent.getStringExtra("successDay").toString())
-
+        binding.tvSuccessDay.text =
+            "오늘은 365일 중에 " + intent.getStringExtra("successDay") + "번째 의미있는 아침입니다."
     }
 
     private fun setBinding() {
@@ -58,50 +72,8 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         transaction.commit()
     }
 
-    private fun setPictureRcv() {
-        val feedList = intent?.getParcelableArrayListExtra<MyFeedListData>("myFeedList")
-        Log.d("log333",feedList!![0].createdAt)
-
-        Log.d("log221",intent.getParcelableArrayListExtra<MyFeedListData>("myFeedList").toString())
-        Log.d("log222",intent.getStringExtra("successDay").toString())
-
-        var myFeedSnsData = mutableListOf<SnsFeedData>()
-        myFeedSnsData.apply {
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "이형준",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "나비보배따우",
-                    R.drawable.image_16
-                )
-            )
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "박효송",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "송송송송솟ㅇㅇ",
-                    R.drawable.image_16
-                )
-            )
-            add(
-                SnsFeedData(
-                    R.drawable.myfeed_profile,
-                    "양승완",
-                    "5분전",
-                    "매일 오전 5시 기상",
-                    "맨유우승안돼",
-                    R.drawable.image_16
-                )
-            )
-        }
-        snsRecyclerviewFragment.setAdapter(myFeedSnsData.toList())
-    }
-
     fun backButton() {
         finish()
     }
+
 }

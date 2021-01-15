@@ -12,8 +12,8 @@ package meaning.morning.presentation.adapter.feed
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import meaning.morning.databinding.SnsItemListBinding
 import meaning.morning.data.SnsFeedData
+import meaning.morning.databinding.SnsItemListBinding
 
 class SnsFeedAdapter : RecyclerView.Adapter<SnsFeedAdapter.SnsFeedVH>() {
 
