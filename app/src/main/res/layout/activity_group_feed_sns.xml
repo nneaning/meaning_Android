@@ -24,11 +24,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/back_btn"
                 android:onClick="@{()->groupFeedSnsActivity.backButton()}"
+                android:src="@drawable/back_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,15 +37,22 @@
                 android:id="@+id/tv_myfeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="9dp"
                 android:fontFamily="@font/spoqahansansneo_medium"
                 android:includeFontPadding="false"
                 android:text="서울 대학생 아침 인증 그룹"
                 android:textColor="@color/grey1_33"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/frame_38"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
