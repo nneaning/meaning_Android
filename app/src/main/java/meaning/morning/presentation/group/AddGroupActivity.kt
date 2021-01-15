@@ -85,13 +85,9 @@ class AddGroupActivity : AppCompatActivity() {
     fun checkBlankEvent() {
         if (checkEditTextBlank() && validNum()) {
             remoteAddGroup()
+            saveAddGroupData(groupName.get().toString())
             val intent = Intent(this, CompleteGroupActivity::class.java)
             startActivity(intent)
-            saveAddGroupData(
-                binding.edittextGroupName.text.toString(),
-                binding.edittextNum.text.toString(),
-                binding.edittextGroupContent.text.toString()
-            )
             finish()
             return
         }
@@ -106,8 +102,9 @@ class AddGroupActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun saveAddGroupData(addName: String, memberLimit: String, addContent: String) {
-        MeaningStorage.getInstance(applicationContext).saveGroup(addName, memberLimit, addContent)
+    private fun saveAddGroupData(addName: String) {
+        MeaningStorage.getInstance(applicationContext)
+            .saveGroupName(addName)
     }
 }
 
