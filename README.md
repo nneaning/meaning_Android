@@ -269,16 +269,160 @@
 <br>
 
 # 💫 Team Role
+
   - ## 🌱 [Andromeaning Conventions](https://github.com/nneaning/meaning_Android/wiki)
+
   - ## 🌱 [Andromeaning Coding Style](https://github.com/nneaning/meaning_Android/wiki/Andromeaning-Coding-Style)
+
   - ## 🌱 [Code Review Guideline](https://github.com/nneaning/meaning_Android/wiki/Code-Review-Guideline)
+
   - ## 🌱 Git
+
     - ` feat ` : 새로운 기능 추가하기
     - ` fix ` : 버그 수정하는 경우
     - ` style ` : 색상 변경, 폰트 변경 등이 있는 경우
     - ` refactor ` : 코드 리팩토링 하는 경우
     - ` upload ` : 파일 생성하는 경우
     - ` docs ` : 문서 수정하는 경우
+
+    ### Git issue template
+
+    ![image](https://user-images.githubusercontent.com/45380072/104743408-032aab80-578f-11eb-94b9-6a7bb5370c67.png)
+
+    ### Git PR template
+
+    ![image](https://user-images.githubusercontent.com/45380072/104743459-12a9f480-578f-11eb-8489-b5351dc60097.png)
+
+    ### Code review
+
+    ![image](https://user-images.githubusercontent.com/45380072/104744010-b693a000-578f-11eb-92df-59117e8d34ae.png)
+
+    
+
+  - ## 🌱Github Action & Slack bot
+
+    ### Slack Bot
+
+    - Github Action 자동 빌드가 성공한 경우.
+
+    <img src="https://user-images.githubusercontent.com/45380072/104742491-d75af600-578d-11eb-9d5d-433457b58546.png" alt="image" width="500" />
+
+    - Github Action 자동빌드는 성공했으나 파일 업로드 과정에 문제가 생긴 경우
+
+    <img src="https://user-images.githubusercontent.com/45380072/104742537-e9d52f80-578d-11eb-9baa-5e0940901ddb.png" alt="image" width="500" />
+
+    - Github Action 자동 빌드도 실패한 경우
+
+    <img src="https://user-images.githubusercontent.com/45380072/104742576-f22d6a80-578d-11eb-888a-cc527dc2c662.png" alt="image" width="500" />
+
+    ### Github Action
+
+    ```
+    name: MeaningAndroid Builder
+    
+    on:
+      push:
+        branches: [ develop ]
+    
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
+    
+    jobs:
+      build:
+        name: Generate APK
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+            
+    
+          - name: Gradle cache
+            uses: actions/cache@v2
+            with:
+              path: |
+                ~/.gradle/caches
+                ~/.gradle/wrapper
+              key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+              restore-keys: |
+                ${{ runner.os }}-gradle-
+          - name: set up JDK 1.8
+            uses: actions/setup-java@v1
+            with:
+              java-version: 1.8
+    
+          - name: Change gradlew permissions
+            run: chmod +x ./gradlew
+    
+          - name: Build with Gradle
+            run: ./gradlew assembleDebug
+    
+          - name: On Failed, Notify in Slack
+            if: ${{ failure() }}
+            uses: rtCamp/action-slack-notify@v2
+            env:
+              SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+              SLACK_TITLE: 'nneaning/Anroid Debug build Fail❌'
+              SLACK_COLOR: '#FF5733'
+              MSG_MINIMAL: true
+              SLACK_MESSAGE: '에러를 확인해주세요'
+    
+          - name: Upload APK
+            if: ${{ success() }}
+            uses: actions/upload-artifact@v2
+            with:
+              name: apk
+              path: app/build/outputs/apk/debug/
+    
+    
+      upload:
+        needs: [build]
+        name: upload to Slack
+        runs-on: ubuntu-latest
+        steps:        
+          - name: download Article
+            uses: actions/download-artifact@v2
+            with:
+              name: apk
+              
+          - name: Update Release apk name
+            if: ${{ success() }}
+            run: |
+              mv app-debug.apk 미닝-Debug.apk
+              echo 'apk=미닝-Debug.apk' >> $GITHUB_ENV
+              
+          - name: Upload APK at Slack
+            if: ${{ success() }}
+            run: |
+              curl -X POST \
+              -F file=@$apk \
+              -F channels=${{secrets.SLACK_CHANNEL_ID}} \
+              -H "Authorization: Bearer ${{secrets.SLACK_BOT_TOKEN}}" \
+              https://slack.com/api/files.upload
+              
+          - name: On Success
+            if: ${{ success() }}
+            uses: rtCamp/action-slack-notify@v2
+            env:
+              SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+              SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+              SLACK_COLOR: '#5BFF33'
+              MSG_MINIMAL: true
+              SLACK_MESSAGE: 'apk 생성 완료! '
+    
+          - name: On Success but Fail
+            if: ${{ failure() }}
+            uses: rtCamp/action-slack-notify@v2
+            env:
+              SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+              SLACK_TITLE: 'nneaning/Anroid Debug build Success✅'
+              SLACK_COLOR: '#FFF233'
+              MSG_MINIMAL: true
+              SLACK_MESSAGE: '빌드는 완료 되었으나 apk업로드 에러'
+    ```
+
+    
 
 <br>
 <br>
