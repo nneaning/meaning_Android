@@ -1,5 +1,6 @@
 package meaning.morning.presentation.camera
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import meaning.morning.R
 import meaning.morning.databinding.FragmentCameraResultBinding
+import meaning.morning.presentation.home.card.CardTimeStampActivity
 import meaning.morning.utils.MeaningToast
 
 class CameraResultFragment : Fragment() {
@@ -42,7 +44,11 @@ class CameraResultFragment : Fragment() {
             requireActivity().onBackPressed()
         }
         binding.useImageButton.setOnClickListener {
-            TimeStampImageCreator(requireContext()).saveOf(binding.cameraResultPreviewFrame)
+            val timeStampImageCreator = TimeStampImageCreator(requireContext())
+            timeStampImageCreator.saveOf(binding.cameraResultPreviewFrame)
+            val intent = Intent(requireActivity(), CardTimeStampActivity::class.java)
+            intent.putExtra("image", timeStampImageCreator.photoToUri())
+            requireActivity().startActivity(intent)
             MeaningToast(requireContext(), "사진 저장 완료").showToast()
         }
     }

@@ -26,6 +26,7 @@ import meaning.morning.network.response.BaseResponse
 import meaning.morning.network.response.CalendarResponse
 import meaning.morning.presentation.adapter.home.CalendarAdapter
 import meaning.morning.presentation.adapter.home.HomeCardAdapter
+import meaning.morning.presentation.camera.TimeStampCameraActivity
 import meaning.morning.presentation.home.card.CardPromiseActivity
 import meaning.morning.presentation.home.card.CardReadingActivity
 import meaning.morning.presentation.home.card.CardTimeStampActivity
@@ -211,7 +212,7 @@ class HomeFragment : Fragment() {
             object : HomeCardAdapter.ItemClickListener {
                 override fun onClick(view: View, position: Int) {
                     when (position) {
-                        0 -> changeIntent(CardTimeStampActivity())
+                        0 -> changeIntent(TimeStampCameraActivity())
                         1 -> changeIntent(CardPromiseActivity())
                         2 -> changeIntent(CardWriteDiaryActivity())
                         3 -> changeIntent(CardReadingActivity())

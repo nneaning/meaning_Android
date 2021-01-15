@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TimeStampImageCreator(private val context: Context) {
+    private var photo: File? = null
 
     fun saveOf(viewGroup: ConstraintLayout) {
         val width = viewGroup.width
@@ -31,6 +32,10 @@ class TimeStampImageCreator(private val context: Context) {
         saveImage(bitmapBuffer)
     }
 
+    fun photoToUri(): Uri {
+        return Uri.fromFile(photo)
+    }
+
     private fun removeViewEvent(viewGroup: ConstraintLayout) {
         viewGroup.apply {
             clearFocus()
@@ -40,7 +45,7 @@ class TimeStampImageCreator(private val context: Context) {
     }
 
     private fun getOutputDirectory(): File {
-        //FIXME Deprecated 30 방법 변환이 필요
+        // FIXME Deprecated 30 방법 변환이 필요
         val mediaDir = context.externalMediaDirs.firstOrNull()?.let {
             File(it, context.resources.getString(R.string.app_name)).apply {
                 mkdirs()
@@ -50,9 +55,9 @@ class TimeStampImageCreator(private val context: Context) {
     }
 
     private fun saveImage(bitmapBuffer: Bitmap) {
-        val photoFile = getPhotoFile()
+        photo = getPhotoFile()
         try {
-            val outputStream = FileOutputStream(photoFile)
+            val outputStream = FileOutputStream(photo)
             bitmapBuffer.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
             outputStream.close()
             galleryAddPicture()
@@ -68,18 +73,16 @@ class TimeStampImageCreator(private val context: Context) {
     private fun getPhotoFile() = File(
         getOutputDirectory(),
         SimpleDateFormat(
-            "yyyy-MM-dd-HH-mm-ss",
+            "yyyy-MM-dd HH:mm:ss",
             Locale.KOREA
         ).format(System.currentTimeMillis()) + ".jpeg"
     )
 
     private fun galleryAddPicture() {
-        //FIXME : Deprecated 30 방법을 바꿔야함.
+        // FIXME : Deprecated 30 방법을 바꿔야함.
         Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).also {
             it.data = Uri.fromFile(getOutputDirectory())
             context.sendBroadcast(it)
         }
     }
-
-
 }
