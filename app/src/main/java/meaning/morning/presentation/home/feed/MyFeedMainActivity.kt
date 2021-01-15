@@ -83,7 +83,6 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                     myFeedMainList.apply {
                         add(
                             MyFeedMainListData(
-
                                 myFeedList[i].createdAt,
                                 myFeedList[i].id,
                                 myFeedList[i].timeStampContents,

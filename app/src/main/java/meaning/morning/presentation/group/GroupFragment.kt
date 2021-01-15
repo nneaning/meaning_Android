@@ -24,6 +24,7 @@ import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.MyGroupResponse
 import meaning.morning.presentation.adapter.group.GroupAdapter
 import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
+import meaning.morning.presentation.group.feed.GroupFeedActivity
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
@@ -52,6 +53,11 @@ class GroupFragment : Fragment() {
 
         binding.imageviewAddGroup.setOnClickListener {
             val intent = Intent(activity, AddGroupActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.imageviewNext.setOnClickListener {
+            val intent = Intent(requireContext(),GroupFeedActivity::class.java)
             startActivity(intent)
         }
     }

@@ -16,6 +16,7 @@ import meaning.morning.network.response.CardDailyDiaryResponse
 import meaning.morning.network.response.CardTodayPromise
 import meaning.morning.network.response.GroupAddResponse
 import meaning.morning.network.response.GroupDetailResponse
+import meaning.morning.network.response.GroupFeedResponse
 import meaning.morning.network.response.GroupJoinApproveResponse
 import meaning.morning.network.response.GroupListResponse
 import meaning.morning.network.response.GroupSettingResponse
@@ -113,5 +114,7 @@ interface MeaningService {
             instance ?: provideService(MeaningService::class.java)
                 .apply { instance = this }
         }
+
+
     }
 }

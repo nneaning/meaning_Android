@@ -24,10 +24,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import meaning.morning.R
+import meaning.morning.data.GroupFeedListData
 import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.MyFeedPictureData
 import meaning.morning.databinding.FragmentPictureRecyclerviewBinding
 import meaning.morning.presentation.adapter.feed.MyFeedPictureAdapter
+import meaning.morning.presentation.group.feed.GroupFeedSnsActivity
 import meaning.morning.utils.BindFeedPictureEvent
 
 
@@ -77,6 +79,21 @@ class PictureRecyclerviewFragment : Fragment() {
                     val intent = Intent(requireContext(), MyFeedSnsActivity::class.java)
                     intent.putParcelableArrayListExtra("myFeedList", myFeedMainList as ArrayList<out Parcelable>)
                     intent.putExtra("successDay",successDay)
+                    startActivity(intent)
+                }
+            })
+    }
+
+    fun setGroupAdapter(groupFeedPictureData: List<MyFeedPictureData>, groupFeedMainList : List<GroupFeedListData>){
+        val myFeedPictureAdapter = MyFeedPictureAdapter()
+        myFeedPictureAdapter.submitData(groupFeedPictureData)
+        binding.rcvPicture.adapter = myFeedPictureAdapter
+
+        myFeedPictureAdapter.setItemClickListener(
+            object : MyFeedPictureAdapter.ItemClickListener {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(requireContext(),GroupFeedSnsActivity::class.java)
+                    intent.putParcelableArrayListExtra("groupFeedList", groupFeedMainList as ArrayList<out Parcelable>)
                     startActivity(intent)
                 }
             })
