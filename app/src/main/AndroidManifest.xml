@@ -16,11 +16,14 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Andromeaning">
-        <activity android:name=".presentation.home.card.CardReadingActivity"/>
-        <activity android:name=".presentation.home.card.CardWriteDiaryActivity" />
+        <activity android:name=".presentation.home.card.CardReadingActivity"
+            android:theme="@style/Theme.Andromeaning.mission"/>
+        <activity android:name=".presentation.home.card.CardWriteDiaryActivity"
+            android:theme="@style/Theme.Andromeaning.mission"/>
         <activity android:name=".presentation.home.card.CardPromiseActivity"
             android:theme="@style/Theme.Andromeaning"/>
-        <activity android:name=".presentation.home.card.CardTimeStampActivity"/>
+        <activity android:name=".presentation.home.card.CardTimeStampActivity"
+            android:theme="@style/Theme.Andromeaning.mission"/>
         <activity android:name=".presentation.group.feed.GroupSettingActivity" />
         <activity android:name=".presentation.group.CompleteGroupActivity" />
         <activity android:name=".presentation.group.AddGroupActivity"
