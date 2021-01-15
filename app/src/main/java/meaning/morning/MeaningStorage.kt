@@ -20,34 +20,20 @@ class MeaningStorage(context: Context) {
     val nickName: String?
         get() = meaningSharedPref.getString(NICK_NAME, null)
 
-
     fun getGroupName(): String? {
-        return meaningSharedPref.getString("groupName", "")
+        return meaningSharedPref.getString(GROUP_NAME, "")
     }
     fun saveGroupName(groupName: String) {
-        meaningEdit.putString("groupName", groupName)
+        meaningEdit.putString(GROUP_NAME, groupName)
         meaningEdit.apply()
     }
 
     fun saveGroupId(groupId: Int){
-        meaningEdit.putInt("groupId", groupId)
+        meaningEdit.putInt(GROUP_ID, groupId).apply()
     }
 
     fun getGroupId(): Int{
-        return meaningSharedPref.getInt("groupId", 0)
-    }
-
-    fun saveGroupNumber(groupNumber : Int){
-        meaningEdit.putInt("groupNumber",groupNumber)
-    }
-
-    fun getGroupNumber() : Int{
-        return meaningSharedPref.getInt("groupNumber",0)
-    }
-
-    fun saveUserToken(token: String) {
-        meaningEdit.putString("userToken", token)
-        meaningEdit.apply()
+        return meaningSharedPref.getInt(GROUP_ID, 0)
     }
 
     fun saveMission1(successMission1: Int) {
@@ -95,5 +81,7 @@ class MeaningStorage(context: Context) {
         private const val REFRESH_TOKEN = "refreshToken"
         private const val NICK_NAME = "nickName"
         private const val TIME = "wakeUpTime"
+        private const val GROUP_ID = "groupId"
+        private const val GROUP_NAME = "groupName"
     }
 }

@@ -39,19 +39,20 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     private fun remoteAddGroup(){
-        val call: Call <GroupAddResponse> =
+        val call: Call <BaseResponse<GroupAddResponse>> =
             MeaningService.getInstance().addGroup(
                 MeaningStorage.getInstance(this).accessToken,
                 GroupAddRequest(groupName.get().toString(), groupMemberNum.get()!!.toInt(), groupContent.get().toString())
             )
         call.enqueueListener(
             onSuccess = {
-                MeaningStorage.getInstance(this).saveGroupId(it.body()!!.groupId)
+                MeaningStorage.getInstance(this).saveGroupId(it.body()!!.data!!.groupId)
                 val intent = Intent(this, CompleteGroupActivity::class.java)
                 startActivity(intent)
+                finish()
             },
             onError = {
-                failAddGroup(it)
+                failAddGroup(it.data?: return@enqueueListener)
             }
         )
     }
@@ -97,7 +98,6 @@ class AddGroupActivity : AppCompatActivity() {
         if (checkEditTextBlank() && validNum()) {
             remoteAddGroup()
             saveAddGroupData(groupName.get().toString())
-            finish()
             return
         }
         if (checkEditTextBlank() && !validNum()) {
@@ -109,11 +109,6 @@ class AddGroupActivity : AppCompatActivity() {
 
     fun backToGroupList() {
         finish()
-    }
-
-    fun sendGroupId() : Int{
-        val groupId = MeaningStorage.getInstance(this).getGroupId()
-        return groupId
     }
 
     private fun saveAddGroupData(addName: String) {

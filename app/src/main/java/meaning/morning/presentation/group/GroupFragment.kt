@@ -27,12 +27,14 @@ import meaning.morning.presentation.adapter.group.RecommendGroupAdapter
 import meaning.morning.presentation.group.feed.GroupFeedActivity
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
+import kotlin.properties.Delegates
 
 
 class GroupFragment : Fragment() {
     private lateinit var groupAdapter: GroupAdapter
     private lateinit var recommendAdapter: RecommendGroupAdapter
     private lateinit var binding: FragmentGroupBinding
+    var myGroupId by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +63,6 @@ class GroupFragment : Fragment() {
             startActivity(intent)
         }
     }
-
     private fun hasMyGroup() {
         val call: Call<BaseResponse<MyGroupResponse>> =
             MeaningService.getInstance().getMyGroup(MeaningStorage.getInstance(requireContext()).accessToken)
@@ -71,6 +72,8 @@ class GroupFragment : Fragment() {
                     binding.layoutMyGroupNull.visibility = View.VISIBLE
                     return@enqueueListener
                 }
+                myGroupId = it.body()?.data!!.groupId
+                saveMyGroupId()
                 binding.textviewGroupName.text = it.body()?.data!!.groupName
                 binding.textviewNumber.text = it.body()?.data!!.countMember.toString() + "/" + it.body()?.data!!.maximumMemberNumber.toString()
                 binding.layoutMyGroupNull.visibility = View.INVISIBLE
@@ -79,6 +82,10 @@ class GroupFragment : Fragment() {
             onError = {
             }
         )
+    }
+
+    private fun saveMyGroupId() {
+        MeaningStorage.getInstance(requireContext()).saveGroupId(myGroupId)
     }
 
     private fun loadNoImageGroup() {
