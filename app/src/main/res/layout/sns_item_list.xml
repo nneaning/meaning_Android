@@ -27,6 +27,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_firstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{snsItemList.tv_profileName}"
+            android:fontFamily="@font/spoqahansansneo_bold"
+            android:textSize="16sp"
+            android:textColor="@color/grey1_33"
+            app:layout_constraintTop_toTopOf="@id/iv_myFeedSns_profile"
+            app:layout_constraintBottom_toBottomOf="@id/iv_myFeedSns_profile"
+            app:layout_constraintStart_toStartOf="@id/iv_myFeedSns_profile"
+            app:layout_constraintEnd_toEndOf="@id/iv_myFeedSns_profile"/>
+
+        <TextView
             android:id="@+id/tv_myFeedSns_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -15,6 +15,7 @@
 package meaning.morning.presentation.home.feed
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.MeaningStorage
@@ -22,7 +23,9 @@ import meaning.morning.R
 import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.SnsFeedData
 import meaning.morning.databinding.ActivityMyFeedSnsBinding
+import meaning.morning.network.MeaningService
 import meaning.morning.utils.BindFeedPictureEvent
+import meaning.morning.utils.DateParse
 
 class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
@@ -35,13 +38,16 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         val intent = intent
         val feedList = intent.getParcelableArrayListExtra<MyFeedMainListData>("myFeedList")
         val nickName = MeaningStorage.getInstance(this).nickName
+        val firstName = MeaningStorage.getInstance(this).nickName?.slice(IntRange(0, 0))
         var myFeedSnsData = mutableListOf<SnsFeedData>()
+
         for (i in feedList!!.indices) {
             myFeedSnsData.apply {
                 add(
                     SnsFeedData(
+                        firstName!!,
                         nickName!!,
-                        "5분전",
+                       " 5분전",
                         "매일 오전 " + MeaningStorage.getInstance(baseContext).getWakeUpTime() + " 기상",
                         feedList[i].timeStampContents,
                         feedList[i].timeStampImageUrl

@@ -19,7 +19,7 @@
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             android:orientation="horizontal"
-            card_view:cardCornerRadius="5dp"
+            card_view:cardCornerRadius="15dp"
             card_view:cardUseCompatPadding="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
