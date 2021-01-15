@@ -74,7 +74,7 @@ interface MeaningService {
     fun addGroup(
         @Header("token") token: String?,
         @Body body: GroupAddRequest
-    ): Call<BaseResponse<GroupAddResponse>>
+    ): Call<GroupAddResponse>
 
     // 미션 2. 오늘 하루 다짐
     @GET("/user/daypromise")
