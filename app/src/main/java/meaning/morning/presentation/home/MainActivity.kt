@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_bar_home -> {
+                        changeFragment(homeFragment)
                         homeFragment.goCardHomeFragment()
                         return@setOnNavigationItemSelectedListener true
                     }
