@@ -1,4 +1,4 @@
-package meaning.morning
+package meaning.morning.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

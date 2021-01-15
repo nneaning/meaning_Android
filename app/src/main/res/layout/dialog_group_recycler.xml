@@ -6,7 +6,7 @@
 
         <variable
             name="dialogBinding"
-            type="meaning.morning.BindingDialog" />
+            type="meaning.morning.presentation.group.GroupDialog" />
     </data>
 
     <LinearLayout

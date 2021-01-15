@@ -2,7 +2,7 @@
  * Created By: hyooosong
  * on 2021.01.08
  */
-package meaning.morning
+package meaning.morning.presentation.group
 
 import android.app.Dialog
 import android.content.Context
@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
+import meaning.morning.R
 import meaning.morning.databinding.DialogGroupDetailBinding
 import meaning.morning.databinding.DialogGroupRecyclerBinding
 import meaning.morning.databinding.FragmentGroupBinding
@@ -22,7 +24,7 @@ import meaning.morning.network.response.GroupJoinApproveResponse
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
 
-class BindingDialog(private val context: Context) {
+class GroupDialog(private val context: Context) {
     private val binding: FragmentGroupBinding = DataBindingUtil
         .inflate(LayoutInflater.from(context), R.layout.fragment_group, null, false)
 
