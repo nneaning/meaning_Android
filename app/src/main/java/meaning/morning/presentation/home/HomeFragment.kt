@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
 
         setCardListRcv()
         clickMyFeedImage()
+        binding.textviewDateLabelName.text = MeaningStorage.getInstance(requireContext()).nickName
     }
 
     private fun initView() {
