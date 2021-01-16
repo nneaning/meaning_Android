@@ -52,7 +52,7 @@ class AddGroupActivity : AppCompatActivity() {
                 finish()
             },
             onError = {
-                failAddGroup(it.data?: return@enqueueListener)
+                failAddGroup(it.data!!)
             }
         )
     }

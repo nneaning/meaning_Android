@@ -28,8 +28,6 @@ import meaning.morning.network.response.MyFeedResponse
 import meaning.morning.utils.BindFeedPictureEvent
 import meaning.morning.utils.enqueueListener
 import retrofit2.Call
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
 
@@ -77,10 +75,19 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                 binding.tvNameInImage.text =
                     MeaningStorage.getInstance(this).nickName?.slice(IntRange(0, 0))
                 binding.tvMyfeedName.text = MeaningStorage.getInstance(this).nickName
-                binding.btnDate.text =
-                    "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime() + " 기상"
+
+                if (MeaningStorage.getInstance(this).getWakeUpTime()!!.slice(IntRange(3,4)) != "00") {
+                    binding.btnDate.text =  "매일 오전 ${MeaningStorage.getInstance(this).getWakeUpTime()!!.slice(IntRange(1,1))}시" +
+                            " ${MeaningStorage.getInstance(this).getWakeUpTime()!!.slice(IntRange(3,4))}분 기상"
+                    return@enqueueListener
+                }
+                binding.btnDate.text = "매일 오전 ${MeaningStorage.getInstance(this).getWakeUpTime()!!.slice(IntRange(1,1))}시 기상"
+
+//                binding.btnDate.text =
+//                    "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime() + " 기상"
 
                 for (i in myFeedList!!.indices) {
+
                     myFeedPictureData.apply {
                         add(
                             MyFeedPictureData(
