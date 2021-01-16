@@ -19,7 +19,7 @@ class TimeStampPostRequestReview(
 ) {
     private var callback: RequestCallbackReview<TimeStampResponse>? = null
 
-    fun setEvent(block: RequestCallback<TimeStampResponse>.() -> Unit): TimeStampPostRequestReview {
+    fun setEvent(block: RequestCallbackReview<TimeStampResponse>.() -> Unit): TimeStampPostRequestReview {
         callback = RequestCallbackReview<TimeStampResponse>().apply(block)
         return this
     }
