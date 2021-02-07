@@ -85,8 +85,9 @@ class GroupFragment : Fragment() {
     }
 
     private fun saveMyGroupId() {
-        MeaningStorage.getInstance(requireContext()).saveGroupId(myGroupId)
+        context?.let { MeaningStorage.getInstance(it).saveGroupId(myGroupId) }
     }
+
 
     private fun loadNoImageGroup() {
         val call: Call<BaseResponse<GroupListResponse>> =
