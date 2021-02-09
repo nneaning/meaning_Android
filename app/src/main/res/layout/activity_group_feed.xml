@@ -39,7 +39,6 @@
                 android:layout_marginTop="9dp"
                 android:fontFamily="@font/spoqahansansneo_medium"
                 android:includeFontPadding="false"
-                android:text="서울 대학생 아침 인증 그룹"
                 android:textColor="@color/grey1_33"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

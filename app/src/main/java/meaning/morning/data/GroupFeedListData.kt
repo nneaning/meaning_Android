@@ -10,8 +10,4 @@ data class GroupFeedListData(
     val status: Int,
     val timeStampContents: String,
     val timeStampImageUrl: String,
-    val userId: Int,
-    val nickName: String,
-    val userName: String,
-    val wakeUpTime: String
 ): Parcelable

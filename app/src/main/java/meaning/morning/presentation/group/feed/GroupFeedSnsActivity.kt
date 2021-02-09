@@ -9,14 +9,23 @@
  */
 package meaning.morning.presentation.group.feed
 
+import android.content.Intent
 import android.os.Bundle
+import android.telecom.Call
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import meaning.morning.MeaningStorage
 import meaning.morning.R
+import meaning.morning.data.GroupFeedListData
 import meaning.morning.databinding.ActivityGroupFeedSnsBinding
 import meaning.morning.data.SnsFeedData
+import meaning.morning.network.MeaningService
+import meaning.morning.network.response.BaseResponse
+import meaning.morning.network.response.GroupFeedUser
+import meaning.morning.network.response.GroupResponseData
 import meaning.morning.presentation.home.feed.SnsRecyclerviewFragment
 import meaning.morning.utils.BindFeedPictureEvent
+import meaning.morning.utils.enqueueListener
 
 class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
@@ -34,6 +43,7 @@ class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         setBinding()
 
         setTransaction()
+
     }
 
     private fun setBinding() {
@@ -50,39 +60,11 @@ class GroupFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
     private fun setPictureRcv() {
         var groupFeedSnsData = mutableListOf<SnsFeedData>()
         groupFeedSnsData.apply {
-//            add(
-//                SnsFeedData(
-//                    R.drawable.myfeed_profile,
-//                    "이형준",
-//                    "5분전",
-//                    "매일 오전 5시 기상",
-//                    "나비보배따우",
-//                    R.drawable.image_16
-//                )
-//            )
-//            add(
-//                SnsFeedData(
-//                    R.drawable.myfeed_profile,
-//                    "박효송",
-//                    "5분전",
-//                    "매일 오전 5시 기상",
-//                    "송송송송송송",
-//                    R.drawable.image_16
-//                )
-//            )
-//            add(
-//                SnsFeedData(
-//                    R.drawable.myfeed_profile,
-//                    "양승완",
-//                    "5분전",
-//                    "매일 오전 5시 기상",
-//                    "맨유우승안돼",
-//                    R.drawable.image_16
-//                )
-//            )
+
         }
         snsRecyclerviewFragment.setAdapter(groupFeedSnsData.toList())
     }
+
 
     fun backButton() {
         finish()

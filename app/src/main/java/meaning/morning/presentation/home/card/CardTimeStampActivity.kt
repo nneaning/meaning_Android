@@ -51,11 +51,11 @@ class CardTimeStampActivity : AppCompatActivity() {
     }
 
     private fun getButtonText() {
-        if (MeaningStorage.getInstance(this).getGroupId() == 0) {
+        /*if (MeaningStorage.getInstance(this).getGroupId() == 0) {
             binding.btnUpload.text = "마이피드에 올리기"
             return
         }
-        binding.btnUpload.text = "그룹에 사진 올리기"
+        binding.btnUpload.text = "그룹에 사진 올리기"*/
     }
 
     private fun pressBtnPictureUpload(textView: TextView) {

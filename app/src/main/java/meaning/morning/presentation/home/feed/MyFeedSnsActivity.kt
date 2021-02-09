@@ -15,7 +15,6 @@
 package meaning.morning.presentation.home.feed
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import meaning.morning.MeaningStorage
@@ -23,9 +22,7 @@ import meaning.morning.R
 import meaning.morning.data.MyFeedMainListData
 import meaning.morning.data.SnsFeedData
 import meaning.morning.databinding.ActivityMyFeedSnsBinding
-import meaning.morning.network.MeaningService
 import meaning.morning.utils.BindFeedPictureEvent
-import meaning.morning.utils.DateParse
 
 class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
 
@@ -40,6 +37,7 @@ class MyFeedSnsActivity : AppCompatActivity(), BindFeedPictureEvent {
         val nickName = MeaningStorage.getInstance(this).nickName
         val firstName = MeaningStorage.getInstance(this).nickName?.slice(IntRange(0, 0))
         var myFeedSnsData = mutableListOf<SnsFeedData>()
+
 
         for (i in feedList!!.indices) {
             myFeedSnsData.apply {

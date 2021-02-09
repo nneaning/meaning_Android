@@ -16,6 +16,7 @@ package meaning.morning.presentation.home.feed
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +62,7 @@ class SnsRecyclerviewFragment : Fragment() {
     }
 
     fun setAdapter(snsFeedData: List<SnsFeedData>) {
+        Log.d("log11",snsFeedData.toString())
         val snsFeedAdapter = SnsFeedAdapter()
         snsFeedAdapter.submitData(snsFeedData)
         binding.rcvPicture.adapter = snsFeedAdapter

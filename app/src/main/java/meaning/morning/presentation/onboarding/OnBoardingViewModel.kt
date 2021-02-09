@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import meaning.morning.MeaningStorage
 import meaning.morning.data.entity.onboard.UserData
 import meaning.morning.network.request.PutUserDataRequest
+import meaning.morning.network.response.BaseResponse
 
 class OnBoardingViewModel(private val meaningStorage: MeaningStorage) : ViewModel() {
 
@@ -78,7 +79,7 @@ class OnBoardingViewModel(private val meaningStorage: MeaningStorage) : ViewMode
     fun requestPutUserData() {
         _isLoading.value = true
         PutUserDataRequest(getUserData()).setEvent {
-            onSuccessListener { successPutUserData() }
+            onSuccessListener { successPutUserData(it) }
             onErrorListener { errorPutUserData(it.status) }
         }.send(getAccessToken())
     }
@@ -86,9 +87,10 @@ class OnBoardingViewModel(private val meaningStorage: MeaningStorage) : ViewMode
     private fun getAccessToken() = meaningStorage.accessToken
         ?: throw IllegalArgumentException("엑세스 토큰이 없습니다.")
 
-    private fun successPutUserData() {
+    private fun successPutUserData(baseResponse: BaseResponse<Unit>) {
         _isLoading.value = false
         _putUserDataTrigger.value = true
+        meaningStorage.saveUserData(inputNickName.value, "${getHourText()}:${getMinuteText()}:00")
     }
 
     private fun errorPutUserData(status: Int) {

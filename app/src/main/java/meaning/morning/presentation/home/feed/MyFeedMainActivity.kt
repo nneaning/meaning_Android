@@ -70,7 +70,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
             onSuccess = {
                 val myFeedList = it.body()!!.data!!.getMyPage
                 val successDay = it.body()!!.data!!.successDays
-                var myFeedMainList = mutableListOf<MyFeedMainListData>()
+                var myFeedMainList = arrayListOf<MyFeedMainListData>()
                 var myFeedPictureData = mutableListOf<MyFeedPictureData>()
                 binding.tvCountDay.text =
                     "오늘은 365일 중에 " + successDay.toString() + "번째 의미있는 아침입니다"
@@ -79,7 +79,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                 binding.tvMyfeedName.text =
                     MeaningStorage.getInstance(this).nickName
                 binding.btnDate.text =
-                    "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime() + " 기상"
+                    "매일 오전 " + MeaningStorage.getInstance(this).getWakeUpTime()?.slice(IntRange(0,4)) + " 기상"
 
                 for (i in myFeedList!!.indices) {
                     myFeedPictureData.apply {
@@ -102,7 +102,7 @@ class MyFeedMainActivity : AppCompatActivity(), BindFeedPictureEvent {
                 }
                 pictureRecyclerviewFragment.setAdapter(
                     myFeedPictureData.toList(),
-                    myFeedMainList.toList(),
+                    myFeedMainList,
                     successDay.toString()
                 )
             },

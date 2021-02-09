@@ -31,6 +31,7 @@ import meaning.morning.databinding.FragmentPictureRecyclerviewBinding
 import meaning.morning.presentation.adapter.feed.MyFeedPictureAdapter
 import meaning.morning.presentation.group.feed.GroupFeedSnsActivity
 import meaning.morning.utils.BindFeedPictureEvent
+import java.util.ArrayList
 
 
 class PictureRecyclerviewFragment : Fragment() {
@@ -68,7 +69,7 @@ class PictureRecyclerviewFragment : Fragment() {
 
     }
 
-    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>,myFeedMainList: List<MyFeedMainListData>,successDay : String) {
+    fun setAdapter(myFeedPictureData: List<MyFeedPictureData>,myFeedMainList: ArrayList<MyFeedMainListData>,successDay : String) {
         val myFeedPictureAdapter = MyFeedPictureAdapter()
         myFeedPictureAdapter.submitData(myFeedPictureData)
         binding.rcvPicture.adapter = myFeedPictureAdapter
@@ -77,7 +78,7 @@ class PictureRecyclerviewFragment : Fragment() {
             object : MyFeedPictureAdapter.ItemClickListener {
                 override fun onClick(view: View, position: Int) {
                     val intent = Intent(requireContext(), MyFeedSnsActivity::class.java)
-                    intent.putParcelableArrayListExtra("myFeedList", myFeedMainList as ArrayList<out Parcelable>)
+                    intent.putParcelableArrayListExtra("myFeedList", myFeedMainList)
                     intent.putExtra("successDay",successDay)
                     startActivity(intent)
                 }
@@ -92,9 +93,9 @@ class PictureRecyclerviewFragment : Fragment() {
         myFeedPictureAdapter.setItemClickListener(
             object : MyFeedPictureAdapter.ItemClickListener {
                 override fun onClick(view: View, position: Int) {
-                    val intent = Intent(requireContext(),GroupFeedSnsActivity::class.java)
-                    intent.putParcelableArrayListExtra("groupFeedList", groupFeedMainList as ArrayList<out Parcelable>)
-                    startActivity(intent)
+//                    val intent = Intent(requireContext(),GroupFeedSnsActivity::class.java)
+//                    intent.putParcelableArrayListExtra("groupFeedList", groupFeedMainList as ArrayList<out Parcelable>)
+//                    startActivity(intent)
                 }
             })
     }
